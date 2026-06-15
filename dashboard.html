@@ -20,6 +20,8 @@
     --surface-2: #ECEEF1;
     --stroke:    rgba(21,21,34,0.06);
     --stroke-2:  rgba(21,21,34,0.13);
+    /* RADIUS VERROUILLÉ — surfaces = 16px partout */
+    --r:         16px;
     /* encre */
     --ink-1:     #151522;
     --ink-2:     #7A8190;
@@ -94,9 +96,10 @@
     letter-spacing: -0.02em; white-space: nowrap;
   }
   .brand-mark {
-    width: 34px; height: 34px; border-radius: 10px;
-    background: transparent; display: block; overflow: hidden; flex-shrink: 0;
+    width: 34px; height: 34px; border-radius: 50%;
+    object-fit: cover; display: block; flex-shrink: 0;
   }
+  .brand-logo { height: 19px; width: auto; display: block; }
   .nav-btn {
     position: relative; padding: 8px 14px;
     background: transparent; color: var(--ink-3);
@@ -239,6 +242,11 @@
     .dash-grid { grid-template-columns: 1fr !important; }
     .market-cols { grid-template-columns: repeat(2, 1fr) !important; }
     .perf-kpi { grid-template-columns: repeat(2, 1fr) !important; }
+    .perf-daily { grid-template-columns: repeat(2, 1fr) !important; }
+    .presu-3 { grid-template-columns: 1fr !important; }
+    .presu-2 { grid-template-columns: 1fr !important; }
+    .obj-inputs { grid-template-columns: 1fr !important; }
+    .obj-chain { grid-template-columns: repeat(3, 1fr) !important; }
     .perf-leviers { grid-template-columns: 1fr !important; }
     .perf-grid { grid-template-columns: 1fr !important; }
     .leads-kpi { grid-template-columns: repeat(2, 1fr) !important; }
@@ -293,7 +301,11 @@
   <script type="text/babel" src="app/components.jsx"></script>
   <script type="text/babel" src="app/screens.jsx"></script>
   <script src="app/face.js"></script>
+  <script src="app/logo.js"></script>
   <script type="text/babel" src="app/perf.jsx"></script>
+  <script type="text/babel" src="app/presu-a.jsx"></script>
+  <script type="text/babel" src="app/presu-b.jsx"></script>
+  <script type="text/babel" src="app/presuasion.jsx"></script>
   <script type="text/babel" src="app/app.jsx"></script>
 </body>
 </html>

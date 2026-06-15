@@ -12,6 +12,7 @@ const Icon = {
   perf: (p) => <svg className="ic" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M4 19V5M4 19h16M8 16l3.5-4 3 2.5L20 8" /></svg>,
   leads: (p) => <svg className="ic" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 11a3 3 0 0 0 0-6M20.5 19a5.5 5.5 0 0 0-4-5.3" /></svg>,
   conv: (p) => <svg className="ic" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M4 5h16v11H9l-4 3v-3H4z" /></svg>,
+  presu: (p) => <svg className="ic" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 2.5 4 6v5.5c0 4.7 3.2 8.1 8 9.5 4.8-1.4 8-4.8 8-9.5V6z" /><path d="m9 11.5 2.2 2.2L15.5 9" /></svg>,
   gear: (p) => <svg className="ic" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" /></svg>,
 };
 
@@ -95,6 +96,7 @@ function App() {
 
   const nav = [
     { id: "perf", label: "Performance", icon: Icon.perf },
+    { id: "presu", label: "Pré-suasion", icon: Icon.presu },
     { id: "leads", label: "Leads", icon: Icon.leads, badge: aRelancer || null },
     { id: "conv", label: "Conversations", icon: Icon.conv },
   ];
@@ -106,17 +108,8 @@ function App() {
         {/* Sidebar */}
         <aside className="sidebar">
           <div className="side-brand">
-            <svg className="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-label="Pré-suasion" role="img">
-              <defs>
-                <mask id="pjMask">
-                  <rect width="34" height="34" fill="black" />
-                  <text x="17" y="27" textAnchor="middle" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="29" fontWeight="800" fill="white">P</text>
-                </mask>
-              </defs>
-              <rect width="34" height="34" rx="10" fill="var(--green)" />
-              <image href={window.PJ_FACE} x="-3" y="-1" width="40" height="40" preserveAspectRatio="xMidYMid slice" mask="url(#pjMask)" />
-            </svg>
-            <span className="side-brand-name" style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-0.02em" }}>Pré-suasion</span>
+            <img className="brand-mark" src={window.PJ_FACE} alt="Pierre-Joseph" />
+            <img className="side-brand-name brand-logo" src={window.PJ_LOGO} alt="Pré-suasion" />
           </div>
           <nav className="side-nav">
             {nav.map(n => (
@@ -143,6 +136,7 @@ function App() {
           ) : (
             <div className="content-pad">
               {screen === "perf" && <ScreenPerformance onOpenConv={openConv} onGoLeads={() => setScreen("leads")} />}
+              {screen === "presu" && <ScreenPresuasion />}
               {screen === "leads" && <Screen2 onOpenConv={openConv} />}
             </div>
           )}

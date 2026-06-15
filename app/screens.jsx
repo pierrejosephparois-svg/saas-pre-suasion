@@ -53,7 +53,6 @@ function Screen2({ onOpenConv }) {
       <div style={{ marginBottom: 24 }}>
         <Tag>Leads</Tag>
         <h1 className="display" style={{ fontSize: 42, marginTop: 14, marginBottom: 6 }}>À relancer</h1>
-        <div style={{ fontSize: 14, color: "var(--ink-2)", fontWeight: 600 }}>Tes priorités, remontées automatiquement</div>
       </div>
 
       {/* KPIs */}
@@ -196,7 +195,7 @@ function Screen3({ initialLead }) {
               const isActive = draft === r.text;
               return (
                 <div key={i} onClick={() => setDraft(r.text)} className="reply-opt" style={{
-                  cursor: "pointer", borderRadius: 12, padding: "11px 14px",
+                  cursor: "pointer", borderRadius: 16, padding: "11px 14px",
                   background: r.reco ? "var(--green)" : "var(--surface-2)",
                   border: `1.5px solid ${isActive ? (r.reco ? "var(--green-ink)" : "var(--ink-1)") : (r.reco ? "transparent" : "var(--stroke)")}`,
                   transition: "transform .15s ease, box-shadow .15s ease",
@@ -268,7 +267,7 @@ function Screen3({ initialLead }) {
 
       {/* Toast discret — confirmation copie + LinkedIn ouvert */}
       {toast && (
-        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 90, display: "flex", alignItems: "center", gap: 12, padding: "13px 18px", background: "var(--ink-1)", borderRadius: 14, boxShadow: "0 20px 48px -18px rgba(20,20,38,0.55)", animation: "toastIn .22s cubic-bezier(.2,.9,.3,1.4)" }}>
+        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 90, display: "flex", alignItems: "center", gap: 12, padding: "13px 18px", background: "var(--ink-1)", borderRadius: 16, boxShadow: "0 8px 24px -14px rgba(20,20,38,0.30)", animation: "toastIn .22s cubic-bezier(.2,.9,.3,1.4)" }}>
           <span style={{ width: 22, height: 22, borderRadius: "50%", background: "var(--green)", color: "var(--green-ink)", display: "grid", placeItems: "center", fontWeight: 800, fontSize: 13, flexShrink: 0 }}>✓</span>
           <div>
             <div style={{ fontSize: 13, fontWeight: 800, color: "#fff" }}>Réponse copiée — collez avec ⌘V</div>

@@ -20,7 +20,7 @@ const STATS_30J = [
 const TODAY = { newDM: 14, fu: 89, looms: 2, reponses: 52, propCall: 8, bookes: 1, closes: 0 };
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
-const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33 };
+const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
 function loadPresu() { try { return { ...PRESU_DEFAULTS, ...JSON.parse(localStorage.getItem("presu_settings") || "{}") }; } catch { return { ...PRESU_DEFAULTS }; } }
 function savePresu(s) { try { localStorage.setItem("presu_settings", JSON.stringify(s)); } catch {} try { window.dispatchEvent(new CustomEvent("presu-change", { detail: s })); } catch {} }
 // Objectifs d'activité dérivés de l'objectif € (jamais demandés dans le dashboard).
@@ -360,12 +360,14 @@ function metricsFor(range) {
   if (range === 1) {
     // « Aujourd'hui » — snapshot du jour (jamais zéro pour rester lisible).
     const dm = 14, rep = 9, prop = 4, acc = 1, cli = 0;
+    const connAcc = Math.round(dm * 1.15), conn = Math.round(connAcc / 0.42);
     const funnel = [
-      { label: "DM envoyés", val: dm }, { label: "Réponses", val: rep },
-      { label: "Calls proposés", val: prop }, { label: "Calls acceptés", val: acc },
-      { label: "Clients signés", val: cli },
+      { label: "DM envoyés", val: dm },
+      { label: "Relances", val: Math.round(dm * 0.61) },
+      { label: "Réponses", val: rep },
+      { label: "Calls proposés", val: prop }, { label: "Appels acceptés", val: acc },
     ];
-    return { data: [{ dm, rep }], dates: [startOfToday()], dm, rep, prop, acc, cli, funnel, today: true };
+    return { data: [{ dm, rep }], dates: [startOfToday()], dm, rep, prop, acc, cli, conn, connAcc, funnel, today: true };
   }
   const data = STATS_90.slice(-range);
   const dates = data.map((_, i) => dateForIndexInRange(i, range));
@@ -374,14 +376,15 @@ function metricsFor(range) {
   const prop = Math.round(dm * 0.256);
   const acc = Math.round(dm * 0.0237);
   const cli = Math.max(range >= 30 ? 1 : 0, Math.round(acc * 0.05));
+  const connAcc = Math.round(dm * 1.15), conn = Math.round(connAcc / 0.42);
   const funnel = [
     { label: "DM envoyés", val: dm },
+    { label: "Relances", val: Math.round(dm * 0.61) },
     { label: "Réponses", val: rep },
     { label: "Calls proposés", val: prop },
-    { label: "Calls acceptés", val: acc },
-    { label: "Clients signés", val: cli },
+    { label: "Appels acceptés", val: acc },
   ];
-  return { data, dates, dm, rep, prop, acc, cli, funnel };
+  return { data, dates, dm, rep, prop, acc, cli, conn, connAcc, funnel };
 }
 
 // ─── SECTION 7 · TEMPÉRATURE DU MARCHÉ (sunburst dynamique) ───
