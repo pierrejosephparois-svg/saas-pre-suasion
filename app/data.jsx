@@ -18,7 +18,7 @@ const STATS_30J = [
 ];
 
 // ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
-const TODAY = { newDM: 0, fu: 9, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0 };
+const TODAY = { newDM: 0, fu: 9, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0, connEnv: 10, connAcc: 0 };
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
 const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
@@ -461,9 +461,9 @@ const fmtDayMonth = (d) => new Intl.DateTimeFormat("fr-FR", { day: "numeric", mo
 // Agrège les métriques sur la période — funnel cohérent dérivé du volume de DM.
 function metricsFor(range) {
   if (range === 1) {
-    // « Aujourd'hui » — snapshot du jour (jamais zéro pour rester lisible).
-    const dm = 14, rep = 9, prop = 4, acc = 1, cli = 0;
-    const connAcc = Math.round(dm * 1.15), conn = Math.round(connAcc / 0.42);
+    // « Aujourd'hui » — snapshot réel scrappé depuis LinkedIn.
+    const dm = TODAY.fu, rep = TODAY.reponses, prop = TODAY.propCall, acc = TODAY.bookes, cli = TODAY.closes;
+    const conn = TODAY.connEnv, connAcc = TODAY.connAcc;
     const funnel = [
       { label: "DM envoyés", val: dm },
       { label: "Relances", val: Math.round(dm * 0.61) },
