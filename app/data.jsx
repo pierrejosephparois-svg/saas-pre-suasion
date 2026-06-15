@@ -17,7 +17,8 @@ const STATS_30J = [
   { date: "29/05", dm: 14, rep: 52 }, { date: "30/05", dm: 0, rep: 0 },
 ];
 
-const TODAY = { newDM: 14, fu: 89, looms: 2, reponses: 52, propCall: 8, bookes: 1, closes: 0 };
+// ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
+const TODAY = { newDM: 0, fu: 9, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0 };
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
 const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
@@ -44,130 +45,233 @@ const daysSince = (d) => Math.floor((Date.now() - d.getTime()) / 86400000);
 // URL LinkedIn du prospect (profil / conversation). Recherche par nom = lien réel, jamais 404.
 const liUrl = (lead) => lead.li || `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(lead.prenom + " " + lead.nom)}`;
 
+// ⬇ Leads RÉELS scrappés le 15/06/2026 depuis LinkedIn (10 conversations du jour)
 const LEADS = [
   {
-    id: 1, prenom: "Thomas", nom: "D.", poste: "Growth Freelance", score: 3,
-    dm1: new Date(Date.now() - 12 * 86400000), dernierContact: new Date(Date.now() - 12 * 86400000),
-    statut: "FU_EN_ATTENTE", fuStade: 3, nbEchanges: 2,
-    icpRaison: "Freelance explicite + domaine Growth = T1 parfait",
-    analyse: {
-      temp: 38, profil: "senior",
-      pense: "Le concept l'intrigue, mais rien ne l'oblige à répondre maintenant.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Étude de cas",
-      preuves: ["« Oui toujours ! Tu fais quoi de ton côté ? »", "Silence depuis 12 j après une question ouverte"],
-      strategie: { choix: "Sortir de la conversation", pourquoi: "Intérêt initial puis silence prolongé : un retrait élégant relance plus qu'une n-ième relance." },
-      reponses: [
-        { reco: true, text: "Hello Thomas, je ne sais pas si je relance inutilement 😇. Je ferme le sujet si ce n'est pas prioritaire pour toi en ce moment." },
-        { text: "Toujours d'actualité côté missions, ou pas du tout ?" },
-        { text: "Si je me trompe, dis-le moi franchement — sinon je n'insiste pas." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Salut Thomas, top ce positionnement growth freelance. Tu vends toujours tes services ?", date: new Date(Date.now() - 12 * 86400000) },
-      { from: "lead", text: "Oui toujours ! Tu fais quoi de ton côté ?", date: new Date(Date.now() - 11 * 86400000) },
-      { from: "pj", text: "Je travaille avec des consultants IA qui veulent sortir du temps vendu. Tu m'autorises à te poser une question ?", date: new Date(Date.now() - 11 * 86400000) },
-    ]
-  },
-  {
-    id: 2, prenom: "Marie", nom: "L.", poste: "Consultant IA indépendante", score: 3,
-    dm1: new Date(Date.now() - 3 * 86400000), dernierContact: new Date(Date.now() - 3 * 86400000),
-    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 1,
-    icpRaison: "Consultant IA + indépendante = sweet spot absolu",
-    analyse: {
-      temp: 24, profil: "senior", faible: true,
-      pense: "Signal faible — un seul message envoyé, aucune réponse pour étayer une lecture.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Étude de cas",
-      preuves: ["Aucune réponse à ce stade — lecture provisoire"],
-      strategie: { choix: "Continuer à creuser", pourquoi: "Aucun problème verbalisé : uniquement des questions de diagnostic, jamais d'explication." },
-      reponses: [
-        { reco: true, text: "Pour voir si c'est pertinent dans ton cas, tu m'autorises à te poser une question ?" },
-        { text: "Tu vends toujours tes services en direct, aujourd'hui ?" },
-        { text: "Qu'est-ce qui est le plus difficile depuis ton passage en indépendante ?" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Salut Marie, top cette expertise IA appliquée. Tu vends toujours tes services ?", date: new Date(Date.now() - 3 * 86400000) },
-    ]
-  },
-  {
-    id: 3, prenom: "Axel", nom: "R.", poste: "Fondateur SaaS IA", score: 2,
-    dm1: new Date(Date.now() - 7 * 86400000), dernierContact: new Date(Date.now() - 5 * 86400000),
+    id: 1, prenom: "Jean-Yves", nom: "Klein", poste: "Consultant Agilité / PMO", score: 3,
+    li: "https://www.linkedin.com/in/ACoAAABEL6IBbIzWdMMNJu4RiuJjBcv3uIGNFuY",
+    dm1: new Date("2026-05-01T19:37:00"), dernierContact: new Date("2026-06-15T16:46:00"),
     statut: "EN_COURS", fuStade: null, nbEchanges: 4,
-    icpRaison: "Founder + SaaS IA = T2, taille boîte inconnue",
+    icpRaison: "Consultant indépendant Agilité/PMO/Formation = T1 parfait",
     analyse: {
-      temp: 48, profil: "senior",
-      pense: "Il reconnaît le problème mais le minimise : 6/10, donc supportable à ses yeux.",
+      temp: 62, profil: "senior",
+      pense: "Il a dit 'Oui' rapidement — ouvert. Attend maintenant de voir si la question de qualification résonne.",
       ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Comparaison avant/après",
-      preuves: ["« Je dirais 6/10 »", "« je vends beaucoup de mon temps »", "« c'est pas toujours régulier »"],
-      strategie: { choix: "Recadrer le problème", pourquoi: "Problème tiède (6/10) : créer le contraste entre aujourd'hui et l'objectif avant toute méthode." },
+      obstacle: "Pas encore verbalisé",
+      declencheur: "Question d'enjeu (1-10)",
+      preuves: ["Réponse rapide 'Oui' à la demande de permission", "Ouvert sur Mobile (3 min après l'envoi)"],
+      strategie: { choix: "Attendre sa réponse à la question 1-10", pourquoi: "Lead chaud — question envoyée il y a 3 min. Ne pas relancer avant 24h." },
       reponses: [
-        { reco: true, text: "Qu'est-ce qui t'empêche d'être à 10/10 pour signer les clients que tu aimerais vraiment ?" },
-        { text: "Qu'est-ce qui se passerait si le modèle restait exactement le même dans les 12 prochains mois ?" },
-        { text: "À quoi correspondent les 4 points manquants entre ton 6 et un 10 ?" },
+        { reco: true, text: "Attendre sa réponse à la question 1-10 (envoyée à 16:46). FU si silence > 24h." },
+        { text: "Qu'est-ce qui t'empêche d'être à 10/10 pour signer les clients que tu aimerais ?" },
+        { text: "Si rien ne change dans les 12 prochains mois côté acquisition, qu'est-ce qui se passe ?" },
       ],
     },
     conv: [
-      { from: "pj", text: "Salut Axel, très bon positionnement sur les agents IA. Tu vends toujours tes services ?", date: new Date(Date.now() - 7 * 86400000) },
-      { from: "lead", text: "Oui absolument, on est en pleine croissance !", date: new Date(Date.now() - 6 * 86400000) },
-      { from: "pj", text: "Sur une échelle de 1 à 10, ta capacité à signer les clients que tu aimerais vraiment avoir ?", date: new Date(Date.now() - 5 * 86400000) },
-      { from: "lead", text: "Je dirais 6/10. J'ai des clients mais c'est pas toujours régulier et je vends beaucoup de mon temps.", date: new Date(Date.now() - 4 * 86400000) },
+      { from: "pj", text: "Bonjour Jean-Yves, Top ce parcours! Vous vendez toujours vos services ?", date: new Date("2026-05-01T19:37:00") },
+      { from: "lead", text: "Bonjour. Oui, j'interviens sur l'Agilité, le management de projet, le PMO, la formation...", date: new Date("2026-05-02T12:18:00") },
+      { from: "pj", text: "👍 Top ! Pour te situer Jean-Yves, je travaille avec des consultants IA / automatisation qui veulent sortir du temps vendu et sécuriser des contrats premium via une méthode spécifique. Pour voir si cela peut être pertinent dans ton cas, tu m'autorises à te poser une question ?", date: new Date("2026-06-15T16:30:00") },
+      { from: "lead", text: "Oui", date: new Date("2026-06-15T16:44:00") },
+      { from: "pj", text: "Super : Sur une échelle de 1 à 10, à combien tu évalues ta capacité à signer les clients que tu aimerais vraiment avoir aujourd'hui ?\n10 = clients réguliers, facturés chers et sans effort\n1 = un client à la fois avec temps mort entre missions, c'est frustrant.", date: new Date("2026-06-15T16:46:00") },
     ]
   },
   {
-    id: 4, prenom: "Julien", nom: "B.", poste: "Automation Consultant", score: 3,
-    dm1: new Date(Date.now() - 5 * 86400000), dernierContact: new Date(Date.now() - 1 * 86400000),
-    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 6,
-    icpRaison: "Automation + consultant = T1. Pipeline irrégulier confirmé.",
+    id: 2, prenom: "Nicolas", nom: "Durand", poste: "Consultant (début d'activité)", score: 1,
+    li: "https://www.linkedin.com/in/ACoAAACNZ0cBYs0AuaR6Y1j075dYzgbCMf34tig",
+    dm1: new Date("2026-05-01T19:36:00"), dernierContact: new Date("2026-06-15T16:34:00"),
+    statut: "FROID", fuStade: null, nbEchanges: 8,
+    icpRaison: "Pas encore lancé + pas de besoin ressenti = hors ICP",
     analyse: {
-      temp: 76, profil: "senior",
-      pense: "Il a nommé son vrai problème : pas de système, dépendance au réseau.",
-      ressent: "Frustré",
-      obstacle: "Manque de confiance",
-      declencheur: "Étude de cas",
-      preuves: ["« Honnêtement 5/10 »", "« des missions mais très irrégulières »", "« Pas de système vraiment »"],
-      strategie: { choix: "Recadrer le problème", pourquoi: "Problème clair mais méthode non demandée : valider l'enjeu avant de proposer quoi que ce soit." },
+      temp: 5, profil: "junior",
+      pense: "Il n'a pas encore de clients à signer — notre offre ne correspond pas à sa situation actuelle.",
+      ressent: "Neutre",
+      obstacle: "Pas de besoin (pas encore en activité réelle)",
+      declencheur: "Rien — mauvais timing",
+      preuves: ["« Je n'ai pas besoin de ce type de prestation »", "Pas encore créé sa société", "N'a pas commencé à démarcher"],
+      strategie: { choix: "Sortir du pipeline", pourquoi: "Pas d'activité commerciale active = hors ICP. Garder en watchlist pour dans 6 mois." },
       reponses: [
-        { reco: true, text: "Si je comprends bien, le vrai enjeu n'est pas la compétence mais l'absence d'un système qui sécurise tes contrats en parallèle des missions. C'est bien ça ?" },
-        { text: "Qu'est-ce qui se passerait si rien ne change dans les 12 prochains mois ?" },
-        { text: "Je peux te partager ce que je mettrais en place dans ton contexte ?" },
+        { reco: true, text: "Pas de suite à donner. Profil à recontacter dans 6 mois quand l'activité sera lancée." },
+        { text: "« Bien reçu Nicolas, bonne continuation ! »" },
       ],
     },
     conv: [
-      { from: "pj", text: "Salut Julien, top ce focus automation. Tu vends toujours tes services ?", date: new Date(Date.now() - 5 * 86400000) },
-      { from: "lead", text: "Oui ! Curieux d'en savoir plus.", date: new Date(Date.now() - 4 * 86400000) },
-      { from: "pj", text: "Sur une échelle de 1 à 10, ta capacité à signer les clients que tu aimerais vraiment avoir ?\n10 = clients réguliers, facturés chers et sans effort\n1 = source de frustration importante", date: new Date(Date.now() - 3 * 86400000) },
-      { from: "lead", text: "Honnêtement 5/10. J'ai des missions mais très irrégulières, je dépends encore beaucoup de mon réseau.", date: new Date(Date.now() - 2 * 86400000) },
-      { from: "pj", text: "Je vois. Qu'est-ce qui t'empêche d'être à 10/10 selon toi ?", date: new Date(Date.now() - 2 * 86400000) },
-      { from: "lead", text: "Pas de système vraiment. Je prospecte par à-coups quand j'ai le temps mais c'est pas structuré.", date: new Date(Date.now() - 1 * 86400000) },
+      { from: "pj", text: "Bonjour Nicolas, Top ce parcours! Vous recherchez une entreprise aujourd'hui ?", date: new Date("2026-05-01T19:36:00") },
+      { from: "lead", text: "Bonjour, Merci pour votre message. En ce moment je suis en train de voir pour lancer dans le consulting...", date: new Date("2026-05-01T20:40:00") },
+      { from: "lead", text: "Et ouvert aux opportunités mais pas en tant que salarié idéalement", date: new Date("2026-05-01T20:40:00") },
+      { from: "pj", text: "Top! Pour vous situer Nicolas, j'accompagne des freelances avec un profil similaire au vôtre à décrocher des contrats premium via une méthode spécifique.", date: new Date("2026-05-01T20:47:00") },
+      { from: "lead", text: "Oui bien sûr", date: new Date("2026-05-01T20:50:00") },
+      { from: "pj", text: "Super: Sur une échelle de 1 à 10, comment évaluez-vous aujourd'hui la qualité de votre acquisition clients ?", date: new Date("2026-05-02T00:18:00") },
+      { from: "lead", text: "Alors je n'ai pas encore vraiment commencé à démarcher et pas encore créé la société mais le but c'est d'avoir une activité consultante... Mais effectivement c'est la côté vente démarchage que je maîtrise le moins", date: new Date("2026-05-02T11:31:00") },
+      { from: "pj", text: "Je comprends. Pour vous donner de la visibilité Nicolas, voici la méthode que nous utilisons dans ce cas...", date: new Date("2026-05-02T21:16:00") },
+      { from: "pj", text: "Bonjour Nicolas, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
+      { from: "lead", text: "Bonjour Je n'ai pas besoin de ce type de prestation mais merci de votre message", date: new Date("2026-06-15T16:34:00") },
     ]
   },
   {
-    id: 5, prenom: "Sophie", nom: "M.", poste: "Data Scientist Freelance", score: 3,
-    dm1: new Date(Date.now() - 1 * 86400000), dernierContact: new Date(Date.now() - 1 * 86400000),
-    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 1,
-    icpRaison: "Data + Freelance = T1 évident",
+    id: 3, prenom: "Benoist", nom: "de Montgrand", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:29:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — pas encore de réponse",
     analyse: {
-      temp: 22, profil: "senior", faible: true,
-      pense: "Trop tôt — message envoyé, aucune réponse pour étayer une lecture.",
+      temp: 20, profil: "senior", faible: true,
+      pense: "Peut-être pas vu le message, peut-être pas prioritaire.",
       ressent: "Curieux",
-      obstacle: "Pas prioritaire",
+      obstacle: "Pas prioritaire / silence",
       declencheur: "Étude de cas",
-      preuves: ["Pas encore de réponse"],
-      strategie: { choix: "Continuer à creuser", pourquoi: "Aucun problème verbalisé : rester en diagnostic, ne rien expliquer." },
+      preuves: ["FU2 envoyée aujourd'hui — aucune réponse depuis DM1"],
+      strategie: { choix: "Attendre FU2", pourquoi: "FU2 envoyée aujourd'hui. Laisser 36h avant FU3 avec étude de cas." },
       reponses: [
-        { reco: true, text: "Tu vends toujours tes services en direct, aujourd'hui ?" },
-        { text: "Qu'est-ce qui est le plus difficile depuis ton passage en freelance ?" },
-        { text: "Tu as l'impression de perdre le plus d'argent où, aujourd'hui ?" },
+        { reco: true, text: "Attendre 36h, puis FU3 : partager étude de cas d'un consultant en reconversion." },
+        { text: "« Bonjour Benoist, j'ai accompagné un consultant comme vous à sécuriser des contrats premium... »" },
       ],
     },
     conv: [
-      { from: "pj", text: "Salut Sophie, top ce parcours data science en freelance. Tu vends toujours tes services ?", date: new Date(Date.now() - 1 * 86400000) },
+      { from: "pj", text: "Bonjour Benoist, (DM1 envoyé)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour Benoist, Tu as bien reçu mon message ?", date: new Date("2026-06-15T16:29:00") },
+    ]
+  },
+  {
+    id: 4, prenom: "Matthieu", nom: "BEAL", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
+    analyse: {
+      temp: 20, profil: "senior", faible: true,
+      pense: "A peut-être visionné la ressource sans répondre.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire / silence",
+      declencheur: "Ressource vidéo",
+      preuves: ["FU2 'Tu as pu visionner la ressource?' envoyée aujourd'hui"],
+      strategie: { choix: "Attendre FU2", pourquoi: "A reçu une ressource vidéo. FU3 dans 36h avec étude de cas si pas de réponse." },
+      reponses: [
+        { reco: true, text: "Attendre 36h. FU3 : 'j'ai accompagné un consultant comme vous à sécuriser des contrats premium...'" },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Matthieu, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour Matthieu, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
+    ]
+  },
+  {
+    id: 5, prenom: "Abdenasseir", nom: "BENNACER", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
+    analyse: {
+      temp: 18, profil: "senior", faible: true,
+      pense: "Signal faible — silence après ressource.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Ressource vidéo",
+      preuves: ["FU2 'Tu as pu visionner la ressource?' envoyée aujourd'hui — en ligne sur LinkedIn"],
+      strategie: { choix: "Attendre FU2", pourquoi: "En ligne au moment de la FU2. Possible qu'il réponde. FU3 dans 36h si silence." },
+      reponses: [
+        { reco: true, text: "Attendre 36h. FU3 avec étude de cas si pas de réponse." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Abdenasseir, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour Abdenasseir, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
+    ]
+  },
+  {
+    id: 6, prenom: "Jérôme", nom: "CARRIERE", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
+    analyse: {
+      temp: 18, profil: "senior", faible: true,
+      pense: "Signal faible.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Ressource vidéo",
+      preuves: ["FU2 envoyée aujourd'hui"],
+      strategie: { choix: "Attendre FU2", pourquoi: "FU3 dans 36h si silence." },
+      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Jérôme, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour Jérôme, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
+    ]
+  },
+  {
+    id: 7, prenom: "Raphaël", nom: "Munck", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
+    analyse: {
+      temp: 18, profil: "senior", faible: true,
+      pense: "Signal faible.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Ressource vidéo",
+      preuves: ["FU2 envoyée aujourd'hui"],
+      strategie: { choix: "Attendre FU2", pourquoi: "FU3 dans 36h si silence." },
+      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Raphaël, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour Raphaël, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:27:00") },
+    ]
+  },
+  {
+    id: 8, prenom: "Yann", nom: "Tran", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-12T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU1 réception envoyée",
+    analyse: {
+      temp: 15, profil: "senior", faible: true,
+      pense: "DM1 récent — peut ne pas avoir vu.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Question courte",
+      preuves: ["FU1 'Vous avez bien reçu mon message?' envoyée aujourd'hui"],
+      strategie: { choix: "Attendre FU1", pourquoi: "DM1 récent (3 jours). FU2 dans 36h si silence." },
+      reponses: [{ reco: true, text: "Attendre 36h. FU2 : 'Yann ?' (court)" }],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Yann, (DM1 envoyé)", date: new Date("2026-06-12T00:00:00") },
+      { from: "pj", text: "Bonjour Yann, Vous avez bien reçu mon message ?", date: new Date("2026-06-15T16:27:00") },
+    ]
+  },
+  {
+    id: 9, prenom: "David", nom: "Dupont", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
+    analyse: {
+      temp: 18, profil: "senior", faible: true,
+      pense: "En ligne au moment de la FU2.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Ressource vidéo",
+      preuves: ["FU2 envoyée aujourd'hui — en ligne (statut vert)"],
+      strategie: { choix: "Attendre FU2", pourquoi: "En ligne = a probablement vu. FU3 dans 36h si silence." },
+      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour David, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "Bonjour David, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:27:00") },
+    ]
+  },
+  {
+    id: 10, prenom: "Sarah", nom: "Jourdonneau", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-12T00:00:00"), dernierContact: new Date("2026-06-15T16:26:00"),
+    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 2,
+    icpRaison: "Profil à qualifier — FU1 réception envoyée",
+    analyse: {
+      temp: 15, profil: "senior", faible: true,
+      pense: "DM1 récent — peut ne pas avoir vu.",
+      ressent: "Curieux",
+      obstacle: "Pas prioritaire",
+      declencheur: "Question courte",
+      preuves: ["FU1 'Vous avez bien reçu mon message?' envoyée aujourd'hui"],
+      strategie: { choix: "Attendre FU1", pourquoi: "DM1 récent. FU2 dans 36h si silence." },
+      reponses: [{ reco: true, text: "Attendre 36h. FU2 : 'Sarah ?' (court)" }],
+    },
+    conv: [
+      { from: "pj", text: "Bonjour Sarah, (DM1 envoyé)", date: new Date("2026-06-12T00:00:00") },
+      { from: "pj", text: "Bonjour Sarah, Vous avez bien reçu mon message ?", date: new Date("2026-06-15T16:26:00") },
     ]
   },
 ];
@@ -264,29 +368,28 @@ function analyzeConv(conv) {
 // ─── BRIEFING DU JOUR (voix : COO brutal / mentor ROI) ────────
 // Reco personnalisée de Claude — terse, métriques d'abord.
 const BRIEFING = {
-  dateLabel: "Samedi 6 juin",
+  dateLabel: "Dimanche 15 juin",
   goal: "500 K€",
-  countdown: "J-135",
+  countdown: "J-126",
   deadline: "19 oct 2026",
 
   action: {
-    pct: 80,
-    title: "Relance Thomas D. + Julien B.",
-    meta: "~10 K€ bloqués · call jamais proposé · 4 min",
+    pct: 72,
+    title: "Attendre réponse Jean-Yves Klein (question 1-10)",
+    meta: "Lead chaud · question envoyée à 16:46 · aucune action à faire maintenant",
   },
 
-  // Directives courtes (label + une phrase brève)
   directives: [
-    { tag: "Bottleneck", text: "Closing, pas acquisition. 4 leads T1 dorment +7j." },
-    { tag: "Bruit", text: "2 Looms à « refaire » = pseudo-productivité. Stop." },
-    { tag: "Priorité", text: "8 calls à proposer avant 18 h." },
+    { tag: "Priorité", text: "Jean-Yves Klein attend une réponse à la question 1-10. Revenir ce soir ou demain matin." },
+    { tag: "FU demain", text: "8 leads en FU2 silencieux : FU3 avec étude de cas dans 36h si toujours rien." },
+    { tag: "À fermer", text: "Nicolas Durand = FROID. Pas d'activité réelle. Sortir du pipeline." },
   ],
 
   faith: "Col 3:23 — fais-le comme pour le Seigneur. Pas de dispersion.",
 
   signals: [
-    { tag: "Tracking", tone: "good", text: "Taux réponse 60 % / 30j — au-dessus objectif." },
-    { tag: "Signal", tone: "warn", text: "Marie L. a répondu <24 h. Qualifie avant refroidissement." },
+    { tag: "Signal chaud", tone: "good", text: "Jean-Yves Klein a dit 'Oui' + lu le message en 3 min. Lead à qualifier ce soir." },
+    { tag: "Marché", tone: "warn", text: "2 réponses sur 11 messages today (18%). 9 FU sans réponse = normal à ce stade." },
   ],
 };
 
