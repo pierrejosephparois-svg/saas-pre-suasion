@@ -499,19 +499,19 @@ function metricsFor(range) {
   }
   const data = STATS_90.slice(-range);
   const dates = data.map((_, i) => dateForIndexInRange(i, range));
-  // DM/réponses quotidiens = non disponibles (pas de scraping LinkedIn sur la période).
-  const dm = null, rep = null, prop = null;
+  // DM/réponses quotidiens = 0 (pas de scraping LinkedIn sur la période)
+  const dm = 0, rep = 0, prop = 0;
   // Calls bookés = source iClosed réelle (export 15/06/2026, 21 total depuis 16/05)
-  const acc = range >= 30 ? 21 : range >= 14 ? 14 : range >= 7 ? 9 : null;
-  const cli = null; // closes non connus sans suivi manuel
-  const conn = range === 7 ? TODAY.connEnv : null;
-  const connAcc = null;
+  const acc = range >= 30 ? 21 : range >= 14 ? 14 : range >= 7 ? 9 : 0;
+  const cli = 0;
+  const conn = range === 7 ? TODAY.connEnv : 0;
+  const connAcc = 0;
   const funnel = [
-    { label: "DM envoyés", val: null },
-    { label: "Relances", val: null },
-    { label: "Réponses", val: null },
-    { label: "Calls proposés", val: null },
-    { label: "Appels acceptés (bookés)", val: acc },
+    { label: "DM envoyés", val: 0 },
+    { label: "Relances", val: 0 },
+    { label: "Réponses", val: 0 },
+    { label: "Calls proposés", val: 0 },
+    { label: "Calls bookés (iClosed)", val: acc },
   ];
   return { data, dates, dm, rep, prop, acc, cli, conn, connAcc, funnel };
 }
