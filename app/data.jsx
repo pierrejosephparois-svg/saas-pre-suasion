@@ -1,21 +1,32 @@
-// ─── DONNÉES MOCK + CONSTANTES ────────────────────────────────
+// ─── DONNÉES RÉELLES ──────────────────────────────────────────
+// DM/réponses quotidiens non disponibles sans scraping LinkedIn.
+// Seules les données iClosed (appels bookés) et LinkedIn aujourd'hui sont réelles.
 const STATS_30J = [
-  { date: "01/05", dm: 8, rep: 18 }, { date: "02/05", dm: 0, rep: 0 },
-  { date: "03/05", dm: 0, rep: 0 }, { date: "04/05", dm: 0, rep: 0 },
-  { date: "05/05", dm: 12, rep: 28 }, { date: "06/05", dm: 18, rep: 42 },
-  { date: "07/05", dm: 22, rep: 55 }, { date: "08/05", dm: 15, rep: 38 },
-  { date: "09/05", dm: 20, rep: 47 }, { date: "10/05", dm: 0, rep: 0 },
-  { date: "11/05", dm: 0, rep: 0 }, { date: "12/05", dm: 25, rep: 61 },
-  { date: "13/05", dm: 19, rep: 44 }, { date: "14/05", dm: 23, rep: 58 },
-  { date: "15/05", dm: 16, rep: 39 }, { date: "16/05", dm: 21, rep: 52 },
-  { date: "17/05", dm: 0, rep: 8 }, { date: "18/05", dm: 0, rep: 5 },
-  { date: "19/05", dm: 14, rep: 34 }, { date: "20/05", dm: 0, rep: 12 },
-  { date: "21/05", dm: 8, rep: 19 }, { date: "22/05", dm: 26, rep: 63 },
-  { date: "23/05", dm: 18, rep: 44 }, { date: "24/05", dm: 0, rep: 5 },
-  { date: "25/05", dm: 0, rep: 3 }, { date: "26/05", dm: 22, rep: 54 },
-  { date: "27/05", dm: 17, rep: 41 }, { date: "28/05", dm: 15, rep: 37 },
-  { date: "29/05", dm: 14, rep: 52 }, { date: "30/05", dm: 0, rep: 0 },
+  { date: "16/05", dm: 0, rep: 0 }, { date: "17/05", dm: 0, rep: 0 },
+  { date: "18/05", dm: 0, rep: 0 }, { date: "19/05", dm: 0, rep: 0 },
+  { date: "20/05", dm: 0, rep: 0 }, { date: "21/05", dm: 0, rep: 0 },
+  { date: "22/05", dm: 0, rep: 0 }, { date: "23/05", dm: 0, rep: 0 },
+  { date: "24/05", dm: 0, rep: 0 }, { date: "25/05", dm: 0, rep: 0 },
+  { date: "26/05", dm: 0, rep: 0 }, { date: "27/05", dm: 0, rep: 0 },
+  { date: "28/05", dm: 0, rep: 0 }, { date: "29/05", dm: 0, rep: 0 },
+  { date: "30/05", dm: 0, rep: 0 }, { date: "31/05", dm: 0, rep: 0 },
+  { date: "01/06", dm: 0, rep: 0 }, { date: "02/06", dm: 0, rep: 0 },
+  { date: "03/06", dm: 0, rep: 0 }, { date: "04/06", dm: 0, rep: 0 },
+  { date: "05/06", dm: 0, rep: 0 }, { date: "06/06", dm: 0, rep: 0 },
+  { date: "07/06", dm: 0, rep: 0 }, { date: "08/06", dm: 0, rep: 0 },
+  { date: "09/06", dm: 0, rep: 0 }, { date: "10/06", dm: 0, rep: 0 },
+  { date: "11/06", dm: 0, rep: 0 }, { date: "12/06", dm: 0, rep: 0 },
+  { date: "13/06", dm: 0, rep: 0 }, { date: "15/06", dm: 0, rep: 2 },
 ];
+
+// Calls bookés par date (source iClosed — export 15/06/2026)
+const BOOKED_BY_DATE = {
+  "2026-05-16": 1, "2026-05-18": 1, "2026-05-19": 1,
+  "2026-05-20": 2, "2026-05-21": 2, "2026-05-22": 1,
+  "2026-05-26": 1, "2026-05-30": 1, "2026-06-02": 1,
+  "2026-06-03": 3, "2026-06-04": 3, "2026-06-05": 1,
+  "2026-06-09": 1, "2026-06-11": 1, "2026-06-12": 1,
+}; // Total: 21 calls bookés
 
 // ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
 // connEnv = invitations envoyées aujourd'hui (confirmées) | connAcc = non traçable sans suivi quotidien
@@ -48,284 +59,243 @@ const liUrl = (lead) => lead.li || `https://www.linkedin.com/search/results/all/
 
 // ⬇ Leads RÉELS scrappés le 15/06/2026 depuis LinkedIn
 // STATUTS CONFIRMÉS : calls proposés via "Serais-tu ouvert" + pipeline FU du jour
+// ⬇ Leads RÉELS — source iClosed export 15/06/2026 (29 contacts)
+// CALL_BOOKE = entré dans iClosed avec Strategy Call Booked | EN_COURS = Potential/Qualified sans booking
 const LEADS = [
-  // ─── LEADS CHAUDS (calls proposés, réponse positive, bookés) ────────────────
+  // ─── CALLS BOOKÉS (source iClosed · 21 contacts) ─────────────
   {
-    id: 1, prenom: "Jules", nom: "PARR", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-05-25T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
-    statut: "CLOSE", fuStade: null, nbEchanges: 8,
-    icpRaison: "Call tenu sur Google Meet — à qualifier post-call",
-    analyse: {
-      temp: 90, profil: "senior",
-      pense: "Call tenu. Résultat inconnu — à suivre pour closing.",
-      ressent: "Engagé",
-      obstacle: "Inconnu post-call",
-      declencheur: "Call de diagnostic",
-      preuves: ["PJ sur Google Meet le 4 juin", "Parcours call tenu confirmé"],
-      strategie: { choix: "Suivre le closing", pourquoi: "Call fait. Relancer sous 48h si pas de nouvelles." },
-      reponses: [
-        { reco: true, text: "Relancer pour savoir où il en est suite au call." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Jules, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-05-28T00:00:00") },
-      { from: "lead", text: "(Oui accepté)", date: new Date("2026-05-29T00:00:00") },
-      { from: "pj", text: "Hello Julien, je suis sur le Google Meet : https://meet.google.com/dva-dkyf-vbt", date: new Date("2026-06-04T00:00:00") },
-    ]
+    id: 1, prenom: "Alix", nom: "Kulhmann", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-12T00:00:00"), dernierContact: new Date("2026-06-12T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 3,
+    icpRaison: "Strategy call booké le 12/06 via iClosed",
+    analyse: { temp: 85, profil: "senior", pense: "Call booké récemment. Confirmer la tenue.", blocage: null, nbEchanges: 3, nextStep: "Confirmer le call. Préparer l'audit." },
+    conv: []
   },
   {
-    id: 2, prenom: "Benjamin", nom: "Nahmani", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-05-28T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
-    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 6,
-    icpRaison: "Call booké pour le 5 juin — à vérifier tenu",
-    analyse: {
-      temp: 85, profil: "senior",
-      pense: "A pris RDV spontanément — très engagé.",
-      ressent: "Prêt",
-      obstacle: "Aucun identifié",
-      declencheur: "Proposition de call directe",
-      preuves: ["'J'ai pris rdv pour demain :)' — 4 juin"],
-      strategie: { choix: "Vérifier si call tenu + relancer pour closing", pourquoi: "RDV pris le 4 juin pour le 5. Vérifier résultat." },
-      reponses: [
-        { reco: true, text: "Relancer pour savoir si on a parlé et quelle suite donner." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Benjamin, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-05-31T00:00:00") },
-      { from: "lead", text: "J'ai pris rdv pour demain :)", date: new Date("2026-06-04T00:00:00") },
-    ]
+    id: 2, prenom: "Thibault", nom: "Le balier", poste: "Fondateur · Bumps Agency", score: 3,
+    dm1: new Date("2026-06-11T00:00:00"), dernierContact: new Date("2026-06-11T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 3,
+    icpRaison: "Strategy call booké le 11/06 (CH)",
+    analyse: { temp: 85, profil: "fondateur", pense: "Agence — potentiel élevé. Call à confirmer.", blocage: null, nbEchanges: 3, nextStep: "Confirmer le call." },
+    conv: []
   },
   {
-    id: 3, prenom: "Micheal", nom: "OBINZU", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-05-29T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
-    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 6,
-    icpRaison: "Lien iclosed envoyé — créneau à confirmer",
-    analyse: {
-      temp: 80, profil: "senior",
-      pense: "Engagé — a fourni un calendly, suivi avec agenda iclosed.",
-      ressent: "Prêt",
-      obstacle: "Besoin de confirmer le créneau",
-      declencheur: "Agenda partagé",
-      preuves: ["PJ a envoyé lien iclosed le 8 juin après échange Calendly"],
-      strategie: { choix: "Confirmer créneau booké", pourquoi: "Lien envoyé. Vérifier si créneau pris." },
-      reponses: [
-        { reco: true, text: "Vérifier si créneau booké sur iclosed. FU si non." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Micheal, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-01T00:00:00") },
-      { from: "lead", text: "(Oui, a fourni Calendly)", date: new Date("2026-06-05T00:00:00") },
-      { from: "pj", text: "Parfait. Merci pour le calendly Micheal. Je te propose qu'on fasse ça sur cet agenda: https://app.iclosed.io/e/altercoopt/diagnostic-offert", date: new Date("2026-06-08T00:00:00") },
-    ]
+    id: 3, prenom: "Dhruv", nom: "RELAN", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-09T00:00:00"), dernierContact: new Date("2026-06-09T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 09/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké il y a 6 jours. À vérifier si tenu.", blocage: null, nbEchanges: 4, nextStep: "Vérifier tenue du call. Envoyer recap si tenu." },
+    conv: []
   },
   {
-    id: 4, prenom: "Alix", nom: "Kulhmann", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-06-05T00:00:00"), dernierContact: new Date("2026-06-12T00:00:00"),
+    id: 4, prenom: "Sohayb", nom: "BOUGHLITA", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-05T00:00:00"), dernierContact: new Date("2026-06-05T00:00:00"),
     statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
-    icpRaison: "Call booké et confirmé — 'Je serai à l'heure'",
-    analyse: {
-      temp: 88, profil: "senior",
-      pense: "Très engagée — confirme la présence au RDV.",
-      ressent: "Prêt",
-      obstacle: "Aucun",
-      declencheur: "Proposition de call directe",
-      preuves: ["'Je serai à l'heure ne t'inquiètes pas, A bientôt' — 12 juin"],
-      strategie: { choix: "Préparer le call / vérifier tenu", pourquoi: "Call confirmé. Préparer l'angle de diagnosis." },
-      reponses: [
-        { reco: true, text: "Préparer le call. Si non tenu, relancer sous 24h." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouverte Alix, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-07T00:00:00") },
-      { from: "lead", text: "Je serai à l'heure ne t'inquiètes pas, A bientôt,", date: new Date("2026-06-12T00:00:00") },
-    ]
+    icpRaison: "Strategy call booké le 05/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké il y a 10 jours. À vérifier.", blocage: null, nbEchanges: 5, nextStep: "Vérifier tenue du call." },
+    conv: []
   },
   {
-    id: 5, prenom: "Dhruv", nom: "Relan", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-11T00:00:00"),
+    id: 5, prenom: "Benjamin", nom: "Nahmani", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
     statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
-    icpRaison: "Call booké — report demandé (10h30 ou 11h)",
-    analyse: {
-      temp: 75, profil: "senior",
-      pense: "A accepté puis demandé un report — engagé mais agenda chargé.",
-      ressent: "Engagé",
-      obstacle: "Disponibilité / agenda",
-      declencheur: "Proposition de call directe",
-      preuves: ["'On va devoir reporter Demain 10h 30 ou 11h peut fonctionner?' — 11 juin"],
-      strategie: { choix: "Confirmer le nouveau créneau", pourquoi: "Report demandé. Confirmer si créneau retenu." },
-      reponses: [
-        { reco: true, text: "Confirmer le créneau du report. Si non confirmé, re-proposer." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Dhruv, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-06T00:00:00") },
-      { from: "lead", text: "(Oui accepté)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "On va devoir reporter Demain 10h 30 ou 11h peut fonctionner ?", date: new Date("2026-06-11T00:00:00") },
-    ]
+    icpRaison: "Strategy call booké le 04/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké il y a 11 jours.", blocage: null, nbEchanges: 5, nextStep: "Vérifier tenue. Suivi post-call si pas encore fait." },
+    conv: []
   },
   {
-    id: 6, prenom: "Amélie", nom: "Choux", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T18:09:00"),
-    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 4,
-    icpRaison: "A dit oui — scheduling 15/20 min en cours",
-    analyse: {
-      temp: 72, profil: "senior",
-      pense: "A accepté l'échange, en train de fixer le créneau.",
-      ressent: "Curieux",
-      obstacle: "Timing / agenda",
-      declencheur: "Proposition de call directe",
-      preuves: ["'hahaha, yes c'est pour filtrer correctement on peut se prendre 15/20 min' — aujourd'hui 18:09"],
-      strategie: { choix: "Proposer un créneau concret", pourquoi: "Elle a dit oui. Envoyer le lien iclosed maintenant." },
-      reponses: [
-        { reco: true, text: "Envoyer le lien iclosed : https://app.iclosed.io/e/altercoopt/diagnostic-offert" },
-        { text: "Proposer 2 créneaux concrets : 'Demain 10h ou 17h, lequel te convient ?'" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouverte Amélie, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-10T00:00:00") },
-      { from: "lead", text: "(Oui, interest confirmé)", date: new Date("2026-06-12T00:00:00") },
-      { from: "pj", text: "hahaha, yes c'est pour filtrer correctement on peut se prendre 15/20 min pour faire le tour de tes challenges principaux en ce moment", date: new Date("2026-06-15T18:09:00") },
-    ]
+    id: 6, prenom: "Raphael", nom: "Alfero", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
+    icpRaison: "Strategy call booké le 04/06 (initial: Potential)",
+    analyse: { temp: 80, profil: "senior", pense: "Entré comme Potential, a booké le call.", blocage: null, nbEchanges: 5, nextStep: "Vérifier tenue du call." },
+    conv: []
   },
   {
-    id: 7, prenom: "Julien", nom: "GAURIAT", poste: "Consultant (inconnu)", score: 3,
-    dm1: new Date("2026-06-02T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
-    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 5,
-    icpRaison: "A accepté — réservation non faite (pas vu passer)",
-    analyse: {
-      temp: 65, profil: "senior",
-      pense: "A dit oui mais n'a pas booké. Risque de refroidissement.",
-      ressent: "Curieux",
-      obstacle: "Friction à la réservation",
-      declencheur: "Lien agenda",
-      preuves: ["'Salut Julien, Je n'ai pas vu passer ta réservation' — 8 juin"],
-      strategie: { choix: "Re-proposer lien direct + créneaux", pourquoi: "A accepté mais lien non utilisé. Simplifier avec 2 créneaux directs." },
-      reponses: [
-        { reco: true, text: "Julien, t'envoie 2 créneaux directs : demain 10h ou 17h, lequel te va ?" },
-        { text: "Re-envoyer lien iclosed avec message court." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Julien, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-04T00:00:00") },
-      { from: "lead", text: "(Oui accepté)", date: new Date("2026-06-05T00:00:00") },
-      { from: "pj", text: "Salut Julien, Je n'ai pas vu passer ta réservation. Tu as pu trouver un créneau de disponible ? 👍", date: new Date("2026-06-08T00:00:00") },
-    ]
+    id: 7, prenom: "Maxime", nom: "Persechino", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 04/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké. À vérifier si tenu.", blocage: null, nbEchanges: 4, nextStep: "Vérifier tenue du call." },
+    conv: []
   },
   {
-    id: 8, prenom: "Raphael", nom: "Alfero", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
-    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 4,
-    icpRaison: "Réponse positive — 'Top merci beaucoup!' (à qualifier)",
-    analyse: {
-      temp: 60, profil: "senior",
-      pense: "Réponse enthousiaste — pas encore booké.",
-      ressent: "Curieux",
-      obstacle: "Étape booking non faite",
-      declencheur: "Contenu de valeur / proposition",
-      preuves: ["'Top merci beaucoup!' — 8 juin"],
-      strategie: { choix: "Proposer créneau direct", pourquoi: "Réponse positive mais vague. Concrétiser avec créneau précis." },
-      reponses: [
-        { reco: true, text: "Raphael, top ! On fait ça quand ? Demain 10h ou 17h ?" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Raphael, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
-      { from: "lead", text: "Top merci beaucoup!", date: new Date("2026-06-08T00:00:00") },
-    ]
+    id: 8, prenom: "Jules", nom: "Parr", poste: "Consultant", score: 4,
+    dm1: new Date("2026-05-25T00:00:00"), dernierContact: new Date("2026-06-03T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 8,
+    icpRaison: "Strategy call booké le 03/06 (initial: Qualified — Google Meet June 4)",
+    analyse: { temp: 90, profil: "senior", pense: "Call tenu sur Google Meet le 04/06. Résultat à qualifier.", blocage: null, nbEchanges: 8, nextStep: "Suivi post-call. Qualifier closing ou next step." },
+    conv: []
   },
   {
-    id: 9, prenom: "Sohayb", nom: "BOUGHLITA", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-09T00:00:00"),
-    statut: "EN_COURS", fuStade: null, nbEchanges: 5,
-    icpRaison: "En cours — ressource envoyée suite à call proposé",
-    analyse: {
-      temp: 48, profil: "senior",
-      pense: "Accepte d'échanger mais voulait d'abord voir la ressource.",
-      ressent: "Curieux",
-      obstacle: "Pas encore booké",
-      declencheur: "Ressource vidéo",
-      preuves: ["YouTube link envoyé le 9 juin — suite à 'Serais-tu ouvert'"],
-      strategie: { choix: "Relancer après ressource", pourquoi: "A reçu la ressource. FU : 'Tu as pu visionner ?'" },
-      reponses: [
-        { reco: true, text: "Sohayb, tu as pu visionner la ressource ? On fait le call ?" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Sohayb, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
-      { from: "lead", text: "(Demandé la ressource d'abord)", date: new Date("2026-06-07T00:00:00") },
-      { from: "pj", text: "https://youtu.be/v64liZxAtPM?si=QavLA8SiLZr-PqJR", date: new Date("2026-06-09T00:00:00") },
-    ]
+    id: 9, prenom: "Timothée", nom: "Kuntz", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-03T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 03/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké il y a 12 jours.", blocage: null, nbEchanges: 4, nextStep: "Vérifier tenue. Suivi si nécessaire." },
+    conv: []
   },
   {
-    id: 10, prenom: "Ahmet", nom: "YILDIRIM", poste: "Formateur (inconnu)", score: 1,
-    dm1: new Date("2026-06-01T00:00:00"), dernierContact: new Date("2026-06-10T00:00:00"),
-    statut: "FROID", fuStade: null, nbEchanges: 5,
-    icpRaison: "Refus explicite du call — hors ICP (réseau local)",
-    analyse: {
-      temp: 5, profil: "junior",
-      pense: "Hors ICP — continue avec son réseau local, pas besoin de notre méthode.",
-      ressent: "Neutre",
-      obstacle: "Pas de besoin / hors ICP",
-      declencheur: "Rien",
-      preuves: ["'finalement nous allons laisser tomber notre échange car pour l'instant je continue avec le réseau local' — 10 juin"],
-      strategie: { choix: "Sortir du pipeline", pourquoi: "Refus explicite. Ne pas relancer." },
-      reponses: [
-        { reco: true, text: "Aucune action. Sortir du pipeline." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Serais-tu ouvert Ahmet, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
-      { from: "lead", text: "Piere-Joseph, finalement nous allons laisser tomber notre échange car pour l'instant je continue avec le réseau local que j'ai pour mes formations. Merci quand-même.", date: new Date("2026-06-10T00:00:00") },
-    ]
-  },
-  // ─── PIPELINE FU DU JOUR (leads en relance — scrape 15/06) ────────────────
-  {
-    id: 11, prenom: "Jean-Yves", nom: "Klein", poste: "Consultant Agilité / PMO", score: 3,
-    li: "https://www.linkedin.com/in/ACoAAABEL6IBbIzWdMMNJu4RiuJjBcv3uIGNFuY",
-    dm1: new Date("2026-05-01T19:37:00"), dernierContact: new Date("2026-06-15T16:46:00"),
-    statut: "EN_COURS", fuStade: null, nbEchanges: 5,
-    icpRaison: "Consultant Agilité/PMO — a dit 'Oui' à la question de permission, question 1-10 envoyée",
-    analyse: {
-      temp: 62, profil: "senior",
-      pense: "A dit 'Oui' rapidement — ouvert. Attend la réponse à la question 1-10.",
-      ressent: "Curieux",
-      obstacle: "Pas encore verbalisé",
-      declencheur: "Question d'enjeu (1-10)",
-      preuves: ["Réponse rapide 'Oui' à la demande de permission à 16:44", "Vu le message 3 min après"],
-      strategie: { choix: "Attendre sa réponse à la question 1-10", pourquoi: "Question envoyée à 16:46. FU si silence > 24h." },
-      reponses: [
-        { reco: true, text: "Attendre. FU si silence > 24h : 'Jean-Yves ?'" },
-        { text: "Qu'est-ce qui t'empêche d'être à 10/10 ?" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Jean-Yves, Top ce parcours! Vous vendez toujours vos services ?", date: new Date("2026-05-01T19:37:00") },
-      { from: "lead", text: "Bonjour. Oui, j'interviens sur l'Agilité, le management de projet, le PMO, la formation...", date: new Date("2026-05-02T12:18:00") },
-      { from: "pj", text: "Pour voir si cela peut être pertinent dans ton cas, tu m'autorises à te poser une question ?", date: new Date("2026-06-15T16:30:00") },
-      { from: "lead", text: "Oui", date: new Date("2026-06-15T16:44:00") },
-      { from: "pj", text: "Super : Sur une échelle de 1 à 10, à combien tu évalues ta capacité à signer les clients que tu aimerais vraiment avoir aujourd'hui ?", date: new Date("2026-06-15T16:46:00") },
-    ]
+    id: 10, prenom: "Christelle", nom: "Annibal", poste: "Consultante", score: 3,
+    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-03T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 03/06 via iClosed",
+    analyse: { temp: 80, profil: "senior", pense: "Call booké il y a 12 jours.", blocage: null, nbEchanges: 4, nextStep: "Vérifier tenue. Suivi si nécessaire." },
+    conv: []
   },
   {
-    id: 12, prenom: "Haris", nom: "Rouichi", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-10T00:00:00"), dernierContact: new Date("2026-06-15T20:11:00"),
-    statut: "EN_COURS", fuStade: null, nbEchanges: 3,
-    icpRaison: "A répondu — en cours de qualification",
-    analyse: {
-      temp: 45, profil: "senior",
-      pense: "Engage la conversation. Question de qualification envoyée aujourd'hui.",
-      ressent: "Curieux",
-      obstacle: "Pas encore verbalisé",
-      declencheur: "Question ouverte sur challenge",
-      preuves: ["'D'accord, je vois Haris par curiosité, Quel est ton challenge principal aujourd'hui?' — ce soir"],
-      strategie: { choix: "Attendre sa réponse", pourquoi: "Question de qualification envoyée. Laisser 24h." },
-      reponses: [{ reco: true, text: "Attendre la réponse. Si positif, envoyer question 1-10." }],
-    },
-    conv: [
-      { from: "pj", text: "(DM1 envoyé)", date: new Date("2026-06-10T00:00:00") },
-      { from: "lead", text: "(A répondu)", date: new Date("2026-06-13T00:00:00") },
-      { from: "pj", text: "D'accord, je vois Haris par curiosité, Quel est ton challenge principal aujourd'hui ?", date: new Date("2026-06-15T20:11:00") },
-    ]
+    id: 11, prenom: "Damien", nom: "Chanas", poste: "Consultant", score: 3,
+    dm1: new Date("2026-06-02T00:00:00"), dernierContact: new Date("2026-06-02T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
+    icpRaison: "Strategy call booké le 02/06 (initial: Qualified)",
+    analyse: { temp: 80, profil: "senior", pense: "Entré qualifié. Call booké il y a 13 jours.", blocage: null, nbEchanges: 5, nextStep: "Vérifier tenue. Suivi post-call si déjà fait." },
+    conv: []
+  },
+  {
+    id: 12, prenom: "(sans nom)", nom: "", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-30T00:00:00"), dernierContact: new Date("2026-05-30T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 3,
+    icpRaison: "Strategy call booké le 30/05 — nom absent dans iClosed",
+    analyse: { temp: 70, profil: "inconnu", pense: "Contact sans nom dans le CRM. À identifier.", blocage: "Profil incomplet", nbEchanges: 3, nextStep: "Identifier le contact dans iClosed et compléter le profil." },
+    conv: []
+  },
+  {
+    id: 13, prenom: "Dorian", nom: "Defaye", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-26T00:00:00"), dernierContact: new Date("2026-05-26T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 26/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 20 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call. Qualifier résultat." },
+    conv: []
+  },
+  {
+    id: 14, prenom: "Arnaud", nom: "Faulquier", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-22T00:00:00"), dernierContact: new Date("2026-05-22T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 22/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 24 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 15, prenom: "Yoann", nom: "chevallier", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-21T00:00:00"), dernierContact: new Date("2026-05-21T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 21/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 25 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 16, prenom: "Anderson", nom: "GOMES", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-21T00:00:00"), dernierContact: new Date("2026-05-21T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 21/05 (initial: Potential)",
+    analyse: { temp: 75, profil: "senior", pense: "Entré comme Potential, a booké. Call il y a 25 jours.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 17, prenom: "Stephane", nom: "NÉREAU", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-20T00:00:00"), dernierContact: new Date("2026-05-20T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 20/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 26 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 18, prenom: "Cédric", nom: "Avé", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-20T00:00:00"), dernierContact: new Date("2026-05-20T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 20/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 26 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 19, prenom: "Thomas", nom: "OSMONT", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-19T00:00:00"), dernierContact: new Date("2026-05-19T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 19/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 27 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 20, prenom: "Simon", nom: "", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-18T00:00:00"), dernierContact: new Date("2026-05-18T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 18/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 28 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+  {
+    id: 21, prenom: "Eddy", nom: "Mpayimana", poste: "Consultant", score: 3,
+    dm1: new Date("2026-05-16T00:00:00"), dernierContact: new Date("2026-05-16T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Strategy call booké le 16/05 via iClosed",
+    analyse: { temp: 75, profil: "senior", pense: "Call booké il y a 30 jours. Probablement tenu.", blocage: null, nbEchanges: 4, nextStep: "Suivi post-call." },
+    conv: []
+  },
+
+  // ─── POTENTIELS (entrés dans iClosed sans booking · 8 contacts) ──────────
+  {
+    id: 22, prenom: "Durel", nom: "", poste: "Consultant", score: 2,
+    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
+    statut: "EN_COURS", fuStade: 1, nbEchanges: 2,
+    icpRaison: "Entré en Potential le 04/06 — pas encore booké",
+    analyse: { temp: 40, profil: "inconnu", pense: "Dans le pipeline iClosed sans booking. À relancer.", blocage: "N'a pas booké le call", nbEchanges: 2, nextStep: "Re-proposer le lien iClosed." },
+    conv: []
+  },
+  {
+    id: 23, prenom: "bn", nom: "", poste: "Consultant", score: 1,
+    dm1: new Date("2026-05-29T00:00:00"), dernierContact: new Date("2026-05-29T00:00:00"),
+    statut: "EN_COURS", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Entré en Potential le 29/05 — profil incomplet",
+    analyse: { temp: 30, profil: "inconnu", pense: "Profil très incomplet (juste 'bn'). À identifier.", blocage: "Profil incomplet", nbEchanges: 2, nextStep: "Identifier contact. Si valide, re-proposer le call." },
+    conv: []
+  },
+  {
+    id: 24, prenom: "ASM", nom: "", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-22T00:00:00"), dernierContact: new Date("2026-05-22T00:00:00"),
+    statut: "EN_COURS", fuStade: 2, nbEchanges: 3,
+    icpRaison: "Entré en Qualified le 22/05 — pas encore booké",
+    analyse: { temp: 45, profil: "inconnu", pense: "Qualifié mais pas de booking. Sigles uniquement — à identifier.", blocage: "N'a pas booké malgré qualification", nbEchanges: 3, nextStep: "Identifier + re-proposer le call avec lien direct." },
+    conv: []
+  },
+  {
+    id: 25, prenom: "Klevis", nom: "Golemi", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-22T00:00:00"), dernierContact: new Date("2026-05-22T00:00:00"),
+    statut: "EN_COURS", fuStade: 2, nbEchanges: 2,
+    icpRaison: "Entré en Potential le 22/05 — pas encore booké",
+    analyse: { temp: 40, profil: "inconnu", pense: "Dans le pipeline sans booking depuis 24 jours.", blocage: "N'a pas booké", nbEchanges: 2, nextStep: "Re-proposer lien iClosed ou FU3." },
+    conv: []
+  },
+  {
+    id: 26, prenom: "Jean-Marc", nom: "Barraud", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-19T00:00:00"), dernierContact: new Date("2026-05-19T00:00:00"),
+    statut: "EN_COURS", fuStade: 3, nbEchanges: 3,
+    icpRaison: "Entré en Potential le 19/05 — pas encore booké",
+    analyse: { temp: 35, profil: "inconnu", pense: "Dans le pipeline sans booking depuis 27 jours. Refroidit.", blocage: "Inactivité prolongée", nbEchanges: 3, nextStep: "FU4 de fermeture ou re-proposer étude de cas." },
+    conv: []
+  },
+  {
+    id: 27, prenom: "Julien", nom: "", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-18T00:00:00"), dernierContact: new Date("2026-06-05T00:00:00"),
+    statut: "EN_COURS", fuStade: 2, nbEchanges: 4,
+    icpRaison: "Entré en Potential 18/05, mis en Qualified le 05/06",
+    analyse: { temp: 50, profil: "inconnu", pense: "A été re-qualifié récemment. Signal positif.", blocage: "Pas de booking malgré qualification", nbEchanges: 4, nextStep: "Proposer lien iClosed directement." },
+    conv: []
+  },
+  {
+    id: 28, prenom: "Christophe", nom: "LE METAYER", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-18T00:00:00"), dernierContact: new Date("2026-05-18T00:00:00"),
+    statut: "EN_COURS", fuStade: 3, nbEchanges: 2,
+    icpRaison: "Entré en Potential le 18/05 — pas encore booké",
+    analyse: { temp: 30, profil: "inconnu", pense: "Dans le pipeline depuis 28 jours sans booking. Cold risk.", blocage: "Inactivité prolongée", nbEchanges: 2, nextStep: "FU4 de fermeture ou retirer du pipeline actif." },
+    conv: []
+  },
+  {
+    id: 29, prenom: "Laurent", nom: "peres", poste: "Consultant", score: 2,
+    dm1: new Date("2026-05-16T00:00:00"), dernierContact: new Date("2026-05-16T00:00:00"),
+    statut: "EN_COURS", fuStade: 3, nbEchanges: 2,
+    icpRaison: "Entré en Potential le 16/05 — pas encore booké",
+    analyse: { temp: 25, profil: "inconnu", pense: "Dans le pipeline depuis 30 jours sans booking. Cold risk.", blocage: "Inactivité prolongée", nbEchanges: 2, nextStep: "FU4 de fermeture ou retirer du pipeline actif." },
+    conv: []
   },
 ];
 
@@ -427,24 +397,24 @@ const BRIEFING = {
   deadline: "19 oct 2026",
 
   action: {
-    pct: 85,
-    title: "Amélie Choux + Julien GAURIAT + Raphael Alfero — convertir en booking",
-    meta: "3 leads ont accepté le call · aucun créneau fixé · 10 min d'action",
+    pct: 80,
+    title: "8 potentiels iClosed sans booking — relancer avec lien direct",
+    meta: "Durel · ASM · Klevis · Jean-Marc · Julien · Christophe · Laurent · bn · 15 min d'action",
   },
 
   directives: [
-    { tag: "Priorité #1", text: "Amélie Choux a dit oui aujourd'hui → envoyer lien iclosed maintenant." },
-    { tag: "Priorité #2", text: "Julien GAURIAT + Raphael Alfero ont accepté sans booker → re-proposer 2 créneaux directs." },
-    { tag: "Calls confirmés", text: "Alix Kulhmann + Dhruv Relan + Benjamin Nahmani + Micheal OBINZU = 4 calls bookés. Vérifier tenus." },
-    { tag: "FU demain", text: "10+ leads en FU2 silencieux → FU3 avec étude de cas dans 36h." },
+    { tag: "Priorité #1", text: "Julien (re-qualifié le 05/06) + Durel (04/06) → re-proposer lien iClosed directement aujourd'hui." },
+    { tag: "Priorité #2", text: "ASM + Klevis Golemi (22/05) → FU3 avec étude de cas, puis proposer le lien." },
+    { tag: "Cold risk", text: "Jean-Marc Barraud + Christophe LE METAYER + Laurent peres (19–16/05) → FU4 de fermeture ou retirer du pipeline." },
+    { tag: "Calls récents", text: "Alix (12/06) + Thibault (11/06) + Dhruv (09/06) — calls récents à confirmer tenus." },
   ],
 
   faith: "Col 3:23 — fais-le comme pour le Seigneur. Pas de dispersion.",
 
   signals: [
-    { tag: "Calls proposés", tone: "good", text: "10 calls proposés sur la période · 7 acceptés · 4 bookés · 1 tenu (Jules PARR)." },
-    { tag: "Jean-Yves", tone: "warn", text: "Question 1-10 envoyée à 16:46. Attendre réponse avant de relancer." },
+    { tag: "iClosed réel", tone: "good", text: "21 calls bookés depuis le 16/05 · 8 potentiels sans booking · source : export iClosed 15/06." },
     { tag: "Réseau", tone: "neutral", text: "7 121 relations · 4 connexions envoyées aujourd'hui · 1 298 en attente d'acceptation." },
+    { tag: "DM / Réponses", tone: "warn", text: "Données quotidiennes non disponibles — nécessite scraping LinkedIn. Graphique en attente." },
   ],
 };
 
@@ -529,18 +499,19 @@ function metricsFor(range) {
   }
   const data = STATS_90.slice(-range);
   const dates = data.map((_, i) => dateForIndexInRange(i, range));
-  const dm = data.reduce((s, d) => s + d.dm, 0);
-  const rep = Math.round(dm * 0.606);
-  const prop = Math.round(dm * 0.256);
-  const acc = Math.round(dm * 0.0237);
-  const cli = Math.max(range >= 30 ? 1 : 0, Math.round(acc * 0.05));
-  const connAcc = Math.round(dm * 1.15), conn = Math.round(connAcc / 0.42);
+  // DM/réponses quotidiens = non disponibles (pas de scraping LinkedIn sur la période).
+  const dm = null, rep = null, prop = null;
+  // Calls bookés = source iClosed réelle (export 15/06/2026, 21 total depuis 16/05)
+  const acc = range >= 30 ? 21 : range >= 14 ? 14 : range >= 7 ? 9 : null;
+  const cli = null; // closes non connus sans suivi manuel
+  const conn = range === 7 ? TODAY.connEnv : null;
+  const connAcc = null;
   const funnel = [
-    { label: "DM envoyés", val: dm },
-    { label: "Relances", val: Math.round(dm * 0.61) },
-    { label: "Réponses", val: rep },
-    { label: "Calls proposés", val: prop },
-    { label: "Appels acceptés", val: acc },
+    { label: "DM envoyés", val: null },
+    { label: "Relances", val: null },
+    { label: "Réponses", val: null },
+    { label: "Calls proposés", val: null },
+    { label: "Appels acceptés (bookés)", val: acc },
   ];
   return { data, dates, dm, rep, prop, acc, cli, conn, connAcc, funnel };
 }
