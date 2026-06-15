@@ -18,7 +18,8 @@ const STATS_30J = [
 ];
 
 // ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
-const TODAY = { newDM: 0, fu: 9, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0, connEnv: 10, connAcc: 0 };
+// connEnv = invitations envoyées aujourd'hui (confirmées) | connAcc = non traçable sans suivi quotidien
+const TODAY = { newDM: 0, fu: 11, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0, connEnv: 4, connAcc: null };
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
 const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
@@ -45,233 +46,285 @@ const daysSince = (d) => Math.floor((Date.now() - d.getTime()) / 86400000);
 // URL LinkedIn du prospect (profil / conversation). Recherche par nom = lien réel, jamais 404.
 const liUrl = (lead) => lead.li || `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(lead.prenom + " " + lead.nom)}`;
 
-// ⬇ Leads RÉELS scrappés le 15/06/2026 depuis LinkedIn (10 conversations du jour)
+// ⬇ Leads RÉELS scrappés le 15/06/2026 depuis LinkedIn
+// STATUTS CONFIRMÉS : calls proposés via "Serais-tu ouvert" + pipeline FU du jour
 const LEADS = [
+  // ─── LEADS CHAUDS (calls proposés, réponse positive, bookés) ────────────────
   {
-    id: 1, prenom: "Jean-Yves", nom: "Klein", poste: "Consultant Agilité / PMO", score: 3,
+    id: 1, prenom: "Jules", nom: "PARR", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-05-25T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
+    statut: "CLOSE", fuStade: null, nbEchanges: 8,
+    icpRaison: "Call tenu sur Google Meet — à qualifier post-call",
+    analyse: {
+      temp: 90, profil: "senior",
+      pense: "Call tenu. Résultat inconnu — à suivre pour closing.",
+      ressent: "Engagé",
+      obstacle: "Inconnu post-call",
+      declencheur: "Call de diagnostic",
+      preuves: ["PJ sur Google Meet le 4 juin", "Parcours call tenu confirmé"],
+      strategie: { choix: "Suivre le closing", pourquoi: "Call fait. Relancer sous 48h si pas de nouvelles." },
+      reponses: [
+        { reco: true, text: "Relancer pour savoir où il en est suite au call." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Jules, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-05-28T00:00:00") },
+      { from: "lead", text: "(Oui accepté)", date: new Date("2026-05-29T00:00:00") },
+      { from: "pj", text: "Hello Julien, je suis sur le Google Meet : https://meet.google.com/dva-dkyf-vbt", date: new Date("2026-06-04T00:00:00") },
+    ]
+  },
+  {
+    id: 2, prenom: "Benjamin", nom: "Nahmani", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-05-28T00:00:00"), dernierContact: new Date("2026-06-04T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 6,
+    icpRaison: "Call booké pour le 5 juin — à vérifier tenu",
+    analyse: {
+      temp: 85, profil: "senior",
+      pense: "A pris RDV spontanément — très engagé.",
+      ressent: "Prêt",
+      obstacle: "Aucun identifié",
+      declencheur: "Proposition de call directe",
+      preuves: ["'J'ai pris rdv pour demain :)' — 4 juin"],
+      strategie: { choix: "Vérifier si call tenu + relancer pour closing", pourquoi: "RDV pris le 4 juin pour le 5. Vérifier résultat." },
+      reponses: [
+        { reco: true, text: "Relancer pour savoir si on a parlé et quelle suite donner." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Benjamin, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-05-31T00:00:00") },
+      { from: "lead", text: "J'ai pris rdv pour demain :)", date: new Date("2026-06-04T00:00:00") },
+    ]
+  },
+  {
+    id: 3, prenom: "Micheal", nom: "OBINZU", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-05-29T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 6,
+    icpRaison: "Lien iclosed envoyé — créneau à confirmer",
+    analyse: {
+      temp: 80, profil: "senior",
+      pense: "Engagé — a fourni un calendly, suivi avec agenda iclosed.",
+      ressent: "Prêt",
+      obstacle: "Besoin de confirmer le créneau",
+      declencheur: "Agenda partagé",
+      preuves: ["PJ a envoyé lien iclosed le 8 juin après échange Calendly"],
+      strategie: { choix: "Confirmer créneau booké", pourquoi: "Lien envoyé. Vérifier si créneau pris." },
+      reponses: [
+        { reco: true, text: "Vérifier si créneau booké sur iclosed. FU si non." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Micheal, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-01T00:00:00") },
+      { from: "lead", text: "(Oui, a fourni Calendly)", date: new Date("2026-06-05T00:00:00") },
+      { from: "pj", text: "Parfait. Merci pour le calendly Micheal. Je te propose qu'on fasse ça sur cet agenda: https://app.iclosed.io/e/altercoopt/diagnostic-offert", date: new Date("2026-06-08T00:00:00") },
+    ]
+  },
+  {
+    id: 4, prenom: "Alix", nom: "Kulhmann", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-06-05T00:00:00"), dernierContact: new Date("2026-06-12T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
+    icpRaison: "Call booké et confirmé — 'Je serai à l'heure'",
+    analyse: {
+      temp: 88, profil: "senior",
+      pense: "Très engagée — confirme la présence au RDV.",
+      ressent: "Prêt",
+      obstacle: "Aucun",
+      declencheur: "Proposition de call directe",
+      preuves: ["'Je serai à l'heure ne t'inquiètes pas, A bientôt' — 12 juin"],
+      strategie: { choix: "Préparer le call / vérifier tenu", pourquoi: "Call confirmé. Préparer l'angle de diagnosis." },
+      reponses: [
+        { reco: true, text: "Préparer le call. Si non tenu, relancer sous 24h." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouverte Alix, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-07T00:00:00") },
+      { from: "lead", text: "Je serai à l'heure ne t'inquiètes pas, A bientôt,", date: new Date("2026-06-12T00:00:00") },
+    ]
+  },
+  {
+    id: 5, prenom: "Dhruv", nom: "Relan", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-06-04T00:00:00"), dernierContact: new Date("2026-06-11T00:00:00"),
+    statut: "CALL_BOOKE", fuStade: null, nbEchanges: 5,
+    icpRaison: "Call booké — report demandé (10h30 ou 11h)",
+    analyse: {
+      temp: 75, profil: "senior",
+      pense: "A accepté puis demandé un report — engagé mais agenda chargé.",
+      ressent: "Engagé",
+      obstacle: "Disponibilité / agenda",
+      declencheur: "Proposition de call directe",
+      preuves: ["'On va devoir reporter Demain 10h 30 ou 11h peut fonctionner?' — 11 juin"],
+      strategie: { choix: "Confirmer le nouveau créneau", pourquoi: "Report demandé. Confirmer si créneau retenu." },
+      reponses: [
+        { reco: true, text: "Confirmer le créneau du report. Si non confirmé, re-proposer." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Dhruv, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-06T00:00:00") },
+      { from: "lead", text: "(Oui accepté)", date: new Date("2026-06-08T00:00:00") },
+      { from: "pj", text: "On va devoir reporter Demain 10h 30 ou 11h peut fonctionner ?", date: new Date("2026-06-11T00:00:00") },
+    ]
+  },
+  {
+    id: 6, prenom: "Amélie", nom: "Choux", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T18:09:00"),
+    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 4,
+    icpRaison: "A dit oui — scheduling 15/20 min en cours",
+    analyse: {
+      temp: 72, profil: "senior",
+      pense: "A accepté l'échange, en train de fixer le créneau.",
+      ressent: "Curieux",
+      obstacle: "Timing / agenda",
+      declencheur: "Proposition de call directe",
+      preuves: ["'hahaha, yes c'est pour filtrer correctement on peut se prendre 15/20 min' — aujourd'hui 18:09"],
+      strategie: { choix: "Proposer un créneau concret", pourquoi: "Elle a dit oui. Envoyer le lien iclosed maintenant." },
+      reponses: [
+        { reco: true, text: "Envoyer le lien iclosed : https://app.iclosed.io/e/altercoopt/diagnostic-offert" },
+        { text: "Proposer 2 créneaux concrets : 'Demain 10h ou 17h, lequel te convient ?'" },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouverte Amélie, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-10T00:00:00") },
+      { from: "lead", text: "(Oui, interest confirmé)", date: new Date("2026-06-12T00:00:00") },
+      { from: "pj", text: "hahaha, yes c'est pour filtrer correctement on peut se prendre 15/20 min pour faire le tour de tes challenges principaux en ce moment", date: new Date("2026-06-15T18:09:00") },
+    ]
+  },
+  {
+    id: 7, prenom: "Julien", nom: "GAURIAT", poste: "Consultant (inconnu)", score: 3,
+    dm1: new Date("2026-06-02T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
+    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 5,
+    icpRaison: "A accepté — réservation non faite (pas vu passer)",
+    analyse: {
+      temp: 65, profil: "senior",
+      pense: "A dit oui mais n'a pas booké. Risque de refroidissement.",
+      ressent: "Curieux",
+      obstacle: "Friction à la réservation",
+      declencheur: "Lien agenda",
+      preuves: ["'Salut Julien, Je n'ai pas vu passer ta réservation' — 8 juin"],
+      strategie: { choix: "Re-proposer lien direct + créneaux", pourquoi: "A accepté mais lien non utilisé. Simplifier avec 2 créneaux directs." },
+      reponses: [
+        { reco: true, text: "Julien, t'envoie 2 créneaux directs : demain 10h ou 17h, lequel te va ?" },
+        { text: "Re-envoyer lien iclosed avec message court." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Julien, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-04T00:00:00") },
+      { from: "lead", text: "(Oui accepté)", date: new Date("2026-06-05T00:00:00") },
+      { from: "pj", text: "Salut Julien, Je n'ai pas vu passer ta réservation. Tu as pu trouver un créneau de disponible ? 👍", date: new Date("2026-06-08T00:00:00") },
+    ]
+  },
+  {
+    id: 8, prenom: "Raphael", nom: "Alfero", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-08T00:00:00"),
+    statut: "CALL_PROPOSE", fuStade: null, nbEchanges: 4,
+    icpRaison: "Réponse positive — 'Top merci beaucoup!' (à qualifier)",
+    analyse: {
+      temp: 60, profil: "senior",
+      pense: "Réponse enthousiaste — pas encore booké.",
+      ressent: "Curieux",
+      obstacle: "Étape booking non faite",
+      declencheur: "Contenu de valeur / proposition",
+      preuves: ["'Top merci beaucoup!' — 8 juin"],
+      strategie: { choix: "Proposer créneau direct", pourquoi: "Réponse positive mais vague. Concrétiser avec créneau précis." },
+      reponses: [
+        { reco: true, text: "Raphael, top ! On fait ça quand ? Demain 10h ou 17h ?" },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Raphael, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
+      { from: "lead", text: "Top merci beaucoup!", date: new Date("2026-06-08T00:00:00") },
+    ]
+  },
+  {
+    id: 9, prenom: "Sohayb", nom: "BOUGHLITA", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-03T00:00:00"), dernierContact: new Date("2026-06-09T00:00:00"),
+    statut: "EN_COURS", fuStade: null, nbEchanges: 5,
+    icpRaison: "En cours — ressource envoyée suite à call proposé",
+    analyse: {
+      temp: 48, profil: "senior",
+      pense: "Accepte d'échanger mais voulait d'abord voir la ressource.",
+      ressent: "Curieux",
+      obstacle: "Pas encore booké",
+      declencheur: "Ressource vidéo",
+      preuves: ["YouTube link envoyé le 9 juin — suite à 'Serais-tu ouvert'"],
+      strategie: { choix: "Relancer après ressource", pourquoi: "A reçu la ressource. FU : 'Tu as pu visionner ?'" },
+      reponses: [
+        { reco: true, text: "Sohayb, tu as pu visionner la ressource ? On fait le call ?" },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Sohayb, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
+      { from: "lead", text: "(Demandé la ressource d'abord)", date: new Date("2026-06-07T00:00:00") },
+      { from: "pj", text: "https://youtu.be/v64liZxAtPM?si=QavLA8SiLZr-PqJR", date: new Date("2026-06-09T00:00:00") },
+    ]
+  },
+  {
+    id: 10, prenom: "Ahmet", nom: "YILDIRIM", poste: "Formateur (inconnu)", score: 1,
+    dm1: new Date("2026-06-01T00:00:00"), dernierContact: new Date("2026-06-10T00:00:00"),
+    statut: "FROID", fuStade: null, nbEchanges: 5,
+    icpRaison: "Refus explicite du call — hors ICP (réseau local)",
+    analyse: {
+      temp: 5, profil: "junior",
+      pense: "Hors ICP — continue avec son réseau local, pas besoin de notre méthode.",
+      ressent: "Neutre",
+      obstacle: "Pas de besoin / hors ICP",
+      declencheur: "Rien",
+      preuves: ["'finalement nous allons laisser tomber notre échange car pour l'instant je continue avec le réseau local' — 10 juin"],
+      strategie: { choix: "Sortir du pipeline", pourquoi: "Refus explicite. Ne pas relancer." },
+      reponses: [
+        { reco: true, text: "Aucune action. Sortir du pipeline." },
+      ],
+    },
+    conv: [
+      { from: "pj", text: "Serais-tu ouvert Ahmet, à un échange rapide afin que je puisse voir si je peux t'aider ?", date: new Date("2026-06-05T00:00:00") },
+      { from: "lead", text: "Piere-Joseph, finalement nous allons laisser tomber notre échange car pour l'instant je continue avec le réseau local que j'ai pour mes formations. Merci quand-même.", date: new Date("2026-06-10T00:00:00") },
+    ]
+  },
+  // ─── PIPELINE FU DU JOUR (leads en relance — scrape 15/06) ────────────────
+  {
+    id: 11, prenom: "Jean-Yves", nom: "Klein", poste: "Consultant Agilité / PMO", score: 3,
     li: "https://www.linkedin.com/in/ACoAAABEL6IBbIzWdMMNJu4RiuJjBcv3uIGNFuY",
     dm1: new Date("2026-05-01T19:37:00"), dernierContact: new Date("2026-06-15T16:46:00"),
-    statut: "EN_COURS", fuStade: null, nbEchanges: 4,
-    icpRaison: "Consultant indépendant Agilité/PMO/Formation = T1 parfait",
+    statut: "EN_COURS", fuStade: null, nbEchanges: 5,
+    icpRaison: "Consultant Agilité/PMO — a dit 'Oui' à la question de permission, question 1-10 envoyée",
     analyse: {
       temp: 62, profil: "senior",
-      pense: "Il a dit 'Oui' rapidement — ouvert. Attend maintenant de voir si la question de qualification résonne.",
+      pense: "A dit 'Oui' rapidement — ouvert. Attend la réponse à la question 1-10.",
       ressent: "Curieux",
       obstacle: "Pas encore verbalisé",
       declencheur: "Question d'enjeu (1-10)",
-      preuves: ["Réponse rapide 'Oui' à la demande de permission", "Ouvert sur Mobile (3 min après l'envoi)"],
-      strategie: { choix: "Attendre sa réponse à la question 1-10", pourquoi: "Lead chaud — question envoyée il y a 3 min. Ne pas relancer avant 24h." },
+      preuves: ["Réponse rapide 'Oui' à la demande de permission à 16:44", "Vu le message 3 min après"],
+      strategie: { choix: "Attendre sa réponse à la question 1-10", pourquoi: "Question envoyée à 16:46. FU si silence > 24h." },
       reponses: [
-        { reco: true, text: "Attendre sa réponse à la question 1-10 (envoyée à 16:46). FU si silence > 24h." },
-        { text: "Qu'est-ce qui t'empêche d'être à 10/10 pour signer les clients que tu aimerais ?" },
-        { text: "Si rien ne change dans les 12 prochains mois côté acquisition, qu'est-ce qui se passe ?" },
+        { reco: true, text: "Attendre. FU si silence > 24h : 'Jean-Yves ?'" },
+        { text: "Qu'est-ce qui t'empêche d'être à 10/10 ?" },
       ],
     },
     conv: [
       { from: "pj", text: "Bonjour Jean-Yves, Top ce parcours! Vous vendez toujours vos services ?", date: new Date("2026-05-01T19:37:00") },
       { from: "lead", text: "Bonjour. Oui, j'interviens sur l'Agilité, le management de projet, le PMO, la formation...", date: new Date("2026-05-02T12:18:00") },
-      { from: "pj", text: "👍 Top ! Pour te situer Jean-Yves, je travaille avec des consultants IA / automatisation qui veulent sortir du temps vendu et sécuriser des contrats premium via une méthode spécifique. Pour voir si cela peut être pertinent dans ton cas, tu m'autorises à te poser une question ?", date: new Date("2026-06-15T16:30:00") },
+      { from: "pj", text: "Pour voir si cela peut être pertinent dans ton cas, tu m'autorises à te poser une question ?", date: new Date("2026-06-15T16:30:00") },
       { from: "lead", text: "Oui", date: new Date("2026-06-15T16:44:00") },
-      { from: "pj", text: "Super : Sur une échelle de 1 à 10, à combien tu évalues ta capacité à signer les clients que tu aimerais vraiment avoir aujourd'hui ?\n10 = clients réguliers, facturés chers et sans effort\n1 = un client à la fois avec temps mort entre missions, c'est frustrant.", date: new Date("2026-06-15T16:46:00") },
+      { from: "pj", text: "Super : Sur une échelle de 1 à 10, à combien tu évalues ta capacité à signer les clients que tu aimerais vraiment avoir aujourd'hui ?", date: new Date("2026-06-15T16:46:00") },
     ]
   },
   {
-    id: 2, prenom: "Nicolas", nom: "Durand", poste: "Consultant (début d'activité)", score: 1,
-    li: "https://www.linkedin.com/in/ACoAAACNZ0cBYs0AuaR6Y1j075dYzgbCMf34tig",
-    dm1: new Date("2026-05-01T19:36:00"), dernierContact: new Date("2026-06-15T16:34:00"),
-    statut: "FROID", fuStade: null, nbEchanges: 8,
-    icpRaison: "Pas encore lancé + pas de besoin ressenti = hors ICP",
+    id: 12, prenom: "Haris", nom: "Rouichi", poste: "Consultant (inconnu)", score: 2,
+    dm1: new Date("2026-06-10T00:00:00"), dernierContact: new Date("2026-06-15T20:11:00"),
+    statut: "EN_COURS", fuStade: null, nbEchanges: 3,
+    icpRaison: "A répondu — en cours de qualification",
     analyse: {
-      temp: 5, profil: "junior",
-      pense: "Il n'a pas encore de clients à signer — notre offre ne correspond pas à sa situation actuelle.",
-      ressent: "Neutre",
-      obstacle: "Pas de besoin (pas encore en activité réelle)",
-      declencheur: "Rien — mauvais timing",
-      preuves: ["« Je n'ai pas besoin de ce type de prestation »", "Pas encore créé sa société", "N'a pas commencé à démarcher"],
-      strategie: { choix: "Sortir du pipeline", pourquoi: "Pas d'activité commerciale active = hors ICP. Garder en watchlist pour dans 6 mois." },
-      reponses: [
-        { reco: true, text: "Pas de suite à donner. Profil à recontacter dans 6 mois quand l'activité sera lancée." },
-        { text: "« Bien reçu Nicolas, bonne continuation ! »" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Nicolas, Top ce parcours! Vous recherchez une entreprise aujourd'hui ?", date: new Date("2026-05-01T19:36:00") },
-      { from: "lead", text: "Bonjour, Merci pour votre message. En ce moment je suis en train de voir pour lancer dans le consulting...", date: new Date("2026-05-01T20:40:00") },
-      { from: "lead", text: "Et ouvert aux opportunités mais pas en tant que salarié idéalement", date: new Date("2026-05-01T20:40:00") },
-      { from: "pj", text: "Top! Pour vous situer Nicolas, j'accompagne des freelances avec un profil similaire au vôtre à décrocher des contrats premium via une méthode spécifique.", date: new Date("2026-05-01T20:47:00") },
-      { from: "lead", text: "Oui bien sûr", date: new Date("2026-05-01T20:50:00") },
-      { from: "pj", text: "Super: Sur une échelle de 1 à 10, comment évaluez-vous aujourd'hui la qualité de votre acquisition clients ?", date: new Date("2026-05-02T00:18:00") },
-      { from: "lead", text: "Alors je n'ai pas encore vraiment commencé à démarcher et pas encore créé la société mais le but c'est d'avoir une activité consultante... Mais effectivement c'est la côté vente démarchage que je maîtrise le moins", date: new Date("2026-05-02T11:31:00") },
-      { from: "pj", text: "Je comprends. Pour vous donner de la visibilité Nicolas, voici la méthode que nous utilisons dans ce cas...", date: new Date("2026-05-02T21:16:00") },
-      { from: "pj", text: "Bonjour Nicolas, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
-      { from: "lead", text: "Bonjour Je n'ai pas besoin de ce type de prestation mais merci de votre message", date: new Date("2026-06-15T16:34:00") },
-    ]
-  },
-  {
-    id: 3, prenom: "Benoist", nom: "de Montgrand", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:29:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — pas encore de réponse",
-    analyse: {
-      temp: 20, profil: "senior", faible: true,
-      pense: "Peut-être pas vu le message, peut-être pas prioritaire.",
+      temp: 45, profil: "senior",
+      pense: "Engage la conversation. Question de qualification envoyée aujourd'hui.",
       ressent: "Curieux",
-      obstacle: "Pas prioritaire / silence",
-      declencheur: "Étude de cas",
-      preuves: ["FU2 envoyée aujourd'hui — aucune réponse depuis DM1"],
-      strategie: { choix: "Attendre FU2", pourquoi: "FU2 envoyée aujourd'hui. Laisser 36h avant FU3 avec étude de cas." },
-      reponses: [
-        { reco: true, text: "Attendre 36h, puis FU3 : partager étude de cas d'un consultant en reconversion." },
-        { text: "« Bonjour Benoist, j'ai accompagné un consultant comme vous à sécuriser des contrats premium... »" },
-      ],
+      obstacle: "Pas encore verbalisé",
+      declencheur: "Question ouverte sur challenge",
+      preuves: ["'D'accord, je vois Haris par curiosité, Quel est ton challenge principal aujourd'hui?' — ce soir"],
+      strategie: { choix: "Attendre sa réponse", pourquoi: "Question de qualification envoyée. Laisser 24h." },
+      reponses: [{ reco: true, text: "Attendre la réponse. Si positif, envoyer question 1-10." }],
     },
     conv: [
-      { from: "pj", text: "Bonjour Benoist, (DM1 envoyé)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour Benoist, Tu as bien reçu mon message ?", date: new Date("2026-06-15T16:29:00") },
-    ]
-  },
-  {
-    id: 4, prenom: "Matthieu", nom: "BEAL", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
-    analyse: {
-      temp: 20, profil: "senior", faible: true,
-      pense: "A peut-être visionné la ressource sans répondre.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire / silence",
-      declencheur: "Ressource vidéo",
-      preuves: ["FU2 'Tu as pu visionner la ressource?' envoyée aujourd'hui"],
-      strategie: { choix: "Attendre FU2", pourquoi: "A reçu une ressource vidéo. FU3 dans 36h avec étude de cas si pas de réponse." },
-      reponses: [
-        { reco: true, text: "Attendre 36h. FU3 : 'j'ai accompagné un consultant comme vous à sécuriser des contrats premium...'" },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Matthieu, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour Matthieu, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
-    ]
-  },
-  {
-    id: 5, prenom: "Abdenasseir", nom: "BENNACER", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
-    analyse: {
-      temp: 18, profil: "senior", faible: true,
-      pense: "Signal faible — silence après ressource.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Ressource vidéo",
-      preuves: ["FU2 'Tu as pu visionner la ressource?' envoyée aujourd'hui — en ligne sur LinkedIn"],
-      strategie: { choix: "Attendre FU2", pourquoi: "En ligne au moment de la FU2. Possible qu'il réponde. FU3 dans 36h si silence." },
-      reponses: [
-        { reco: true, text: "Attendre 36h. FU3 avec étude de cas si pas de réponse." },
-      ],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Abdenasseir, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour Abdenasseir, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
-    ]
-  },
-  {
-    id: 6, prenom: "Jérôme", nom: "CARRIERE", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:28:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
-    analyse: {
-      temp: 18, profil: "senior", faible: true,
-      pense: "Signal faible.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Ressource vidéo",
-      preuves: ["FU2 envoyée aujourd'hui"],
-      strategie: { choix: "Attendre FU2", pourquoi: "FU3 dans 36h si silence." },
-      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Jérôme, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour Jérôme, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:28:00") },
-    ]
-  },
-  {
-    id: 7, prenom: "Raphaël", nom: "Munck", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
-    analyse: {
-      temp: 18, profil: "senior", faible: true,
-      pense: "Signal faible.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Ressource vidéo",
-      preuves: ["FU2 envoyée aujourd'hui"],
-      strategie: { choix: "Attendre FU2", pourquoi: "FU3 dans 36h si silence." },
-      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Raphaël, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour Raphaël, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:27:00") },
-    ]
-  },
-  {
-    id: 8, prenom: "Yann", nom: "Tran", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-12T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU1 réception envoyée",
-    analyse: {
-      temp: 15, profil: "senior", faible: true,
-      pense: "DM1 récent — peut ne pas avoir vu.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Question courte",
-      preuves: ["FU1 'Vous avez bien reçu mon message?' envoyée aujourd'hui"],
-      strategie: { choix: "Attendre FU1", pourquoi: "DM1 récent (3 jours). FU2 dans 36h si silence." },
-      reponses: [{ reco: true, text: "Attendre 36h. FU2 : 'Yann ?' (court)" }],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Yann, (DM1 envoyé)", date: new Date("2026-06-12T00:00:00") },
-      { from: "pj", text: "Bonjour Yann, Vous avez bien reçu mon message ?", date: new Date("2026-06-15T16:27:00") },
-    ]
-  },
-  {
-    id: 9, prenom: "David", nom: "Dupont", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-08T00:00:00"), dernierContact: new Date("2026-06-15T16:27:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 2, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU2 ressource envoyée",
-    analyse: {
-      temp: 18, profil: "senior", faible: true,
-      pense: "En ligne au moment de la FU2.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Ressource vidéo",
-      preuves: ["FU2 envoyée aujourd'hui — en ligne (statut vert)"],
-      strategie: { choix: "Attendre FU2", pourquoi: "En ligne = a probablement vu. FU3 dans 36h si silence." },
-      reponses: [{ reco: true, text: "Attendre 36h. FU3 avec étude de cas." }],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour David, (DM1 + ressource envoyée)", date: new Date("2026-06-08T00:00:00") },
-      { from: "pj", text: "Bonjour David, Tu as pu visionner la ressource ?", date: new Date("2026-06-15T16:27:00") },
-    ]
-  },
-  {
-    id: 10, prenom: "Sarah", nom: "Jourdonneau", poste: "Consultant (inconnu)", score: 2,
-    dm1: new Date("2026-06-12T00:00:00"), dernierContact: new Date("2026-06-15T16:26:00"),
-    statut: "FU_EN_ATTENTE", fuStade: 1, nbEchanges: 2,
-    icpRaison: "Profil à qualifier — FU1 réception envoyée",
-    analyse: {
-      temp: 15, profil: "senior", faible: true,
-      pense: "DM1 récent — peut ne pas avoir vu.",
-      ressent: "Curieux",
-      obstacle: "Pas prioritaire",
-      declencheur: "Question courte",
-      preuves: ["FU1 'Vous avez bien reçu mon message?' envoyée aujourd'hui"],
-      strategie: { choix: "Attendre FU1", pourquoi: "DM1 récent. FU2 dans 36h si silence." },
-      reponses: [{ reco: true, text: "Attendre 36h. FU2 : 'Sarah ?' (court)" }],
-    },
-    conv: [
-      { from: "pj", text: "Bonjour Sarah, (DM1 envoyé)", date: new Date("2026-06-12T00:00:00") },
-      { from: "pj", text: "Bonjour Sarah, Vous avez bien reçu mon message ?", date: new Date("2026-06-15T16:26:00") },
+      { from: "pj", text: "(DM1 envoyé)", date: new Date("2026-06-10T00:00:00") },
+      { from: "lead", text: "(A répondu)", date: new Date("2026-06-13T00:00:00") },
+      { from: "pj", text: "D'accord, je vois Haris par curiosité, Quel est ton challenge principal aujourd'hui ?", date: new Date("2026-06-15T20:11:00") },
     ]
   },
 ];
@@ -374,22 +427,24 @@ const BRIEFING = {
   deadline: "19 oct 2026",
 
   action: {
-    pct: 72,
-    title: "Attendre réponse Jean-Yves Klein (question 1-10)",
-    meta: "Lead chaud · question envoyée à 16:46 · aucune action à faire maintenant",
+    pct: 85,
+    title: "Amélie Choux + Julien GAURIAT + Raphael Alfero — convertir en booking",
+    meta: "3 leads ont accepté le call · aucun créneau fixé · 10 min d'action",
   },
 
   directives: [
-    { tag: "Priorité", text: "Jean-Yves Klein attend une réponse à la question 1-10. Revenir ce soir ou demain matin." },
-    { tag: "FU demain", text: "8 leads en FU2 silencieux : FU3 avec étude de cas dans 36h si toujours rien." },
-    { tag: "À fermer", text: "Nicolas Durand = FROID. Pas d'activité réelle. Sortir du pipeline." },
+    { tag: "Priorité #1", text: "Amélie Choux a dit oui aujourd'hui → envoyer lien iclosed maintenant." },
+    { tag: "Priorité #2", text: "Julien GAURIAT + Raphael Alfero ont accepté sans booker → re-proposer 2 créneaux directs." },
+    { tag: "Calls confirmés", text: "Alix Kulhmann + Dhruv Relan + Benjamin Nahmani + Micheal OBINZU = 4 calls bookés. Vérifier tenus." },
+    { tag: "FU demain", text: "10+ leads en FU2 silencieux → FU3 avec étude de cas dans 36h." },
   ],
 
   faith: "Col 3:23 — fais-le comme pour le Seigneur. Pas de dispersion.",
 
   signals: [
-    { tag: "Signal chaud", tone: "good", text: "Jean-Yves Klein a dit 'Oui' + lu le message en 3 min. Lead à qualifier ce soir." },
-    { tag: "Marché", tone: "warn", text: "2 réponses sur 11 messages today (18%). 9 FU sans réponse = normal à ce stade." },
+    { tag: "Calls proposés", tone: "good", text: "10 calls proposés sur la période · 7 acceptés · 4 bookés · 1 tenu (Jules PARR)." },
+    { tag: "Jean-Yves", tone: "warn", text: "Question 1-10 envoyée à 16:46. Attendre réponse avant de relancer." },
+    { tag: "Réseau", tone: "neutral", text: "7 121 relations · 4 connexions envoyées aujourd'hui · 1 298 en attente d'acceptation." },
   ],
 };
 
