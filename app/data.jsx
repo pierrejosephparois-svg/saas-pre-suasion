@@ -28,12 +28,8 @@ const BOOKED_BY_DATE = {
   "2026-06-09": 1, "2026-06-11": 1, "2026-06-12": 1,
 }; // Total: 21 calls bookés
 
-// ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
-// connEnv = invitations envoyées aujourd'hui (confirmées) | connAcc = non traçable sans suivi quotidien
-// Scan 16/06/2026 via Voyager API (browser JS — zéro tokens Chrome)
-const TODAY = { newDM: 0, fu: 11, looms: 0, reponses: 4, propCall: 0, bookes: 0, closes: 0, connEnv: 10, connAcc: 4 };
-// connEnv = 10 invitations envoyées hier (15/06) | connAcc = 4 connexions acceptées aujourd'hui
-// reponses = 4 non lus : Steve Besson (x2), Ludovic Brudny, Julien Nadal, Sarah Jourdonneau
+// Scan auto 2026-06-16 — AppleScript + Voyager API
+const TODAY = { newDM: 0, fu: 20, looms: 0, reponses: 1, propCall: 0, bookes: 0, closes: 0, connEnv: 0, connAcc: 20 };
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
 const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
