@@ -394,7 +394,7 @@ function analyzeConv(conv) {
 // ─── BRIEFING DU JOUR (voix : COO brutal / mentor ROI) ────────
 // Reco personnalisée de Claude — terse, métriques d'abord.
 const BRIEFING = {
-  dateLabel: "Dimanche 15 juin",
+  dateLabel: "Mardi 16 juin",
   goal: "500 K€",
   countdown: "J-126",
   deadline: "19 oct 2026",
@@ -415,9 +415,9 @@ const BRIEFING = {
   faith: "Col 3:23 — fais-le comme pour le Seigneur. Pas de dispersion.",
 
   signals: [
-    { tag: "iClosed réel", tone: "good", text: "21 calls bookés depuis le 16/05 · 8 potentiels sans booking · source : export iClosed 15/06." },
-    { tag: "Non lus (16/06)", tone: "warn", text: "4 conversations non lues : Steve Besson (x2), Ludovic Brudny, Julien Nadal, Sarah Jourdonneau." },
-    { tag: "Réseau (16/06)", tone: "neutral", text: "7 119 relations · 4 connexions acceptées aujourd'hui (Faouzi Fieve, Dr. Samir MEDROUK, Jean-Philippe Becane, Lionel Holzapfel) · 10 invitations envoyées hier." },
+    { tag: "iClosed réel", tone: "good", text: "21 calls bookés depuis le 16/05 · 8 potentiels sans booking." },
+    { tag: "Non lus (2026-06-16)", tone: "warn", text: "1 non lus : Robin Thomas-Le Déoré (x1)." },
+    { tag: "Réseau (2026-06-16)", tone: "neutral", text: "Acceptées : 20 (Tifany Clemenceau, Boujemaa Ait omar, Simon TANGUY, Matthis Debar) · Envoyées : 0." },
   ],
 };
 
