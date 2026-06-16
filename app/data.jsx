@@ -2,21 +2,38 @@
 // DM/réponses quotidiens non disponibles sans scraping LinkedIn.
 // Seules les données iClosed (appels bookés) et LinkedIn aujourd'hui sont réelles.
 const STATS_30J = [
-  { date: "16/05", dm: 0, rep: 0 }, { date: "17/05", dm: 0, rep: 0 },
-  { date: "18/05", dm: 0, rep: 0 }, { date: "19/05", dm: 0, rep: 0 },
-  { date: "20/05", dm: 0, rep: 0 }, { date: "21/05", dm: 0, rep: 0 },
-  { date: "22/05", dm: 0, rep: 0 }, { date: "23/05", dm: 0, rep: 0 },
-  { date: "24/05", dm: 0, rep: 0 }, { date: "25/05", dm: 0, rep: 0 },
-  { date: "26/05", dm: 0, rep: 0 }, { date: "27/05", dm: 0, rep: 0 },
-  { date: "28/05", dm: 0, rep: 0 }, { date: "29/05", dm: 0, rep: 0 },
-  { date: "30/05", dm: 0, rep: 0 }, { date: "31/05", dm: 0, rep: 0 },
-  { date: "01/06", dm: 0, rep: 0 }, { date: "02/06", dm: 0, rep: 0 },
-  { date: "03/06", dm: 0, rep: 0 }, { date: "04/06", dm: 0, rep: 0 },
-  { date: "05/06", dm: 0, rep: 0 }, { date: "06/06", dm: 0, rep: 0 },
-  { date: "07/06", dm: 0, rep: 0 }, { date: "08/06", dm: 0, rep: 0 },
-  { date: "09/06", dm: 0, rep: 0 }, { date: "10/06", dm: 0, rep: 0 },
-  { date: "11/06", dm: 0, rep: 0 }, { date: "12/06", dm: 0, rep: 0 },
-  { date: "13/06", dm: 0, rep: 0 }, { date: "15/06", dm: 0, rep: 2 },
+  { date: "16/05", dm: 0, rep: 0, connAcc: 11 },
+  { date: "17/05", dm: 0, rep: 0, connAcc: 15 },
+  { date: "18/05", dm: 0, rep: 0, connAcc: 16 },
+  { date: "19/05", dm: 0, rep: 0, connAcc: 21 },
+  { date: "20/05", dm: 0, rep: 0, connAcc: 9 },
+  { date: "21/05", dm: 0, rep: 0, connAcc: 21 },
+  { date: "22/05", dm: 0, rep: 0, connAcc: 12 },
+  { date: "23/05", dm: 0, rep: 0, connAcc: 2 },
+  { date: "24/05", dm: 0, rep: 0, connAcc: 2 },
+  { date: "25/05", dm: 0, rep: 0, connAcc: 3 },
+  { date: "26/05", dm: 0, rep: 0, connAcc: 39 },
+  { date: "27/05", dm: 0, rep: 0, connAcc: 10 },
+  { date: "28/05", dm: 0, rep: 0, connAcc: 7 },
+  { date: "29/05", dm: 0, rep: 0, connAcc: 11 },
+  { date: "30/05", dm: 0, rep: 0, connAcc: 4 },
+  { date: "31/05", dm: 0, rep: 0, connAcc: 1 },
+  { date: "01/06", dm: 0, rep: 0, connAcc: 6 },
+  { date: "02/06", dm: 0, rep: 0, connAcc: 2 },
+  { date: "03/06", dm: 0, rep: 0, connAcc: 16 },
+  { date: "04/06", dm: 0, rep: 0, connAcc: 23 },
+  { date: "05/06", dm: 0, rep: 0, connAcc: 9 },
+  { date: "06/06", dm: 0, rep: 0, connAcc: 7 },
+  { date: "07/06", dm: 0, rep: 0, connAcc: 2 },
+  { date: "08/06", dm: 0, rep: 0, connAcc: 16 },
+  { date: "09/06", dm: 0, rep: 0, connAcc: 17 },
+  { date: "10/06", dm: 0, rep: 0, connAcc: 4 },
+  { date: "11/06", dm: 0, rep: 0, connAcc: 13 },
+  { date: "12/06", dm: 0, rep: 0, connAcc: 11 },
+  { date: "13/06", dm: 0, rep: 0, connAcc: 1 },
+  { date: "14/06", dm: 0, rep: 0, connAcc: 13 },
+  { date: "15/06", dm: 0, rep: 0, connAcc: 18 },
+  { date: "16/06", dm: 0, rep: 0, connAcc: 21 }
 ];
 
 // Calls bookés par date (source iClosed — export 15/06/2026)
@@ -503,8 +520,8 @@ function metricsFor(range) {
   // Calls bookés = source iClosed réelle (export 15/06/2026, 21 total depuis 16/05)
   const acc = range >= 30 ? 21 : range >= 14 ? 14 : range >= 7 ? 9 : 0;
   const cli = 0;
-  const conn = range === 7 ? TODAY.connEnv : 0;
-  const connAcc = 0;
+  const conn = 0;
+  const connAcc = STATS_30J.slice(-range).reduce((s, d) => s + (d.connAcc || 0), 0);
   const funnel = [
     { label: "DM envoyés", val: 0 },
     { label: "Relances", val: 0 },
