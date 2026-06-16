@@ -30,7 +30,10 @@ const BOOKED_BY_DATE = {
 
 // ⬇ Données réelles scrappées le 15/06/2026 depuis LinkedIn
 // connEnv = invitations envoyées aujourd'hui (confirmées) | connAcc = non traçable sans suivi quotidien
-const TODAY = { newDM: 0, fu: 11, looms: 0, reponses: 2, propCall: 0, bookes: 0, closes: 0, connEnv: 4, connAcc: null };
+// Scan 16/06/2026 via Voyager API (browser JS — zéro tokens Chrome)
+const TODAY = { newDM: 0, fu: 11, looms: 0, reponses: 4, propCall: 0, bookes: 0, closes: 0, connEnv: 10, connAcc: 4 };
+// connEnv = 10 invitations envoyées hier (15/06) | connAcc = 4 connexions acceptées aujourd'hui
+// reponses = 4 non lus : Steve Besson (x2), Ludovic Brudny, Julien Nadal, Sarah Jourdonneau
 
 // ─── PARAMÈTRES PRÉ-SUASION (objectifs auto, définis en réglages) ─
 const PRESU_DEFAULTS = { objectif: 24000, panier: 2500, closing: 33, impactConv: 10 };
@@ -413,8 +416,8 @@ const BRIEFING = {
 
   signals: [
     { tag: "iClosed réel", tone: "good", text: "21 calls bookés depuis le 16/05 · 8 potentiels sans booking · source : export iClosed 15/06." },
-    { tag: "Réseau", tone: "neutral", text: "7 121 relations · 4 connexions envoyées aujourd'hui · 1 298 en attente d'acceptation." },
-    { tag: "DM / Réponses", tone: "warn", text: "Données quotidiennes non disponibles — nécessite scraping LinkedIn. Graphique en attente." },
+    { tag: "Non lus (16/06)", tone: "warn", text: "4 conversations non lues : Steve Besson (x2), Ludovic Brudny, Julien Nadal, Sarah Jourdonneau." },
+    { tag: "Réseau (16/06)", tone: "neutral", text: "7 119 relations · 4 connexions acceptées aujourd'hui (Faouzi Fieve, Dr. Samir MEDROUK, Jean-Philippe Becane, Lionel Holzapfel) · 10 invitations envoyées hier." },
   ],
 };
 
