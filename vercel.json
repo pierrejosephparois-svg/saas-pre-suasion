@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/", "has": [{ "type": "host", "value": "app.pre-suasion.fr" }], "destination": "/dashboard.html" },
     { "source": "/", "has": [{ "type": "host", "value": "pre-suasion-app.vercel.app" }], "destination": "/dashboard.html" },
-    { "source": "/", "has": [{ "type": "host", "value": "saas-pre-suasion.vercel.app" }], "destination": "/dashboard.html" },
+    { "source": "/", "has": [{ "type": "host", "value": "pierre-joseph-pre-suasion.vercel.app" }], "destination": "/dashboard.html" },
     { "source": "/", "has": [{ "type": "host", "value": "pre-suasion.fr" }], "destination": "/index.html" },
     { "source": "/", "has": [{ "type": "host", "value": "www.pre-suasion.fr" }], "destination": "/index.html" }
   ]
