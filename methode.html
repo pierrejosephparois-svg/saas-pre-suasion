@@ -1,18 +1,423 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pré-suasion — Sécuriser vos contrats IA premium</title>
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-6.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-6.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-2.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-3.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-4.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-2.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-3.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-4.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-2.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-3.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/plus-jakarta-sans-500-4.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 <style>
 /* General Sans (inlined for offline use) */
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/MFQT7HFGCR2L5ULQTW6YXYZXXHMPKLJ3/YWQ244D6TACUX5JBKATPOW5I5MGJ3G73/7YY3ZAAE3TRV2LANYOLXNHTPHLXVWTKH.woff2') format('woff2');font-weight:400;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/3RZHWSNONLLWJK3RLPEKUZOMM56GO4LJ/BPDRY7AHVI3MCDXXVXTQQ76H3UXA63S3/SB2OEB6IKZPRR6JT4GFJ2TFT6HBB6AZN.woff2') format('woff2');font-weight:500;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/K46YRH762FH3QJ25IQM3VAXAKCHEXXW4/ISLWQPUZHZF33LRIOTBMFOJL57GBGQ4B/3ZLMEXZEQPLTEPMHTQDAUXP5ZZXCZAEN.woff2') format('woff2');font-weight:600;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/KWXO5X3YW4X7OLUMPO4X24HQJGJU7E2Q/VOWUQZS3YLP66ZHPTXAFSH6YACY4WJHT/NIQ54PVBBIWVK3PFSOIOUJSXIJ5WTNDP.woff2') format('woff2');font-weight:700;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-400-1.woff2") format('woff2');font-weight:400;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-500-1.woff2") format('woff2');font-weight:500;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-600-1.woff2") format('woff2');font-weight:600;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-700-1.woff2") format('woff2');font-weight:700;font-display:swap;font-style:normal}
 </style>
 <style>
 :root{
@@ -356,7 +761,8 @@ image-slot{display:block;width:100%}
 .client .ct{color:var(--dim);font-size:.84rem;font-family:var(--mono);letter-spacing:.03em}
 
 /* ---------- FINAL CTA ---------- */
-.final{text-align:center;padding-top:7rem;padding-bottom:8rem}
+.final{text-align:center;padding-top:7rem;padding-bottom:8rem;background:transparent}
+.final::before{content:'';position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;background:#080910;z-index:-1}
 .final h2{max-width:16ch;margin-left:auto;margin-right:auto}
 .final .lead{margin:1.6rem auto 2.6rem}
 .final .hero-cta{justify-content:center}
@@ -470,6 +876,9 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 @media(max-width:760px){.cmp2{grid-template-columns:1fr}}
 .cal-embed{max-width:1000px;margin:2.8rem auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:0 30px 70px rgba(0,0,0,.4)}
 .cal-embed iframe{width:100%;height:760px;border:0;display:block}
+.cal-embed.bare{border:0;background:none;box-shadow:none;border-radius:0;overflow:visible}
+.cal-embed .iclosed-widget{width:100%;min-height:760px;display:block}
+.cal-embed .iclosed-widget iframe{width:100%;height:760px;border:0;display:block}
 .pts{position:relative;height:42px;margin-top:.55rem}
 .pts span{position:absolute;top:0;transform:translateX(-50%);font-size:.58rem;line-height:1.18;color:var(--dim);text-align:center;white-space:nowrap}
 .pts .circuit{color:var(--accent);font-weight:600}
@@ -673,7 +1082,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <body>
 
 <header>
-  <a class="logo" href="methode.html" aria-label="Pré-suasion"><img src="images/logo-wordmark.png" alt="Pré-suasion"/></a>
+  <a class="logo" href="methode.html" aria-label="Pré-suasion"><img src="images/logo-wordmark.png" alt="Pré-suasion"></a>
   <nav class="nav">
     <a href="methode.html" class="active">Le système</a>
     <a href="solution.html">Notre solution</a>
@@ -689,7 +1098,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <h1 style="max-width:none;font-size:clamp(2.4rem,5.4vw,4.4rem)">Comment sécuriser vos <span class="hl">contrats IA premium</span> avant le premier rendez-vous</h1>
   <p class="lead">En 2020, je découvre quelque chose qui va <span class="hl">changer ma trajectoire</span>.</p>
   <div class="hero-author">
-    <img class="hero-author-ph" src="images/pj-portrait.jpg" alt="Pierre-Joseph Parois"/>
+    <img class="hero-author-ph" src="images/pj-portrait.jpg" alt="Pierre-Joseph Parois">
     <div class="hero-author-id">
       <span class="hero-author-name">Pierre-Joseph Parois</span>
       <span class="hero-author-role">Fondateur Pré-suasion</span>
@@ -708,7 +1117,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <div class="eyebrow">Ce que vous vivez peut-être</div>
   <h2>Vous savez que vous pourriez facturer <span class="hl">plus cher</span>. Mais :</h2>
   <div class="sold-wrap rev">
-    <img class="sold-illus picto-tint-red" src="images/discouraged.png" alt="" aria-hidden="true"/>
+    <img class="sold-illus picto-tint-red" src="images/discouraged.png" alt="" aria-hidden="true">
     <div class="xlist">
       <div class="xrow"><span class="xm">✕</span><div>Les rendez-vous arrivent <strong>par vagues</strong>.</div></div>
       <div class="xrow"><span class="xm">✕</span><div>Certains mois sont excellents, <strong>d'autres inquiétants</strong>.</div></div>
@@ -726,7 +1135,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <div class="eyebrow">Ce qu'on vous a appris</div>
   <h2>Ce qu'on vous a vendu <span style="color:var(--dim)">(et que vous ne voulez plus)</span></h2>
   <div class="sold-wrap rev">
-    <img class="sold-illus picto-tint-red" src="images/sold-stairs.png" alt="" aria-hidden="true"/>
+    <img class="sold-illus picto-tint-red" src="images/sold-stairs.png" alt="" aria-hidden="true">
     <div class="xlist">
       <p class="lead" style="margin:0 0 1.1rem;max-width:640px">On vous a dit que :</p>
       <div class="xrow"><span class="xm">✕</span><div>La vente <strong>commence au premier rendez-vous</strong>.</div></div>
@@ -743,8 +1152,8 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <!-- B — NOUVELLE CROYANCE -->
 <section class="belief-flip" data-screen-label="Nouvelle croyance">
   <div class="eyebrow" style="justify-content:center">Votre nouvelle opportunité</div>
-  <h2 class="center flip-h">Ne cherchez pas à <span class="hl">convaincre</span>.<br/>Conditionner le OUI avant la rencontre.</h2>
-  <p class="flip-sub">Vous manquez simplement de rendez-vous.<br/>Et de prospects qui vous font déjà confiance AVANT le premier rendez-vous.</p>
+  <h2 class="center flip-h">Ne cherchez pas à <span class="hl">convaincre</span>.<br>Conditionner le OUI avant la rencontre.</h2>
+  <p class="flip-sub">Vous manquez simplement de rendez-vous.<br>Et de prospects qui vous font déjà confiance AVANT le premier rendez-vous.</p>
 </section>
 
 <div class="divider"></div>
@@ -755,7 +1164,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <h2>En 2020, je découvre un <span class="hl">effet psychologique</span> peu connu</h2>
   <div class="split" style="margin-top:2.4rem;grid-template-columns:.8fr 1.2fr;align-items:start">
     <div class="photo-frame">
-      <img src="images/mentor-2020.png" alt="Avec mon premier mentor (à gauche) — rencontré grâce à la pré-suasion"/>
+      <img src="images/mentor-2020.png" alt="Avec mon premier mentor (à gauche) — rencontré grâce à la pré-suasion">
       <div class="photo-note">Grâce à la <strong>pré-suasion</strong>, je rencontre mon premier mentor.</div>
     </div>
     <figure class="cialdini">
@@ -763,7 +1172,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
       <blockquote class="cialdini-q">Le plus important n'est pas ce que vous dites. <span class="hl">C'est ce que votre prospect croit avant que vous parliez.</span></blockquote>
       <figcaption class="cialdini-by">
         <span class="cialdini-name">Robert Cialdini</span>
-        <span class="cialdini-role">Auteur de « Influence et Manipulation »</span>
+        <span class="cialdini-role">Auteur de « Influence et Manipulation » 1984 et « Pré-suasion » 2016</span>
       </figcaption>
     </figure>
   </div>
@@ -779,22 +1188,22 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   </div>
   <div class="logowall" aria-label="Entreprises rencontrées grâce à la pré-suasion">
     <div class="logowall-track">
-      <span class="lw"><img src="images/logo-accenture.png" alt="Accenture Strategy" style="height:24px"/></span>
-      <span class="lw"><img src="images/logo-lek.png" alt="L.E.K. Consulting" style="height:26px"/></span>
-      <span class="lw"><img src="images/logo-fiftyfive.png" alt="Fifty-Five" style="height:22px"/></span>
-      <span class="lw"><img src="images/logo-pwc.png" alt="PwC" style="height:28px"/></span>
-      <span class="lw"><img src="images/logo-kpmg.png" alt="KPMG" style="height:30px"/></span>
-      <span class="lw"><img src="images/logo-mckinsey.png" alt="McKinsey &amp; Company" style="height:40px"/></span>
-      <span class="lw"><img src="images/logo-kornferry.png" alt="Korn Ferry" style="height:27px"/></span>
-      <span class="lw"><img src="images/logo-rothschild.png" alt="Rothschild &amp; Co" style="height:29px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-accenture.png" alt="" style="height:24px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-lek.png" alt="" style="height:26px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-fiftyfive.png" alt="" style="height:22px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-pwc.png" alt="" style="height:28px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-kpmg.png" alt="" style="height:30px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-mckinsey.png" alt="" style="height:40px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-kornferry.png" alt="" style="height:27px"/></span>
-      <span class="lw" aria-hidden="true"><img src="images/logo-rothschild.png" alt="" style="height:29px"/></span>
+      <span class="lw"><img src="images/logo-accenture.png" alt="Accenture Strategy" style="height:24px"></span>
+      <span class="lw"><img src="images/logo-lek.png" alt="L.E.K. Consulting" style="height:26px"></span>
+      <span class="lw"><img src="images/lw-4.png" alt="Fifty-Five" style="height:22px"></span>
+      <span class="lw"><img src="images/logo-pwc.png" alt="PwC" style="height:28px"></span>
+      <span class="lw"><img src="images/logo-kpmg.png" alt="KPMG" style="height:30px"></span>
+      <span class="lw"><img src="images/lw-5.png" alt="McKinsey &amp; Company" style="height:40px"></span>
+      <span class="lw"><img src="images/lw-1.png" alt="Korn Ferry" style="height:27px"></span>
+      <span class="lw"><img src="images/lw-2.png" alt="Rothschild &amp; Co" style="height:29px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/logo-accenture.png" alt="" style="height:24px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/logo-lek.png" alt="" style="height:26px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/lw-4.png" alt="" style="height:22px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/logo-pwc.png" alt="" style="height:28px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/logo-kpmg.png" alt="" style="height:30px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/lw-5.png" alt="" style="height:40px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/lw-1.png" alt="" style="height:27px"></span>
+      <span class="lw" aria-hidden="true"><img src="images/lw-2.png" alt="" style="height:29px"></span>
     </div>
   </div>
   <p class="mentor-note" style="text-align:center;max-width:60ch;margin:1.8rem auto 0;color:var(--dim);font-size:1rem;line-height:1.6">Je n'ai jamais postulé à ces entreprises. J'ai créé suffisamment de confiance avec les bonnes personnes pour être recommandé en interne.</p>
@@ -819,31 +1228,31 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
         <div class="tl-phase">Offres d'emploi</div>
         <div class="tl-node"></div>
         <div class="tl-logos" style="margin-top:.2rem">
-          <img class="tl-lg" style="height:22px" src="images/logo-accenture-mark.png" alt="Accenture"/>
-          <img class="tl-lg" style="height:22px" src="images/logo-kpmg.png" alt="KPMG"/>
-          <img class="tl-lg" style="height:20px" src="images/logo-pwc.png" alt="PwC"/>
+          <img class="tl-lg" style="height:22px" src="images/logo-accenture-mark.png" alt="Accenture">
+          <img class="tl-lg" style="height:22px" src="images/logo-kpmg.png" alt="KPMG">
+          <img class="tl-lg" style="height:20px" src="images/logo-pwc.png" alt="PwC">
         </div>
       </div>
 
       <div class="tl-step">
         <div class="tl-phase">PwC</div>
         <div class="tl-node"></div>
-        <div class="tl-bigwm"><img class="tl-lgbig" src="images/logo-pwc.png" alt="PwC"/></div>
-        <div class="tl-detail"><strong>2 ans</strong><br/><span class="sub">Finance Advisory</span></div>
+        <div class="tl-bigwm"><img class="tl-lgbig" src="images/logo-pwc.png" alt="PwC"></div>
+        <div class="tl-detail"><strong>2 ans</strong><br><span class="sub">Finance Advisory</span></div>
       </div>
 
       <div class="tl-step">
         <div class="tl-phase">Webyn</div>
         <div class="tl-node"></div>
-        <div class="tl-bigwm"><img class="tl-lgbig tl-lgbig--webyn" src="images/logo-webyn.png" alt="Webyn"/></div>
-        <div class="tl-detail"><strong>2 ans</strong><br/><span class="sub">Équipe Sales</span></div>
+        <div class="tl-bigwm"><img class="tl-lgbig tl-lgbig--webyn" src="images/logo-webyn.png" alt="Webyn"></div>
+        <div class="tl-detail"><strong>2 ans</strong><br><span class="sub">Équipe Sales</span></div>
       </div>
 
       <div class="tl-step now">
         <div class="tl-phase">Aujourd'hui</div>
         <div class="tl-node"></div>
-        <div class="tl-face"><img class="tl-photo" src="images/pj-today.jpg" alt="Pierre-Joseph"/></div>
-        <span class="tl-chip" style="text-align:center;line-height:1.4">J'accompagne les consultants<br/>IA &amp; automatisation<br/>à reproduire cette mécanique</span>
+        <div class="tl-face"><img class="tl-photo" src="images/pj-today.jpg" alt="Pierre-Joseph"></div>
+        <span class="tl-chip" style="text-align:center;line-height:1.4">J'accompagne les consultants<br>IA &amp; automatisation<br>à reproduire cette mécanique</span>
       </div>
 
     </div>
@@ -865,8 +1274,8 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
         <span class="ylab">Confiance</span>
         <div class="plot2">
           <svg class="curve2" viewBox="0 0 420 210" preserveAspectRatio="none" aria-hidden="true">
-            <path class="cfill grey" d="M 23.52 184.6 C 31.29 183.75 54.60 181.20 70.14 179.5 C 85.68 177.80 101.22 176.38 116.76 174.4 C 132.30 172.42 147.84 170.15 163.38 167.6 C 178.92 165.05 194.46 162.22 210 159.1 C 225.54 155.98 241.08 152.87 256.62 148.9 C 272.16 144.93 287.70 141.53 303.24 135.3 C 318.78 129.07 334.32 125.38 349.86 111.5 C 365.40 97.62 388.71 61.92 396.48 52 L 396.48 188 L 23.52 188 Z"/>
-            <path class="cline grey" d="M 23.52 184.6 C 31.29 183.75 54.60 181.20 70.14 179.5 C 85.68 177.80 101.22 176.38 116.76 174.4 C 132.30 172.42 147.84 170.15 163.38 167.6 C 178.92 165.05 194.46 162.22 210 159.1 C 225.54 155.98 241.08 152.87 256.62 148.9 C 272.16 144.93 287.70 141.53 303.24 135.3 C 318.78 129.07 334.32 125.38 349.86 111.5 C 365.40 97.62 388.71 61.92 396.48 52"/>
+            <path class="cfill grey" d="M 23.52 184.6 C 31.29 183.75 54.60 181.20 70.14 179.5 C 85.68 177.80 101.22 176.38 116.76 174.4 C 132.30 172.42 147.84 170.15 163.38 167.6 C 178.92 165.05 194.46 162.22 210 159.1 C 225.54 155.98 241.08 152.87 256.62 148.9 C 272.16 144.93 287.70 141.53 303.24 135.3 C 318.78 129.07 334.32 125.38 349.86 111.5 C 365.40 97.62 388.71 61.92 396.48 52 L 396.48 188 L 23.52 188 Z"></path>
+            <path class="cline grey" d="M 23.52 184.6 C 31.29 183.75 54.60 181.20 70.14 179.5 C 85.68 177.80 101.22 176.38 116.76 174.4 C 132.30 172.42 147.84 170.15 163.38 167.6 C 178.92 165.05 194.46 162.22 210 159.1 C 225.54 155.98 241.08 152.87 256.62 148.9 C 272.16 144.93 287.70 141.53 303.24 135.3 C 318.78 129.07 334.32 125.38 349.86 111.5 C 365.40 97.62 388.71 61.92 396.48 52"></path>
           </svg>
         </div>
         <div class="pts"><span style="left:5.6%">Froid</span><span style="left:16.7%">R1</span><span style="left:27.8%">R2</span><span style="left:38.9%">R3</span><span style="left:50%">R4</span><span style="left:61.1%">R5</span><span style="left:72.2%">R6</span><span style="left:83.3%">R7</span><span style="left:94.4%">Signé</span></div>
@@ -880,16 +1289,16 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
         <span class="ylab">Confiance</span>
         <div class="plot2">
           <svg class="curve2" viewBox="0 0 420 210" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(123,252,153,.34)"/><stop offset="1" stop-color="rgba(123,252,153,0)"/></linearGradient></defs>
-            <rect class="zone-band" x="43" y="0" width="59" height="210"/>
-            <path class="cfill grn" d="M 25.2 182.9 C 33.7 162 57.6 92 71.9 66 C 85.3 46 98.8 49 112.3 49 C 125 49 133.8 48 140.1 46 C 144.9 38 148.9 32 156 30 C 171.9 26 189.4 21 201.9 19.7 L 201.9 188 L 25.2 188 Z" fill="url(#g2)"/>
-            <path class="cline plateau" d="M 201.9 19.7 L 403.2 19.7"/>
-            <path class="cline grn" pathLength="1" d="M 25.2 182.9 C 33.7 162 57.6 92 71.9 66 C 85.3 46 98.8 49 112.3 49 C 125 49 133.8 48 140.1 46 C 144.9 38 148.9 32 156 30 C 171.9 26 189.4 21 201.9 19.7"/>
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(123,252,153,.34)"></stop><stop offset="1" stop-color="rgba(123,252,153,0)"></stop></linearGradient></defs>
+            <rect class="zone-band" x="43" y="0" width="59" height="210"></rect>
+            <path class="cfill grn" d="M 25.2 182.9 C 33.7 162 57.6 92 71.9 66 C 85.3 46 98.8 49 112.3 49 C 125 49 133.8 48 140.1 46 C 144.9 38 148.9 32 156 30 C 171.9 26 189.4 21 201.9 19.7 L 201.9 188 L 25.2 188 Z" fill="url(#g2)"></path>
+            <path class="cline plateau" d="M 201.9 19.7 L 403.2 19.7"></path>
+            <path class="cline grn" pathLength="1" d="M 25.2 182.9 C 33.7 162 57.6 92 71.9 66 C 85.3 46 98.8 49 112.3 49 C 125 49 133.8 48 140.1 46 C 144.9 38 148.9 32 156 30 C 171.9 26 189.4 21 201.9 19.7"></path>
           </svg>
         </div>
         <div class="pts"><span style="left:6%">Découverte</span><span class="circuit" style="left:17%">⚡ Circuit</span><span style="left:27%">R1</span><span class="loom" style="left:34%">Loom</span><span style="left:41%">R2</span><span style="left:48%">Signé</span></div>
         <div class="cyclebar"><div class="cb-track"><span class="cb-fill" style="width:50%"></span></div><div class="cb-lab">2× plus court</div></div>
-      </div><br/>Vous construisez la confiance en dehors des rendez-vous.</p>
+      </div><br>Vous construisez la confiance en dehors des rendez-vous.<p></p>
     </figure>
   </div>
 
@@ -921,7 +1330,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <!-- M — MARTELAGE -->
 <section class="hammer" data-screen-label="Martèlement">
   <div class="hammer-row">
-    <img class="hammer-illus picto-tint" src="images/decided-yes.png" alt="" aria-hidden="true"/>
+    <img class="hammer-illus picto-tint" src="images/decided-yes.png" alt="" aria-hidden="true">
     <div class="hammer-list">
       <p>Quand vous arrivez, votre prospect a <span class="hl">déjà décidé</span>.</p>
       <p>Émotionnellement. Avant même le premier mot.</p>
@@ -941,15 +1350,15 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <p class="need-label" style="margin-top:2.2rem">Ce qui les bloque :</p>
   <div class="trio">
     <div class="icard">
-      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 4"/><path d="M12 17.5h.01"/></svg></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.2 9a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 4"></path><path d="M12 17.5h.01"></path></svg></div>
       <p>Pas sûrs à <strong>200 %</strong> que votre intervention va changer leurs résultats.</p>
     </div>
     <div class="icard">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 21 19H3z"/><path d="M12 9.5v4"/><path d="M12 17h.01"/></svg></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 21 19H3z"></path><path d="M12 9.5v4"></path><path d="M12 17h.01"></path></svg></div>
       <p>Peur de refaire une erreur ou de passer pour des idiots.</p>
     </div>
     <div class="icard">
-      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.3"/><circle cx="18" cy="5" r="2.3"/><path d="M8.3 19H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h5.7"/></svg></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="2.3"></circle><circle cx="18" cy="5" r="2.3"></circle><path d="M8.3 19H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h5.7"></path></svg></div>
       <p>Ils n'ont pas encore vu un système qui leur paraît simple, cohérent, et exécutable. Le vôtre.</p>
     </div>
   </div>
@@ -1032,13 +1441,13 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
         <div class="sub">Sur une agence à 3 M€ de CA — en 7 mois.</div>
       </div>
       <div class="stat">
-        <div class="top"><span class="n">02</span><span class="who-av"><img src="images/face-woman.png" alt=""/><span class="who">Nathalie</span></span></div>
+        <div class="top"><span class="n">02</span><span class="who-av"><img src="images/face-woman.png" alt=""><span class="who">Nathalie</span></span></div>
         <div class="big">36 k€</div>
         <div class="lbl">signés</div>
         <div class="sub">0 mission → mission de 4 mois.</div>
       </div>
       <div class="stat">
-        <div class="top"><span class="n">03</span><span class="who-av"><img src="images/face-matteo.jpg" alt=""/><span class="who">Matteo</span></span></div>
+        <div class="top"><span class="n">03</span><span class="who-av"><img src="images/face-matteo.jpg" alt=""><span class="who">Matteo</span></span></div>
         <div class="big">EY · KPMG</div>
         <div class="lbl">propositions</div>
         <div class="sub">0 expérience → propositions des deux cabinets.</div>
@@ -1048,15 +1457,15 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   </div>
   <div class="avatar-row">
     <div class="avatars">
-      <img src="images/face-blueshirt.jpg" alt=""/>
-      <img src="images/face-woman.png" alt=""/>
-      <img src="images/face-suit.jpg" alt=""/>
-      <img src="images/face-whiteshirt.png" alt=""/>
-      <img src="images/face-recipeat.jpg" alt=""/>
-      <img src="images/face-blazer.jpg" alt=""/>
-      <img src="images/face-older1.jpg" alt=""/>
-      <img src="images/face-glasses.png" alt=""/>
-      <img src="images/face-xavier.jpg" alt=""/>
+      <img src="images/face-blueshirt.jpg" alt="">
+      <img src="images/face-woman.png" alt="">
+      <img src="images/face-suit.jpg" alt="">
+      <img src="images/face-whiteshirt.png" alt="">
+      <img src="images/face-recipeat.jpg" alt="">
+      <img src="images/face-blazer.jpg" alt="">
+      <img src="images/face-older1.jpg" alt="">
+      <img src="images/face-glasses.png" alt="">
+      <img src="images/face-xavier.jpg" alt="">
     </div>
     <span class="avatar-cap">&amp; d'autres en cours d'accompagnement</span>
   </div>
@@ -1067,14 +1476,23 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <!-- SIGNATURE — MONUMENT -->
 <section class="monument" data-screen-label="Signature">
   <div class="mon-glow"></div>
-  <div class="mon-logo"><img src="images/logo-mark-white-fade.png" alt="" aria-hidden="true"/></div>
+  <div class="mon-logo"><img src="images/logo-mark-white-fade.png" alt="" aria-hidden="true"></div>
   <div class="mon-content">
     <p class="mon-statement">Cette méthode fait sens. <em>Vous le sentez.</em></p>
     <p class="mon-sub">Vous avez vu les résultats.</p>
-    <p class="mon-final">Voyons maintenant comment<br/><span class="mon-acc">l'installer dans votre activité.</span></p>
+    <p class="mon-final">Voyons maintenant comment<br><span class="mon-acc">l'installer dans votre activité.</span></p>
     <div class="mon-cta">
       <a class="btn btn-primary btn-lg" href="solution.html">Découvrir la solution<span class="arr">↗</span></a>
     </div>
+  </div>
+</section>
+
+<!-- FINAL CTA — prise de RDV iClosed -->
+<section class="final" data-screen-label="CTA final">
+  <h2>Recevoir un feedback <span class="hl">personnalisé</span> dès maintenant</h2>
+  <p class="lead center">Le temps passe et les effets composés se perdent.</p>
+  <div class="cal-embed bare">
+    <div class="iclosed-widget" data-url="https://app.iclosed.io/e/altercoopt/diagnostic-offert" style="width:100%;height:760px;"></div>
   </div>
 </section>
 
@@ -1084,6 +1502,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 </footer>
 
 <script src="image-slot.js"></script>
+<!-- iClosed inline scheduler widget -->
 <script>
 document.querySelectorAll('.js-book').forEach(function(b){
   b.style.cursor='pointer';
@@ -1389,13 +1808,8 @@ document.querySelectorAll('.js-book').forEach(function(b){
 }
 </style>
 
-<template id="__bundler_thumbnail">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<rect width="100" height="100" fill="#0B0A16"/>
-<polygon points="50,30 66,64 34,64" fill="#7BFC99"/>
-<text x="50" y="84" font-family="monospace" font-size="11" fill="#7BFC99" text-anchor="middle" font-weight="bold">PRÉ-SUASION</text>
-</svg>
-</template>
 
-</body>
-</html>
+
+
+
+</body></html>
