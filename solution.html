@@ -362,6 +362,8 @@ image-slot{display:block;width:100%}
 .vw-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:#0c0b18;background:var(--accent);padding-left:4px;box-shadow:0 0 0 6px rgba(123,252,153,.14),0 10px 26px rgba(0,0,0,.45);transition:transform .3s ease}
 .vw-card:hover .vw-play{transform:translate(-50%,-50%) scale(1.08)}
 .vw-card.loaded .vw-play{display:none}
+.vw-new{position:absolute;top:0;left:0;z-index:2;background:#e02b20;color:#fff;font-family:var(--display);font-style:italic;font-weight:700;font-size:1.05rem;line-height:1;padding:.45em .8em .5em .7em;border-radius:0 0 10px 0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.vw-card.loaded .vw-new{display:none}
 .msgwall-head{margin-top:4rem}
 .year-tag{display:flex;align-items:center;gap:1rem;margin:2.4rem 0 1.8rem;font-family:var(--mono);font-size:1.05rem;letter-spacing:.16em;color:var(--accent)}
 .year-tag::after{content:'';flex:1;height:1px;background:var(--line-soft)}
@@ -943,6 +945,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   </div>
   <div class="tcar-dots" id="tcarDots"></div>
   <div class="vidwall" style="margin-top:3.5rem">
+    <div class="vw-card" data-yt="sOofcSjskcE" data-start="88" style="background-image:url('https://i.ytimg.com/vi/sOofcSjskcE/hqdefault.jpg')"><span class="vw-new">New</span><span class="vw-play" aria-hidden="true">▶</span></div>
     <div class="vw-card" data-yt="9E73FY4fa68" data-start="38" style="background-image:url('https://i.ytimg.com/vi/9E73FY4fa68/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
     <div class="vw-card" data-yt="N3GgFJESqnY" data-start="19" style="background-image:url('https://i.ytimg.com/vi/N3GgFJESqnY/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
     <div class="vw-card" data-yt="w_jRB3oTj5g" data-start="1" style="background-image:url('https://i.ytimg.com/vi/w_jRB3oTj5g/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
