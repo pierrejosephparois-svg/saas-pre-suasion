@@ -1,18 +1,315 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pré-suasion — Sécuriser vos contrats IA premium</title>
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-3.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-4.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-5.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-7.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-6.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-1.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-2.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/jetbrains-mono-400-6.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 <style>
 /* General Sans (inlined for offline use) */
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/MFQT7HFGCR2L5ULQTW6YXYZXXHMPKLJ3/YWQ244D6TACUX5JBKATPOW5I5MGJ3G73/7YY3ZAAE3TRV2LANYOLXNHTPHLXVWTKH.woff2') format('woff2');font-weight:400;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/3RZHWSNONLLWJK3RLPEKUZOMM56GO4LJ/BPDRY7AHVI3MCDXXVXTQQ76H3UXA63S3/SB2OEB6IKZPRR6JT4GFJ2TFT6HBB6AZN.woff2') format('woff2');font-weight:500;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/K46YRH762FH3QJ25IQM3VAXAKCHEXXW4/ISLWQPUZHZF33LRIOTBMFOJL57GBGQ4B/3ZLMEXZEQPLTEPMHTQDAUXP5ZZXCZAEN.woff2') format('woff2');font-weight:600;font-display:swap;font-style:normal}
-@font-face{font-family:'General Sans';src:url('https://cdn.fontshare.com/wf/KWXO5X3YW4X7OLUMPO4X24HQJGJU7E2Q/VOWUQZS3YLP66ZHPTXAFSH6YACY4WJHT/NIQ54PVBBIWVK3PFSOIOUJSXIJ5WTNDP.woff2') format('woff2');font-weight:700;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-400-1.woff2") format('woff2');font-weight:400;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-500-1.woff2") format('woff2');font-weight:500;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-600-1.woff2") format('woff2');font-weight:600;font-display:swap;font-style:normal}
+@font-face{font-family:'General Sans';src:url("assets/fonts/general-sans-700-1.woff2") format('woff2');font-weight:700;font-display:swap;font-style:normal}
 </style>
 <style>
 :root{
@@ -65,7 +362,7 @@ header{
 .logo{display:inline-flex;align-items:center;padding:.3rem .2rem}
 .logo img{height:26px;width:auto;display:block}
 .nav{display:flex;gap:.35rem;align-items:center}
-.nav a{font-size:.9rem;color:var(--dim);text-decoration:none;padding:.45rem .8rem;border-radius:8px;transition:.2s;font-weight:500}
+.nav a{font-size:.9rem;color:var(--dim);text-decoration:none;padding:.45rem .8rem;border-radius:8px;transition:.2s;font-weight:500;white-space:nowrap}
 .nav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
 .nav a.active{color:var(--text);border:1px solid var(--line)}
 .head-actions{display:flex;gap:.6rem;align-items:center}
@@ -362,8 +659,6 @@ image-slot{display:block;width:100%}
 .vw-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:#0c0b18;background:var(--accent);padding-left:4px;box-shadow:0 0 0 6px rgba(123,252,153,.14),0 10px 26px rgba(0,0,0,.45);transition:transform .3s ease}
 .vw-card:hover .vw-play{transform:translate(-50%,-50%) scale(1.08)}
 .vw-card.loaded .vw-play{display:none}
-.vw-new{position:absolute;top:0;left:0;z-index:2;background:#e02b20;color:#fff;font-family:var(--display);font-style:italic;font-weight:700;font-size:1.05rem;line-height:1;padding:.45em .8em .5em .7em;border-radius:0 0 10px 0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
-.vw-card.loaded .vw-new{display:none}
 .msgwall-head{margin-top:4rem}
 .year-tag{display:flex;align-items:center;gap:1rem;margin:2.4rem 0 1.8rem;font-family:var(--mono);font-size:1.05rem;letter-spacing:.16em;color:var(--accent)}
 .year-tag::after{content:'';flex:1;height:1px;background:var(--line-soft)}
@@ -523,6 +818,8 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 .cal-embed{max-width:1000px;margin:2.8rem auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:0 30px 70px rgba(0,0,0,.4)}
 .cal-embed.bare{border:0;background:none;box-shadow:none;border-radius:0;overflow:visible}
 .cal-embed iframe{width:100%;height:760px;border:0;display:block}
+.cal-embed .iclosed-widget{width:100%;min-height:760px;display:block}
+.cal-embed .iclosed-widget iframe{width:100%;height:760px;border:0;display:block}
 .pts{position:relative;height:42px;margin-top:.55rem}
 .pts span{position:absolute;top:0;transform:translateX(-50%);font-size:.58rem;line-height:1.18;color:var(--dim);text-align:center;white-space:nowrap}
 .pts .circuit{color:var(--accent);font-weight:600}
@@ -555,9 +852,9 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 .guar-ic{flex-shrink:0;width:80px;height:80px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(123,252,153,.14);border:1px solid rgba(123,252,153,.4);color:var(--accent)}
 .guar-ic svg{width:40px;height:40px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .guar-k{font-family:var(--mono);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
-.guar-t{font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--dim)}
-.guar-t b{color:var(--text)}
-.guar-t .hl{color:var(--accent)}
+.guar-t{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.28;letter-spacing:-.02em;color:var(--dim)}
+.guar-t strong{font-weight:700;color:var(--text)}
+.guar-t .gu-acc{color:var(--accent)}
 .bio-role-cap{padding:.85rem 1.2rem;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .bio-text h2.bio-h{margin-bottom:.7rem;line-height:1.08}
 .bio-proofline{font-family:var(--display);font-weight:500;font-size:clamp(1rem,1.5vw,1.18rem);color:var(--dim);margin:1.2rem 0 0}
@@ -672,7 +969,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <body>
 
 <header>
-  <a class="logo" href="methode.html" aria-label="Pré-suasion"><img src="images/logo-wordmark.png" alt="Pré-suasion"/></a>
+  <a class="logo" href="methode.html" aria-label="Pré-suasion"><img src="images/logo-wordmark.png" alt="Pré-suasion"></a>
   <nav class="nav">
     <a href="methode.html">Le système</a>
     <a href="solution.html" class="active">Notre solution</a>
@@ -686,8 +983,11 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 <!-- 1 — HERO -->
 <section class="hero" data-screen-label="Hero">
   <div class="eyebrow">La solution</div>
-  <h1 style="max-width:none;font-size:clamp(2.4rem,5.4vw,4.4rem)">Comment sécuriser vos<br/>prochains contrats <span class="hl">sans<br/>dépendre du bouche-à-oreille.</span></h1>
-  <p class="lead">Vous ne manquez ni de compétence, ni de valeur.<br/>Vous manquez simplement d'un <span class="hl">système</span>.</p>
+  <h1 style="max-width:none;font-size:clamp(2.4rem,5.4vw,4.4rem)">Comment sécuriser vos<br>prochains contrats <span class="hl">sans<br>dépendre du bouche-à-oreille.</span></h1>
+  <div class="hero-cta" style="display:flex;align-items:center;gap:.9rem;margin-top:2rem;margin-bottom:1.4rem">
+    <img src="images/pj-portrait.jpg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0">
+    <p class="lead" style="margin:0">Vous ne manquez ni de compétence, ni de valeur.<br>Vous manquez simplement la bonne <span class="hl">approche</span>.</p>
+  </div>
   <div class="hero-cta">
     <a class="btn btn-primary btn-lg js-book">Prendre rendez-vous<span class="arr">↗</span></a>
     <a class="btn btn-ghost btn-lg" href="#systeme">Voir le système<span class="arr">↗</span></a>
@@ -698,11 +998,11 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 
 <!-- S5 — LE SYSTÈME -->
 <section id="systeme" data-screen-label="Le système">
-  <div class="eyebrow">Le système</div>
+  <div class="eyebrow">L'approche</div>
   <h2>Les 4 blocs qu'on <span class="hl">installe ensemble</span></h2>
   <div class="grid c4">
     <div class="card">
-      <div class="sys-pico" style="-webkit-mask-image:url('images/pico-b.png');mask-image:url('images/pico-b.png')"></div>
+      <div class="sys-pico" style="-webkit-mask-image:url(&quot;images/pico-b.png&quot;);mask-image:url(&quot;images/pico-b.png&quot;)"></div>
       <div class="sys-txt">
         <div class="bignum">01</div>
         <h3>Une offre impossible à comparer</h3>
@@ -710,7 +1010,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
       </div>
     </div>
     <div class="card">
-      <div class="sys-pico" style="-webkit-mask-image:url('images/pico-c.png');mask-image:url('images/pico-c.png')"></div>
+      <div class="sys-pico" style="-webkit-mask-image:url(&quot;images/pico-c.png&quot;);mask-image:url(&quot;images/pico-c.png&quot;)"></div>
       <div class="sys-txt">
         <div class="bignum">02</div>
         <h3>Une ingénierie conversationnelle LinkedIn</h3>
@@ -718,7 +1018,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
       </div>
     </div>
     <div class="card">
-      <div class="sys-pico" style="-webkit-mask-image:url('images/pico-a.png');mask-image:url('images/pico-a.png')"></div>
+      <div class="sys-pico" style="-webkit-mask-image:url(&quot;images/pico-a.png&quot;);mask-image:url(&quot;images/pico-a.png&quot;)"></div>
       <div class="sys-txt">
         <div class="bignum">03</div>
         <h3>Un système de pré-suasion</h3>
@@ -726,7 +1026,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
       </div>
     </div>
     <div class="card">
-      <div class="sys-pico" style="-webkit-mask-image:url('images/pico-d.png');mask-image:url('images/pico-d.png')"></div>
+      <div class="sys-pico" style="-webkit-mask-image:url(&quot;images/pico-d.png&quot;);mask-image:url(&quot;images/pico-d.png&quot;)"></div>
       <div class="sys-txt">
         <div class="bignum">04</div>
         <h3>Une livraison asynchrone</h3>
@@ -753,32 +1053,32 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <div class="callgrid">
     <div class="callcard">
       <div class="cc-cover has-photo">
-        <img class="cc-bg" src="images/bloc-shot-4.png" alt=""/>
-        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"/></div>
+        <img class="cc-bg" src="images/bloc-shot-4.png" alt="">
+        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"></div>
         <div class="cc-headline"><div class="cc-dash"></div><div class="cc-title"><span class="hl">1×</span> / semaine</div></div>
       </div>
       <div class="cc-body">
         <div class="cc-cat">Individuel</div>
         <div class="cc-h">Appel d'avancement individuel</div>
-        <div class="cc-meta"><span>Chaque semaine</span><span class="cc-pill">1-1</span></div>
+        <div class="cc-meta"><span>1x par semaine</span><span class="cc-pill">1-1</span></div>
       </div>
     </div>
     <div class="callcard">
       <div class="cc-cover has-photo">
-        <img class="cc-bg" src="images/bloc-shot-3.png" alt=""/>
-        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"/></div>
+        <img class="cc-bg" src="images/bloc-shot-3.png" alt="">
+        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"></div>
         <div class="cc-headline"><div class="cc-dash"></div><div class="cc-title"><span class="hl">2×</span> / semaine</div></div>
       </div>
       <div class="cc-body">
         <div class="cc-cat">Groupe</div>
         <div class="cc-h">Appels de groupe avec Pierre-Joseph</div>
-        <div class="cc-meta"><span>Chaque semaine</span><span class="cc-pill">En groupe de 3</span></div>
+        <div class="cc-meta"><span>3× / semaine</span><span class="cc-pill">En groupe de 3</span></div>
       </div>
     </div>
     <div class="callcard">
       <div class="cc-cover has-photo">
-        <img class="cc-bg" src="images/expert-prospection.png" alt="" style="object-position:center 32%"/>
-        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"/></div>
+        <img class="cc-bg" src="images/expert-prospection.png" alt="" style="object-position:center 32%">
+        <div class="cc-chip"><img class="cc-logo" src="images/logo-wordmark.png" alt="Pré-suasion"></div>
         <div class="cc-headline"><div class="cc-dash"></div><div class="cc-title"><span class="hl">1×</span> / semaine</div></div>
       </div>
       <div class="cc-body">
@@ -797,9 +1097,9 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <div class="together-head">
     <div>
       <div class="eyebrow">On rame avec vous</div>
-      <h2>Votre objectif devient le nôtre.<br/><span class="hl">Jusqu'à ce qu'il soit atteint.</span></h2>
+      <h2>Votre objectif devient le nôtre.<br><span class="hl">Jusqu'à ce qu'il soit atteint.</span></h2>
     </div>
-    <img class="together-illus picto-tint" src="images/rowing-together.png" alt="" aria-hidden="true"/>
+    <img class="together-illus picto-tint" src="images/rowing-together.png" alt="" aria-hidden="true">
   </div>
 
   <div class="incl-grid">
@@ -807,7 +1107,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
       <div class="incl-k">Plateforme privée</div>
       <div class="incl-t">Templates, SOPs, case studies, accès prioritaire et gratuit à notre SaaS de tracking LinkedIn.</div>
       <div class="incl-shot">
-        <img src="images/dashboard-tracking.png" alt="Tableau de bord du SaaS de tracking LinkedIn — follow-ups et intelligence de pré-suasion" loading="lazy"/>
+        <img src="images/dashboard-tracking.png" alt="Tableau de bord du SaaS de tracking LinkedIn — follow-ups et intelligence de pré-suasion" loading="lazy">
       </div>
     </div>
     <div class="incl">
@@ -822,10 +1122,10 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   </div>
 
   <div class="guarantee">
-    <div class="guar-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6z"/><path d="M8.5 12l2.3 2.3L15.5 9.8"/></svg></div>
+    <div class="guar-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6z"></path><path d="M8.5 12l2.3 2.3L15.5 9.8"></path></svg></div>
     <div class="guar-main">
       <div class="guar-k">Garantie</div>
-      <div class="guar-t">Si, après 90 jours, vous n'avez pas généré au moins <span class="hl">2× votre investissement</span>, nous continuons à vous accompagner <b>gratuitement, en illimité</b>, jusqu'à ce que ce soit le cas.</div>
+      <div class="guar-t">Si, après 90 jours, vous n'avez pas généré au moins <strong class="gu-acc">2× votre investissement</strong>, nous continuons à vous accompagner <strong>gratuitement, en illimité</strong>, jusqu'à ce que ce soit le cas.</div>
     </div>
   </div>
 </section>
@@ -837,9 +1137,9 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <div class="eyebrow">Ressources offertes</div>
   <h2>Découvrir les <span class="hl">ressources offertes</span></h2>
   <div class="res-rail" style="margin-top:2.2rem">
-    <div class="vw-card" data-yt="eD72IluGbZo" data-start="255" style="background-image:url('https://i.ytimg.com/vi/eD72IluGbZo/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="v64liZxAtPM" data-start="16" style="background-image:url('https://i.ytimg.com/vi/v64liZxAtPM/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="g-l4LbtJo8I" data-start="6" style="background-image:url('https://i.ytimg.com/vi/g-l4LbtJo8I/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="eD72IluGbZo" data-start="255" style="background-image:url(&quot;images/sol-331b5a11.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="v64liZxAtPM" data-start="16" style="background-image:url(&quot;images/sol-c0f30b92.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="g-l4LbtJo8I" data-start="6" style="background-image:url(&quot;images/sol-b0bd0fe7.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
   </div>
 </section>
 
@@ -851,7 +1151,7 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
   <h2>Chaque mois sans système coûte <span class="hl">plus cher que vous ne l'imaginez.</span></h2>
   <p class="lead" style="margin-top:1.4rem">Ce n'est pas seulement un contrat perdu. C'est :</p>
   <div class="cost-wrap rev">
-    <img class="cost-illus picto-tint-red" src="images/cost-waiting.png" alt="" aria-hidden="true"/>
+    <img class="cost-illus picto-tint-red" src="images/sol-352eef8e.png" alt="" aria-hidden="true">
     <div class="xlist">
     <div class="xrow"><span class="xm">✕</span><div>les <strong>opportunités</strong> non créées</div></div>
     <div class="xrow"><span class="xm">✕</span><div>les <strong>témoignages</strong> non générés</div></div>
@@ -883,12 +1183,12 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
     <div class="bio-aside">
       <div class="bio-photo">
         <span class="badge">5 places / mois</span>
-        <img src="images/pj-portrait.jpg" alt="Pierre-Joseph Parois"/>
+        <img src="images/pj-portrait.jpg" alt="Pierre-Joseph Parois">
         <div class="bio-role-cap">Pierre-Joseph Parois · Fondateur</div>
       </div>
       <div class="bio-logos">
         <div class="bio-logos-lbl">Environnements où j'ai opéré</div>
-        <img src="images/logos-band-white.png" alt="Thales, PwC, Webyn, Pernod Ricard, Suez, Recipeat"/>
+        <img src="images/logos-band-white.png" alt="Thales, PwC, Webyn, Pernod Ricard, Suez, Recipeat">
         <div class="logo-slot" role="img" aria-label="Emplacement disponible : votre logo ici">
           <span class="disc">
             <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true">
@@ -902,10 +1202,10 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
     </div>
     <div class="bio-text">
       <h2 class="bio-h">Si vous êtes arrivé à ce niveau, je sais que <span class="hl">nous dupliquerons ce système</span> dans votre activité, tôt ou tard.</h2>
-      <p class="bio-proofline" style="margin-top:1.8rem">Je me rends disponible pour répondre à vos questions par message.</p>
+      <p class="bio-proofline" style="margin-top:1.8rem">Je me rends disponible pour répondre par message.</p>
       <div class="hero-cta" style="margin-top:2rem">
         <a class="btn btn-primary" href="https://app.iclosed.io/e/altercoopt/diagnostic-offert" target="_blank" rel="noopener">Se rencontrer<span class="arr">↗</span></a>
-        <a class="btn btn-ghost li-btn" href="https://www.linkedin.com/in/pierre-joseph-parois/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21H20.6v-5.3c0-1.26-.02-2.9-1.77-2.9-1.78 0-2.05 1.38-2.05 2.8V21H13V9z"/></svg>Échanger sur LinkedIn<span class="arr">↗</span></a>
+        <a class="btn btn-ghost li-btn" href="https://www.linkedin.com/in/pierre-joseph-parois/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21H20.6v-5.3c0-1.26-.02-2.9-1.77-2.9-1.78 0-2.05 1.38-2.05 2.8V21H13V9z"></path></svg>Échanger sur LinkedIn<span class="arr">↗</span></a>
       </div>
     </div>
   </div>
@@ -922,64 +1222,69 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
     <div class="tcar-track" id="tcarTrack">
       <article class="tcar-slide">
         <p class="tcar-quote">« En quelques semaines, j'ai transformé ma démarche de veille en génération d'opportunités et d'échanges de haut niveau. »</p>
-        <div class="tcar-who"><span class="tcar-av" style="background-image:url('images/nathalie.png');background-size:165%;background-position:50% 20%"></span><span class="tcar-name">Nathalie Thalmann-Iung</span></div>
+        <div class="tcar-who"><span class="tcar-av" style="background-image:url(&quot;images/face-woman.png&quot;);background-size:165%;background-position:50% 20%"></span><span class="tcar-name">Nathalie Thalmann-Iung</span></div>
       </article>
       <article class="tcar-slide">
         <p class="tcar-quote">« Je recommande Pierre-Joseph aux équipes cherchant un profil smart, capable d'accélérer fort et d'élever la qualité des décisions prises. »</p>
-        <div class="tcar-who"><span class="tcar-av" style="background-image:url('images/alexandre.png');background-size:190%;background-position:50% 18%"></span><span class="tcar-name">Alexandre Coudé</span></div>
+        <div class="tcar-who"><span class="tcar-av" style="background-image:url(&quot;images/alexandre.png&quot;);background-size:190%;background-position:50% 18%"></span><span class="tcar-name">Alexandre Coudé</span></div>
       </article>
       <article class="tcar-slide">
         <p class="tcar-quote">« Pierre-Joseph a fait preuve d'une maturité exceptionnelle. »</p>
-        <div class="tcar-who"><span class="tcar-av" style="background-image:url('images/pierre-arthur.jpg');background-size:285%;background-position:47% 26%"></span><span class="tcar-name">Pierre-Arthur Chatard</span></div>
+        <div class="tcar-who"><span class="tcar-av" style="background-image:url(&quot;images/pierre-arthur.jpg&quot;);background-size:285%;background-position:47% 26%"></span><span class="tcar-name">Pierre-Arthur Chatard</span></div>
       </article>
       <article class="tcar-slide">
         <p class="tcar-quote">« Pierre-Joseph se distingue par une grande capacité de travail, beaucoup d'initiative et une vraie force de proposition. »</p>
-        <div class="tcar-who"><span class="tcar-av" style="background-image:url('images/vincent.png');background-size:150%;background-position:50% 13%"></span><span class="tcar-name">Vincent Oliveira</span></div>
+        <div class="tcar-who"><span class="tcar-av" style="background-image:url(&quot;images/vincent.png&quot;);background-size:150%;background-position:50% 13%"></span><span class="tcar-name">Vincent Oliveira</span></div>
       </article>
       <article class="tcar-slide">
         <p class="tcar-quote">« Ce qui m'a marqué, c'est son sens des responsabilités et du travail bien fait. »</p>
-        <div class="tcar-who"><span class="tcar-av" style="background-image:url('images/nicolas.jpg');background-size:140%;background-position:48% 28%"></span><span class="tcar-name">Nicolas Martin</span></div>
+        <div class="tcar-who"><span class="tcar-av" style="background-image:url(&quot;images/nicolas.jpg&quot;);background-size:140%;background-position:48% 28%"></span><span class="tcar-name">Nicolas Martin</span></div>
       </article>
     </div>
     <button class="tcar-nav" data-dir="1" aria-label="Suivant">›</button>
   </div>
   <div class="tcar-dots" id="tcarDots"></div>
   <div class="vidwall" style="margin-top:3.5rem">
-    <div class="vw-card" data-yt="sOofcSjskcE" data-start="88" style="background-image:url('https://i.ytimg.com/vi/sOofcSjskcE/hqdefault.jpg')"><span class="vw-new">New</span><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="9E73FY4fa68" data-start="38" style="background-image:url('https://i.ytimg.com/vi/9E73FY4fa68/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="N3GgFJESqnY" data-start="19" style="background-image:url('https://i.ytimg.com/vi/N3GgFJESqnY/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="w_jRB3oTj5g" data-start="1" style="background-image:url('https://i.ytimg.com/vi/w_jRB3oTj5g/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="5hU2fIf-2nU" data-start="11" style="background-image:url('https://i.ytimg.com/vi/5hU2fIf-2nU/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
-    <div class="vw-card" data-yt="lRuZhwqWdZM" data-start="2" style="background-image:url('https://i.ytimg.com/vi/lRuZhwqWdZM/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="sOofcSjskcE" data-start="84" style="background-image:url(&quot;images/sol-b2f670af.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="9E73FY4fa68" data-start="38" style="background-image:url(&quot;images/sol-a54c1892.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="N3GgFJESqnY" data-start="19" style="background-image:url(&quot;images/sol-eef2aa52.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="w_jRB3oTj5g" data-start="1" style="background-image:url(&quot;images/sol-7e1dbd27.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="5hU2fIf-2nU" data-start="11" style="background-image:url(&quot;images/sol-aa443fcc.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
+    <div class="vw-card" data-yt="lRuZhwqWdZM" data-start="2" style="background-image:url(&quot;images/sol-21bb6abd.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span></div>
   </div>
 
   <div class="msgwall">
-    <img src="images/msg-2.png" alt="Message reçu — recommandation" loading="lazy"/>
-    <img src="images/msg-3.png" alt="Message reçu — CEO" loading="lazy"/>
-    <img src="images/msg-1.png" alt="Message reçu — Discord" loading="lazy"/>
-    <img src="images/msg-6.png" alt="Message reçu — email" loading="lazy"/>
-    <img src="images/msg-4.png" alt="Message reçu — WhatsApp" loading="lazy"/>
-    <img src="images/msg-5.png" alt="Message reçu — YouTube" loading="lazy"/>
-    <img src="images/msg-7.png" alt="Message reçu — LinkedIn" loading="lazy"/>
+    <img src="images/msg-2.png" alt="Message reçu — recommandation" loading="lazy">
+    <img src="images/msg-3.png" alt="Message reçu — CEO" loading="lazy">
+    <img src="images/msg-1.png" alt="Message reçu — Discord" loading="lazy">
+    <img src="images/msg-6.png" alt="Message reçu — email" loading="lazy">
+    <img src="images/msg-4.png" alt="Message reçu — WhatsApp" loading="lazy">
+    <img src="images/msg-5.png" alt="Message reçu — YouTube" loading="lazy">
+    <img src="images/msg-7.png" alt="Message reçu — LinkedIn" loading="lazy">
   </div>
 
   <div class="year-tag" style="margin-top:5rem">2026</div>
   <div class="nflx-rail" aria-label="Témoignages vidéo 2026">
-    <div class="vw-card" data-yt="wajXC33ezUE" data-start="0" style="background-image:url('https://i.ytimg.com/vi/wajXC33ezUE/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
-    <div class="vw-card" data-yt="rusj1m8Q74Y" data-start="0" style="background-image:url('https://i.ytimg.com/vi/rusj1m8Q74Y/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
-    <div class="vw-card" data-yt="mV_-gyhn4zs" data-start="0" style="background-image:url('https://i.ytimg.com/vi/mV_-gyhn4zs/hqdefault.jpg')"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
+    <div class="vw-card" data-yt="wajXC33ezUE" data-start="0" style="background-image:url(&quot;images/sol-f64d8aed.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
+    <div class="vw-card" data-yt="rusj1m8Q74Y" data-start="0" style="background-image:url(&quot;images/sol-50a7f1f5.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
+    <div class="vw-card" data-yt="mV_-gyhn4zs" data-start="0" style="background-image:url(&quot;images/sol-df21397e.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
+  </div>
+
+  <div class="year-tag" style="margin-top:5rem">2026</div>
+  <div class="nflx-rail" aria-label="Autres témoignages vidéo 2026">
+    <div class="vw-card" data-yt="Dr154oofyWs" data-start="0" style="background-image:url(&quot;images/sol-2ff55bf1.jpg&quot;)"><span class="vw-play" aria-hidden="true">▶</span><span class="nflx-tt">Témoignage vidéo</span></div>
   </div>
 </section>
 
 <!-- SIGNATURE LOGO -->
-<div class="siglogo"><img src="images/logo-mark-white-fade.png" alt="" aria-hidden="true"/></div>
+<div class="siglogo"><img src="images/logo-mark-white-fade.png" alt="" aria-hidden="true"></div>
 
 <!-- 12 — FINAL CTA -->
 <section class="final" data-screen-label="CTA final">
   <h2>Recevoir un feedback <span class="hl">personnalisé</span> dès maintenant</h2>
   <p class="lead center">Le temps passe et les effets composés se perdent.</p>
   <div class="cal-embed bare">
-    <iframe src="https://app.iclosed.io/e/altercoopt/diagnostic-offert" title="Réserver votre diagnostic offert" loading="lazy"></iframe>
+    <div class="iclosed-widget" data-url="https://app.iclosed.io/e/altercoopt/diagnostic-offert" style="width:100%;height:760px;"></div>
   </div>
 </section>
 
@@ -989,6 +1294,8 @@ footer{position:relative;z-index:2;display:flex;justify-content:space-between;al
 </footer>
 
 <script src="image-slot.js"></script>
+<script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
+<!-- iClosed inline scheduler widget -->
 <script>
 // Carousel témoignages — simple, scroll-snap + flèches + points
 (function(){
@@ -1111,13 +1418,8 @@ document.querySelectorAll('.js-book').forEach(function(b){
 })();
 </script>
 
-<template id="__bundler_thumbnail">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<rect width="100" height="100" fill="#0B0A16"/>
-<polygon points="50,30 66,64 34,64" fill="#7BFC99"/>
-<text x="50" y="84" font-family="monospace" font-size="11" fill="#7BFC99" text-anchor="middle" font-weight="bold">PRÉ-SUASION</text>
-</svg>
-</template>
 
-</body>
-</html>
+
+
+
+</body></html>
