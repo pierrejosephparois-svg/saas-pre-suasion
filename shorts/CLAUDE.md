@@ -18,7 +18,7 @@ HeyGen                  l'avatar clone lit le script avec la voix clonee
 ffmpeg                  detecte et coupe les blancs
       |
       v  scripts/render.mjs
-Remotion                montage : sous-titres mot a mot + elements de design
+Remotion                montage : sous-titres direct-response + design
       |
       v
 out/2026-09-01-S01.mp4  1080x1920, pret a publier
@@ -38,6 +38,9 @@ out/2026-09-01-S01.mp4  1080x1920, pret a publier
 - **La DA est celle du site.** Couleurs et polices sont dans
   `src/lib/theme.js`, synchronisees avec le `:root` de `index.html`.
   Ne pas introduire d'autre couleur ni d'autre police.
+- **Sous-titres : style direct-response** (facon Hormozi). 2 a 3 mots a
+  l'ecran, capitales, contour noir epais, mot prononce en accent de marque.
+  Reglages en tete de `src/components/Captions.jsx` (`GROUP_SIZE`, `STROKE`).
 - **Zones sures** : rien d'important au-dessus de 210 px ni en dessous de
   520 px (interface Instagram / TikTok). Constante `SAFE`.
 - **Duree cible : 30 a 45 s.** Au-dela, couper une idee, pas accelerer.

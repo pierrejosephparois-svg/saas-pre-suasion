@@ -1598,9 +1598,10 @@
       ],
       "cta": "Enregistre : c'est le bloc qui change ta vie, pas ton CA.",
       "date": "2026-10-05",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-05-S25.mp4"
     },
     {
       "id": "S26",
