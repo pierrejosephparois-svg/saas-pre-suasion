@@ -125,9 +125,10 @@
       ],
       "cta": "Si tu as déjà vécu ça, commente VÉCU.",
       "date": "2026-09-02",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-02-S02.mp4"
     },
     {
       "id": "S03",
