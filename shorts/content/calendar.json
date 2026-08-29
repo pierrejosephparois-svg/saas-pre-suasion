@@ -1388,9 +1388,10 @@
       ],
       "cta": "Enregistre. Tu vas revoir ta séquence.",
       "date": "2026-09-30",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-30-S22.mp4"
     },
     {
       "id": "S23",
@@ -1460,9 +1461,10 @@
       ],
       "cta": "Teste au prochain call : tais-toi 20 % de plus.",
       "date": "2026-10-01",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-01-S23.mp4"
     },
     {
       "id": "S24",
@@ -1523,9 +1525,10 @@
       ],
       "cta": "Commente PRIX, je t'envoie 3 variantes testées.",
       "date": "2026-10-02",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-02-S24.mp4"
     },
     {
       "id": "S25",
