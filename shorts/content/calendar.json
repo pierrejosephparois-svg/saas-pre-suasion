@@ -1,0 +1,1911 @@
+{
+  "meta": {
+    "owner": "Pierre-Joseph Parois",
+    "brand": "Pré-suasion",
+    "icp": "Consultants IA & automatisation francophones qui veulent signer plus de clients à des prix plus élevés",
+    "month": "2026-09",
+    "cadence": "1 short par jour ouvré",
+    "voice": "tutoiement, phrases courtes, zéro jargon, une idée par short"
+  },
+  "shorts": [
+    {
+      "id": "S01",
+      "day": 1,
+      "title": "Il a décidé avant de te parler",
+      "angle": "Le cœur du concept : la confiance se construit AVANT le rendez-vous.",
+      "principle": "Autorité + Moment privilégié",
+      "hookType": "menace + soi",
+      "lines": [
+        {
+          "t": "Ton prospect a déjà décidé.",
+          "v": {
+            "type": "chip",
+            "text": "AVANT LE RDV"
+          }
+        },
+        {
+          "t": "Avant même que tu ouvres la bouche."
+        },
+        {
+          "t": "Cialdini a mesuré ça :",
+          "v": {
+            "type": "quote",
+            "text": "Le plus important n'est pas ce que vous dites. C'est ce que votre prospect croit avant que vous parliez.",
+            "author": "ROBERT CIALDINI"
+          }
+        },
+        {
+          "t": "ce sur quoi tu diriges son attention"
+        },
+        {
+          "t": "juste avant ta demande change sa décision."
+        },
+        {
+          "t": "Donc si tu passes tes rendez-vous à convaincre,",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "Tu convaincs pendant le RDV",
+              "Tu subis les objections",
+              "Tu vends au rabais"
+            ]
+          }
+        },
+        {
+          "t": "c'est que tu as commencé trop tard."
+        },
+        {
+          "t": "La vente ne commence pas au premier rendez-vous.",
+          "v": {
+            "type": "big",
+            "text": "La vente commence\nAVANT le premier RDV."
+          }
+        },
+        {
+          "t": "Elle commence avant."
+        }
+      ],
+      "cta": "Commente PRÉ-SUASION, je t'envoie la mécanique complète.",
+      "date": "2026-09-01",
+      "status": "preview",
+      "avatar": null,
+      "audioSeconds": null,
+      "output": "out/2026-09-01-S01.mp4"
+    },
+    {
+      "id": "S02",
+      "day": 2,
+      "title": "Le mensonge du premier rendez-vous",
+      "angle": "Déconstruire la croyance : la vente commence au R1.",
+      "principle": "Cohérence + Autorité",
+      "hookType": "nouveauté contre-intuitive",
+      "lines": [
+        {
+          "t": "On t'a vendu un truc faux.",
+          "v": {
+            "type": "chip",
+            "text": "CE QU'ON T'A APPRIS"
+          }
+        },
+        {
+          "t": "Que la vente commence au premier rendez-vous.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "La vente commence au R1",
+              "Il faut pitcher son offre",
+              "Un prospect met du temps"
+            ]
+          }
+        },
+        {
+          "t": "Qu'il faut pitcher son offre."
+        },
+        {
+          "t": "Qu'un prospect met toujours du temps."
+        },
+        {
+          "t": "C'était ta logique. C'est ce qu'on t'a appris."
+        },
+        {
+          "t": "Sauf que la décision d'acheter est émotionnelle,",
+          "v": {
+            "type": "big",
+            "text": "La décision est prise avant.\nLe RDV ne fait que la confirmer."
+          }
+        },
+        {
+          "t": "et elle est prise avant le rendez-vous."
+        },
+        {
+          "t": "Le rendez-vous ne fait que confirmer."
+        }
+      ],
+      "cta": "Si tu as déjà vécu ça, commente VÉCU.",
+      "date": "2026-09-02",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S03",
+      "day": 3,
+      "title": "Sept rendez-vous ou deux",
+      "angle": "La comparaison cycle long vs cycle court.",
+      "principle": "Preuve sociale de faisabilité",
+      "hookType": "chiffre",
+      "lines": [
+        {
+          "t": "Sept rendez-vous pour signer un client.",
+          "v": {
+            "type": "chip",
+            "text": "CYCLE DE VENTE"
+          }
+        },
+        {
+          "t": "Ou deux.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Sans pré-suasion",
+              "value": "7 RDV",
+              "pct": 100
+            },
+            "after": {
+              "label": "Avec pré-suasion",
+              "value": "2 RDV",
+              "pct": 28
+            }
+          }
+        },
+        {
+          "t": "La différence n'est pas ton talent de closer."
+        },
+        {
+          "t": "Sans pré-suasion, tu construis la confiance"
+        },
+        {
+          "t": "pendant les rendez-vous."
+        },
+        {
+          "t": "Avec, tu la construis en dehors.",
+          "v": {
+            "type": "big",
+            "text": "Construis la confiance\nen dehors des rendez-vous."
+          }
+        },
+        {
+          "t": "Résultat : quand il arrive, il a déjà décidé."
+        },
+        {
+          "t": "Cycle divisé par deux. Même offre."
+        }
+      ],
+      "cta": "Enregistre ce short, tu en auras besoin lundi.",
+      "date": "2026-09-03",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S04",
+      "day": 4,
+      "title": "Tu n'as pas un problème de closing",
+      "angle": "Rediriger l'attention du closing vers le volume et la confiance.",
+      "principle": "Autorité + aveu de faiblesse",
+      "hookType": "soi + soulagement",
+      "lines": [
+        {
+          "t": "Tu n'as pas un problème de closing.",
+          "v": {
+            "type": "chip",
+            "text": "DIAGNOSTIC"
+          }
+        },
+        {
+          "t": "Je vais te dire ce que personne ne te dit :"
+        },
+        {
+          "t": "la plupart des consultants IA closent très bien."
+        },
+        {
+          "t": "Ils manquent juste de conversations.",
+          "v": {
+            "type": "math",
+            "rows": [
+              "Volume de RDV",
+              "×  Confiance (pré-suasion)",
+              "=  Revenu"
+            ]
+          }
+        },
+        {
+          "t": "Ton revenu, c'est deux leviers. Deux."
+        },
+        {
+          "t": "Le volume de rendez-vous.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Volume : l'acquisition",
+              "Confiance : la pré-suasion"
+            ]
+          }
+        },
+        {
+          "t": "Et la confiance avant le rendez-vous."
+        },
+        {
+          "t": "Si tu polis ton script de closing"
+        },
+        {
+          "t": "en oubliant ces deux-là, tu optimises le mauvais chiffre."
+        }
+      ],
+      "cta": "Lequel te manque : volume ou confiance ? Réponds en un mot.",
+      "date": "2026-09-04",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S05",
+      "day": 5,
+      "title": "Les maths d'un consultant à 15k",
+      "angle": "Rendre le résultat calculable, donc crédible et faisable.",
+      "principle": "Preuve sociale de faisabilité",
+      "hookType": "chiffre + faisabilité",
+      "lines": [
+        {
+          "t": "Quinze mille euros par semaine.",
+          "v": {
+            "type": "chip",
+            "text": "REVENU.CALC"
+          }
+        },
+        {
+          "t": "Je te montre le calcul, tu jugeras."
+        },
+        {
+          "t": "Cinq rendez-vous qualifiés par semaine.",
+          "v": {
+            "type": "math",
+            "rows": [
+              "5 RDV qualifiés / semaine",
+              "×  20 % de conversion",
+              "=  1 contrat / semaine",
+              "×  15 000 €",
+              "=  15 000 € / semaine"
+            ]
+          }
+        },
+        {
+          "t": "C'est le cas pessimiste."
+        },
+        {
+          "t": "Vingt pour cent de conversion, grâce à la pré-suasion."
+        },
+        {
+          "t": "Ça fait un contrat signé par semaine."
+        },
+        {
+          "t": "Contrat moyen à quinze mille euros."
+        },
+        {
+          "t": "Tu n'as pas besoin d'un miracle.",
+          "v": {
+            "type": "big",
+            "text": "Pas un miracle.\nDeux variables."
+          }
+        },
+        {
+          "t": "Tu as besoin de deux variables qui bougent."
+        }
+      ],
+      "cta": "Commente CALCUL, je t'envoie la feuille avec tes chiffres.",
+      "date": "2026-09-07",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S06",
+      "day": 6,
+      "title": "Arrête de vendre des heures",
+      "angle": "Passer du TJM à la résolution d'un problème coûteux.",
+      "principle": "Rareté cadrée en perte",
+      "hookType": "menace",
+      "lines": [
+        {
+          "t": "Tant que tu vends des heures, tu es comparable.",
+          "v": {
+            "type": "chip",
+            "text": "OFFRE"
+          }
+        },
+        {
+          "t": "Et quand tu es comparable, tu es négociable."
+        },
+        {
+          "t": "Le client ne compare pas ton intelligence.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Tu vends des heures",
+              "value": "Comparable",
+              "pct": 100
+            },
+            "after": {
+              "label": "Tu vends un problème résolu",
+              "value": "Incomparable",
+              "pct": 30
+            }
+          }
+        },
+        {
+          "t": "Il compare ton tarif à celui d'à côté."
+        },
+        {
+          "t": "Change l'unité de valeur."
+        },
+        {
+          "t": "Ne vends plus des jours d'automatisation.",
+          "v": {
+            "type": "big",
+            "text": "Vends la résolution\nd'un problème coûteux."
+          }
+        },
+        {
+          "t": "Vends la résolution d'un problème"
+        },
+        {
+          "t": "qui lui coûte cher chaque mois."
+        },
+        {
+          "t": "Là, il n'y a plus rien à comparer."
+        }
+      ],
+      "cta": "Quel problème coûteux tu résous ? Écris-le en commentaire.",
+      "date": "2026-09-08",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S07",
+      "day": 7,
+      "title": "Une offre impossible à comparer",
+      "angle": "Bloc 1 des 4 : l'offre.",
+      "principle": "Autorité",
+      "hookType": "mystère",
+      "lines": [
+        {
+          "t": "Deux consultants IA. Même compétence.",
+          "v": {
+            "type": "chip",
+            "text": "BLOC 01"
+          }
+        },
+        {
+          "t": "L'un signe à trois mille. L'autre à quinze mille."
+        },
+        {
+          "t": "La différence n'est pas technique."
+        },
+        {
+          "t": "Le premier vend un outil.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Vend un outil",
+              "value": "3 000 €",
+              "pct": 22
+            },
+            "after": {
+              "label": "Vend un résultat",
+              "value": "15 000 €",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Le second vend un résultat chiffré."
+        },
+        {
+          "t": "Une offre impossible à comparer, c'est ça :",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Un problème précis",
+              "Un coût mesuré",
+              "Un délai tenu"
+            ]
+          }
+        },
+        {
+          "t": "un problème précis, un coût mesuré, un délai."
+        },
+        {
+          "t": "Il ne peut plus te mettre face à un concurrent."
+        },
+        {
+          "t": "Il peut juste dire oui ou non."
+        }
+      ],
+      "cta": "Enregistre : tu réécriras ton offre avec ces 3 lignes.",
+      "date": "2026-09-09",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S08",
+      "day": 8,
+      "title": "Le prospect qui disparaît",
+      "angle": "Expliquer le ghosting par le manque de confiance préalable.",
+      "principle": "Preuve sociale + Autorité",
+      "hookType": "soi + douleur",
+      "lines": [
+        {
+          "t": "Il était chaud. Il a disparu.",
+          "v": {
+            "type": "chip",
+            "text": "GHOSTING"
+          }
+        },
+        {
+          "t": "Tu connais ce silence. Moi aussi."
+        },
+        {
+          "t": "On croit que c'est le budget. Ou le timing."
+        },
+        {
+          "t": "C'est rarement ça.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "Pas sûr à 200 % que ça marche",
+              "Peur de refaire une erreur",
+              "N'a pas vu de système simple"
+            ]
+          }
+        },
+        {
+          "t": "Il n'était pas sûr à deux cents pour cent"
+        },
+        {
+          "t": "que ton intervention change ses résultats."
+        },
+        {
+          "t": "Il avait peur de passer pour un idiot en interne.",
+          "v": {
+            "type": "big",
+            "text": "Le silence n'est pas un refus.\nC'est un manque de confiance."
+          }
+        },
+        {
+          "t": "Le silence, c'est un manque de confiance."
+        },
+        {
+          "t": "Pas un refus."
+        }
+      ],
+      "cta": "Combien de prospects fantômes ce mois-ci ? Un chiffre en commentaire.",
+      "date": "2026-09-10",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S09",
+      "day": 9,
+      "title": "Avoue ta faiblesse en premier",
+      "angle": "L'aveu de faiblesse comme accélérateur de crédibilité.",
+      "principle": "Autorité",
+      "hookType": "contre-intuitif",
+      "lines": [
+        {
+          "t": "Dis ton défaut en premier. Tu closeras plus.",
+          "v": {
+            "type": "chip",
+            "text": "AUTORITÉ"
+          }
+        },
+        {
+          "t": "Ça paraît absurde. C'est documenté depuis quarante ans."
+        },
+        {
+          "t": "Quand tu reconnais une faiblesse"
+        },
+        {
+          "t": "avant qu'on te la sorte,"
+        },
+        {
+          "t": "tu deviens crédible sur tout le reste.",
+          "v": {
+            "type": "big",
+            "text": "« Nous ne sommes pas les moins chers.\nEN REVANCHE… »"
+          }
+        },
+        {
+          "t": "La formule tient en deux temps."
+        },
+        {
+          "t": "Un : nous ne sommes pas les moins chers.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "1. J'avoue le défaut réel",
+              "2. « En revanche »",
+              "3. La force qui l'annule"
+            ]
+          }
+        },
+        {
+          "t": "Deux : en revanche, vous rentabilisez l'écart."
+        },
+        {
+          "t": "Le mot qui travaille, c'est « en revanche »."
+        }
+      ],
+      "cta": "Teste-le cette semaine et dis-moi ce que ça donne.",
+      "date": "2026-09-11",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S10",
+      "day": 10,
+      "title": "Demande un conseil, pas un avis",
+      "angle": "Le 7e principe : l'unité.",
+      "principle": "Unité",
+      "hookType": "nouveauté",
+      "lines": [
+        {
+          "t": "Change un mot. Change la réponse.",
+          "v": {
+            "type": "chip",
+            "text": "UNITÉ"
+          }
+        },
+        {
+          "t": "Ne demande plus : qu'est-ce que vous en pensez ?"
+        },
+        {
+          "t": "Demande : quel conseil vous me donneriez ?",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "« Qu'en pensez-vous ? »",
+              "value": "Un juge",
+              "pct": 100
+            },
+            "after": {
+              "label": "« Quel conseil ? »",
+              "value": "Un complice",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Un avis met la personne en position de juge."
+        },
+        {
+          "t": "Elle prend du recul. Elle évalue. Elle critique."
+        },
+        {
+          "t": "Un conseil la met dans ton camp.",
+          "v": {
+            "type": "big",
+            "text": "Un avis crée un juge.\nUn conseil crée un complice."
+          }
+        },
+        {
+          "t": "Elle se projette avec toi. Elle devient complice."
+        },
+        {
+          "t": "Même personne, deux relations différentes."
+        }
+      ],
+      "cta": "Quel conseil tu me donnerais pour ce format ? Je lis tout.",
+      "date": "2026-09-14",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S11",
+      "day": 11,
+      "title": "29 % à 77 % avec une question",
+      "angle": "L'auto-étiquetage : preuve chiffrée de la pré-suasion.",
+      "principle": "Cohérence",
+      "hookType": "chiffre choc",
+      "lines": [
+        {
+          "t": "Vingt-neuf pour cent. Puis soixante-dix-sept.",
+          "v": {
+            "type": "stat",
+            "value": "29 %",
+            "label": "taux de réponse avant"
+          }
+        },
+        {
+          "t": "Même demande. Mêmes gens.",
+          "v": {
+            "type": "stat",
+            "value": "77 %",
+            "label": "avec une question posée AVANT"
+          }
+        },
+        {
+          "t": "Une seule phrase en plus, avant."
+        },
+        {
+          "t": "Les chercheurs ont demandé, avant :",
+          "v": {
+            "type": "big",
+            "text": "« Vous vous considérez comme\nquelqu'un de serviable ? »"
+          }
+        },
+        {
+          "t": "vous vous considérez comme quelqu'un de serviable ?"
+        },
+        {
+          "t": "La personne répond oui. Elle vient de s'étiqueter."
+        },
+        {
+          "t": "Refuser ensuite, ce serait se contredire."
+        },
+        {
+          "t": "C'est tout le principe.",
+          "v": {
+            "type": "big",
+            "text": "On ne persuade pas.\nOn prépare."
+          }
+        },
+        {
+          "t": "On ne persuade pas. On prépare."
+        }
+      ],
+      "cta": "Tu te considères comme quelqu'un qui teste ? Alors teste et raconte.",
+      "date": "2026-09-15",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S12",
+      "day": 12,
+      "title": "Le moment privilégié",
+      "angle": "Définir le moment privilégié de Cialdini pour un consultant.",
+      "principle": "Autorité",
+      "hookType": "mystère",
+      "lines": [
+        {
+          "t": "Il existe une fenêtre de quelques secondes.",
+          "v": {
+            "type": "chip",
+            "text": "MOMENT PRIVILÉGIÉ"
+          }
+        },
+        {
+          "t": "Cialdini l'appelle le moment privilégié."
+        },
+        {
+          "t": "Juste après avoir dirigé l'attention sur une idée,",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Ce qui est focal est important",
+              "Ce qui est focal est causal",
+              "L'effet est temporaire"
+            ]
+          }
+        },
+        {
+          "t": "cette idée devient plus importante pour lui."
+        },
+        {
+          "t": "Et les idées concurrentes sont bloquées."
+        },
+        {
+          "t": "Concrètement : ce que ton prospect a lu de toi hier",
+          "v": {
+            "type": "big",
+            "text": "Ce qu'il a lu de toi hier\ndécide de ce qu'il entend demain."
+          }
+        },
+        {
+          "t": "décide de ce qu'il entend pendant l'appel."
+        },
+        {
+          "t": "La fenêtre est courte. C'est pour ça qu'on l'organise."
+        }
+      ],
+      "cta": "Commente MOMENT si tu veux la séquence exacte.",
+      "date": "2026-09-16",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S13",
+      "day": 13,
+      "title": "131 appels en 3 mois",
+      "angle": "Preuve personnelle et faisabilité sans outillage.",
+      "principle": "Preuve sociale + faisabilité",
+      "hookType": "chiffre + soi",
+      "lines": [
+        {
+          "t": "Cent trente et un appels en trois mois.",
+          "v": {
+            "type": "stat",
+            "value": "131",
+            "label": "appels générés en 3 mois"
+          }
+        },
+        {
+          "t": "Seul. Zéro automatisation. Zéro funnel.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "0 automatisation",
+              "0 funnel",
+              "0 budget pub"
+            ]
+          }
+        },
+        {
+          "t": "Je le précise pour une raison."
+        },
+        {
+          "t": "La plupart croient qu'il faut une usine."
+        },
+        {
+          "t": "Il faut des conversations qui commencent bien.",
+          "v": {
+            "type": "big",
+            "text": "Des conversations.\nPas une usine."
+          }
+        },
+        {
+          "t": "Un flux régulier avec les bonnes personnes,"
+        },
+        {
+          "t": "sur WhatsApp, en mail, sur LinkedIn."
+        },
+        {
+          "t": "Sans dépendre du bouche-à-oreille et de ses vagues."
+        },
+        {
+          "t": "C'est même la partie la plus simple."
+        }
+      ],
+      "cta": "Combien de conversations tu as démarrées cette semaine ?",
+      "date": "2026-09-17",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S14",
+      "day": 14,
+      "title": "Arrête de parler de ta techno",
+      "angle": "Erreur numéro 1 des consultants IA.",
+      "principle": "Sympathie + Autorité",
+      "hookType": "menace + soi",
+      "lines": [
+        {
+          "t": "Ton prospect se fiche de ton agent IA.",
+          "v": {
+            "type": "chip",
+            "text": "ERREUR N°1"
+          }
+        },
+        {
+          "t": "Vraiment. Le modèle, le workflow, le RAG."
+        },
+        {
+          "t": "Ce n'est pas du mépris.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Tu parles techno",
+              "value": "Il compare",
+              "pct": 100
+            },
+            "after": {
+              "label": "Tu parles coût",
+              "value": "Il décide",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "C'est de l'économie d'attention."
+        },
+        {
+          "t": "Il achète une seule chose : la fin d'un coût."
+        },
+        {
+          "t": "Alors traduis.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Combien ça lui coûte par mois",
+              "Depuis combien de temps",
+              "Ce que ça devient dans 6 mois"
+            ]
+          }
+        },
+        {
+          "t": "Combien ce problème lui coûte chaque mois."
+        },
+        {
+          "t": "Depuis combien de temps il le paie."
+        },
+        {
+          "t": "Et ce que ça donne s'il ne bouge pas."
+        }
+      ],
+      "cta": "Traduis ton offre en euros perdus. Colle-la en commentaire.",
+      "date": "2026-09-18",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S15",
+      "day": 15,
+      "title": "500 000 € retrouvés chez Michael",
+      "angle": "Étude de cas Michael.",
+      "principle": "Preuve sociale",
+      "hookType": "chiffre",
+      "lines": [
+        {
+          "t": "Cinq cent mille euros. Déjà dans la boîte.",
+          "v": {
+            "type": "stat",
+            "value": "500 K€",
+            "label": "de churn identifié et récolté"
+          }
+        },
+        {
+          "t": "Michael dirige une agence à trois millions."
+        },
+        {
+          "t": "On n'a pas commencé par lui trouver des clients.",
+          "v": {
+            "type": "chip",
+            "text": "CAS CLIENT · 7 MOIS"
+          }
+        },
+        {
+          "t": "On a commencé par ceux qui partaient sans le dire."
+        },
+        {
+          "t": "Cinq cent mille euros de churn identifié.",
+          "v": {
+            "type": "big",
+            "text": "L'argent le plus rapide\nest déjà chez tes clients."
+          }
+        },
+        {
+          "t": "Puis récolté. En sept mois."
+        },
+        {
+          "t": "L'argent le plus rapide n'est pas dehors."
+        },
+        {
+          "t": "Il est chez les gens qui te connaissent déjà."
+        }
+      ],
+      "cta": "Enregistre ce short avant ton prochain point client.",
+      "date": "2026-09-21",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S16",
+      "day": 16,
+      "title": "Zéro mission, puis 36 000 €",
+      "angle": "Étude de cas Nathalie.",
+      "principle": "Preuve sociale de faisabilité",
+      "hookType": "avant/après",
+      "lines": [
+        {
+          "t": "Elle avait zéro mission.",
+          "v": {
+            "type": "chip",
+            "text": "CAS CLIENT"
+          }
+        },
+        {
+          "t": "Pas un client. Pas une référence.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Au départ",
+              "value": "0 mission",
+              "pct": 5
+            },
+            "after": {
+              "label": "Ensuite",
+              "value": "36 000 €",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Nathalie a signé trente-six mille euros.",
+          "v": {
+            "type": "stat",
+            "value": "36 k€",
+            "label": "signés · mission de 4 mois"
+          }
+        },
+        {
+          "t": "Une mission de quatre mois."
+        },
+        {
+          "t": "Ce qui a changé n'est pas son niveau technique."
+        },
+        {
+          "t": "C'est l'ordre des choses :",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "La confiance d'abord",
+              "Le rendez-vous ensuite",
+              "La proposition en dernier"
+            ]
+          }
+        },
+        {
+          "t": "la confiance d'abord, le rendez-vous ensuite."
+        },
+        {
+          "t": "Si elle a pu, l'excuse du débutant tombe."
+        }
+      ],
+      "cta": "Tu démarres ? Commente DÉBUT, je t'envoie l'ordre exact.",
+      "date": "2026-09-22",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S17",
+      "day": 17,
+      "title": "EY, KPMG, Amundi sans expérience",
+      "angle": "Étude de cas Matteo.",
+      "principle": "Preuve sociale + Autorité empruntée",
+      "hookType": "nouveauté",
+      "lines": [
+        {
+          "t": "Zéro expérience. Des propositions chez EY et KPMG.",
+          "v": {
+            "type": "logos",
+            "items": [
+              "EY",
+              "KPMG",
+              "AMUNDI"
+            ]
+          }
+        },
+        {
+          "t": "Et chez Amundi.",
+          "v": {
+            "type": "chip",
+            "text": "CAS CLIENT"
+          }
+        },
+        {
+          "t": "Matteo n'avait rien à montrer."
+        },
+        {
+          "t": "Pas de références. Pas de logos. Pas d'années."
+        },
+        {
+          "t": "Il n'a pas postulé plus fort.",
+          "v": {
+            "type": "big",
+            "text": "Il n'a pas postulé plus fort.\nIl a préparé le terrain."
+          }
+        },
+        {
+          "t": "Il a préparé le terrain."
+        },
+        {
+          "t": "Créer assez de confiance avec les bonnes personnes",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Identifier les bonnes personnes",
+              "Donner en premier",
+              "Se faire recommander"
+            ]
+          }
+        },
+        {
+          "t": "pour être recommandé de l'intérieur."
+        },
+        {
+          "t": "Ça marche aussi pour signer des clients."
+        }
+      ],
+      "cta": "Commente RECO si tu veux le script des messages.",
+      "date": "2026-09-23",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S18",
+      "day": 18,
+      "title": "Je n'ai jamais postulé",
+      "angle": "Storytelling fondateur 2020.",
+      "principle": "Sympathie + Unité",
+      "hookType": "mystère personnel",
+      "lines": [
+        {
+          "t": "Je n'ai jamais postulé à ces entreprises.",
+          "v": {
+            "type": "chip",
+            "text": "2020"
+          }
+        },
+        {
+          "t": "En 2020, je découvre un effet peu connu.",
+          "v": {
+            "type": "quote",
+            "text": "Pour bien persuader, il est nécessaire de bien pré-suader.",
+            "author": "ROBERT CIALDINI"
+          }
+        },
+        {
+          "t": "La pré-suasion."
+        },
+        {
+          "t": "Je m'en sers pour rencontrer mon premier mentor."
+        },
+        {
+          "t": "Puis pour décrocher des entretiens.",
+          "v": {
+            "type": "big",
+            "text": "Je n'ai pas postulé.\nJ'ai été recommandé."
+          }
+        },
+        {
+          "t": "Sans jamais envoyer un CV."
+        },
+        {
+          "t": "Deux ans en finance advisory chez PwC.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "2020 · 1er mentor",
+              "PwC · 2 ans",
+              "Webyn · 2 ans sales"
+            ]
+          }
+        },
+        {
+          "t": "Deux ans en sales chez Webyn."
+        },
+        {
+          "t": "Aujourd'hui je l'installe chez des consultants IA."
+        }
+      ],
+      "cta": "Abonne-toi, je détaille la mécanique cette semaine.",
+      "date": "2026-09-24",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S19",
+      "day": 19,
+      "title": "Des gens comme toi y arrivent",
+      "angle": "Preuve sociale de similarité et de faisabilité.",
+      "principle": "Preuve sociale",
+      "hookType": "soi",
+      "lines": [
+        {
+          "t": "Tu ne suis pas les experts. Tu suis tes semblables.",
+          "v": {
+            "type": "chip",
+            "text": "PREUVE SOCIALE"
+          }
+        },
+        {
+          "t": "C'est désagréable à entendre. C'est mesuré partout."
+        },
+        {
+          "t": "Un témoignage ne convainc pas parce qu'il est élogieux.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Témoignage élogieux",
+              "value": "Ignoré",
+              "pct": 100
+            },
+            "after": {
+              "label": "Témoignage semblable",
+              "value": "Cru",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Il convainc quand celui qui parle"
+        },
+        {
+          "t": "ressemble à celui qui lit.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Même métier",
+              "Même taille",
+              "Même point de départ"
+            ]
+          }
+        },
+        {
+          "t": "Même métier, même taille, même blocage."
+        },
+        {
+          "t": "Arrête de mettre en avant ton plus gros client.",
+          "v": {
+            "type": "big",
+            "text": "Pas ton plus gros client.\nCelui qui lui ressemble."
+          }
+        },
+        {
+          "t": "Mets celui qui ressemble le plus à ta cible."
+        }
+      ],
+      "cta": "Regarde ta page : quel témoignage tu changes ?",
+      "date": "2026-09-25",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S20",
+      "day": 20,
+      "title": "Ce que tu perds chaque mois",
+      "angle": "Rareté cadrée en perte : le coût d'attendre.",
+      "principle": "Rareté",
+      "hookType": "menace",
+      "lines": [
+        {
+          "t": "Chaque mois sans système te coûte un contrat.",
+          "v": {
+            "type": "chip",
+            "text": "LE COÛT D'ATTENDRE"
+          }
+        },
+        {
+          "t": "Et bien plus qu'un contrat."
+        },
+        {
+          "t": "On calcule toujours ce qu'on perd en argent.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "Les opportunités non créées",
+              "Les témoignages non générés",
+              "Les conversations jamais démarrées"
+            ]
+          }
+        },
+        {
+          "t": "On oublie ce qui ne s'est jamais créé."
+        },
+        {
+          "t": "Les opportunités non créées."
+        },
+        {
+          "t": "Les témoignages que tu n'as pas générés."
+        },
+        {
+          "t": "Les conversations jamais démarrées.",
+          "v": {
+            "type": "big",
+            "text": "Un contrat perdu se rattrape.\nSix mois d'effets composés, non."
+          }
+        },
+        {
+          "t": "Un contrat, ça se rattrape."
+        },
+        {
+          "t": "Six mois d'effets composés, non."
+        }
+      ],
+      "cta": "Réserve ta roadmap offerte. Lien en bio.",
+      "date": "2026-09-28",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S21",
+      "day": 21,
+      "title": "Le Loom qui remplace trois rendez-vous",
+      "angle": "Outil concret de pré-suasion asynchrone.",
+      "principle": "Réciprocité",
+      "hookType": "nouveauté utile",
+      "lines": [
+        {
+          "t": "Une vidéo de quatre minutes remplace trois rendez-vous.",
+          "v": {
+            "type": "chip",
+            "text": "PRÉ-SUASION ASYNCHRONE"
+          }
+        },
+        {
+          "t": "Pas une démo. Pas un pitch. Un diagnostic."
+        },
+        {
+          "t": "Tu ouvres son site, son process, ses chiffres publics.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Je montre SON cas",
+              "Je donne une piste gratuite",
+              "Je ne vends rien"
+            ]
+          }
+        },
+        {
+          "t": "Tu montres ce que tu vois."
+        },
+        {
+          "t": "Et une piste, gratuitement."
+        },
+        {
+          "t": "Tu ne vends rien dans cette vidéo. Rien.",
+          "v": {
+            "type": "big",
+            "text": "Donne en premier.\nImportant, inattendu, personnalisé."
+          }
+        },
+        {
+          "t": "Donner en premier, c'est la réciprocité."
+        },
+        {
+          "t": "Trois conditions : important, inattendu, personnalisé."
+        },
+        {
+          "t": "Quand il arrive en rendez-vous, tu as déjà prouvé."
+        }
+      ],
+      "cta": "Commente LOOM, je t'envoie ma trame de 4 minutes.",
+      "date": "2026-09-29",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S22",
+      "day": 22,
+      "title": "Pourquoi WhatsApp convertit mieux",
+      "angle": "Ingénierie conversationnelle multicanale.",
+      "principle": "Unité + Sympathie",
+      "hookType": "contre-intuitif",
+      "lines": [
+        {
+          "t": "Le même message convertit mieux sur WhatsApp.",
+          "v": {
+            "type": "chip",
+            "text": "BLOC 02"
+          }
+        },
+        {
+          "t": "Ce n'est pas magique. C'est du territoire."
+        },
+        {
+          "t": "LinkedIn, c'est un espace professionnel.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "LinkedIn · représentation",
+              "value": "On évalue",
+              "pct": 100
+            },
+            "after": {
+              "label": "WhatsApp · proximité",
+              "value": "On répond",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "On y est en représentation."
+        },
+        {
+          "t": "WhatsApp, c'est l'espace des proches."
+        },
+        {
+          "t": "Y être, c'est déjà être perçu comme des nôtres."
+        },
+        {
+          "t": "Attention : ça ne s'improvise pas.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Mail : le contexte",
+              "LinkedIn : la preuve",
+              "WhatsApp : la conversation"
+            ]
+          }
+        },
+        {
+          "t": "Un canal pour le contexte, un pour la preuve,"
+        },
+        {
+          "t": "un pour parler. Trois canaux, une séquence."
+        }
+      ],
+      "cta": "Enregistre. Tu vas revoir ta séquence.",
+      "date": "2026-09-30",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S23",
+      "day": 23,
+      "title": "Ne pitche pas au premier rendez-vous",
+      "angle": "Le R1 sert à activer la cohérence, pas à vendre.",
+      "principle": "Cohérence",
+      "hookType": "interdiction",
+      "lines": [
+        {
+          "t": "Ne pitche pas ton offre au premier rendez-vous.",
+          "v": {
+            "type": "chip",
+            "text": "R1"
+          }
+        },
+        {
+          "t": "Je sais, on t'a appris l'inverse."
+        },
+        {
+          "t": "Un pitch demande à l'autre de juger.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Tu pitches",
+              "value": "Il juge",
+              "pct": 100
+            },
+            "after": {
+              "label": "Il formule",
+              "value": "Il s'engage",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Ton objectif au R1 est différent :"
+        },
+        {
+          "t": "lui faire formuler, avec ses mots,",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Il décrit le problème",
+              "Il chiffre le coût",
+              "Il fixe l'échéance"
+            ]
+          }
+        },
+        {
+          "t": "ce que ce problème lui coûte."
+        },
+        {
+          "t": "Parce que ce qu'il dit lui-même,",
+          "v": {
+            "type": "big",
+            "text": "Ce qu'il dit lui-même,\nil doit y rester fidèle."
+          }
+        },
+        {
+          "t": "il doit y rester fidèle. C'est la cohérence."
+        },
+        {
+          "t": "Ton offre arrivera au bon moment. Pas avant."
+        }
+      ],
+      "cta": "Teste au prochain call : tais-toi 20 % de plus.",
+      "date": "2026-10-01",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S24",
+      "day": 24,
+      "title": "La phrase à dire juste avant ton prix",
+      "angle": "L'ancrage pré-suasif sur le prix.",
+      "principle": "Contraste + Autorité",
+      "hookType": "utile immédiat",
+      "lines": [
+        {
+          "t": "Une phrase avant ton tarif change sa réaction.",
+          "v": {
+            "type": "chip",
+            "text": "ANCRAGE"
+          }
+        },
+        {
+          "t": "Le prix n'est jamais jugé dans l'absolu."
+        },
+        {
+          "t": "Il est jugé par contraste.",
+          "v": {
+            "type": "big",
+            "text": "« Rassurez-vous, je ne vais pas\nvous demander 100 000 €. »"
+          }
+        },
+        {
+          "t": "Avec le dernier chiffre entendu."
+        },
+        {
+          "t": "Donc tu poses l'ancre toi-même."
+        },
+        {
+          "t": "Rassurez-vous, je ne vais pas vous demander cent mille.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Sans ancre",
+              "value": "« C'est cher »",
+              "pct": 100
+            },
+            "after": {
+              "label": "Avec ancre",
+              "value": "« C'est raisonnable »",
+              "pct": 40
+            }
+          }
+        },
+        {
+          "t": "Puis tu annonces ton vrai prix."
+        },
+        {
+          "t": "Le même montant devient raisonnable."
+        },
+        {
+          "t": "Une règle : l'ancre doit rester crédible."
+        }
+      ],
+      "cta": "Commente PRIX, je t'envoie 3 variantes testées.",
+      "date": "2026-10-02",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S25",
+      "day": 25,
+      "title": "Désynchronise ton temps",
+      "angle": "Bloc 4 : la livraison asynchrone.",
+      "principle": "Autorité",
+      "hookType": "menace + soi",
+      "lines": [
+        {
+          "t": "Si ton revenu s'arrête quand tu dors, tu as un job.",
+          "v": {
+            "type": "chip",
+            "text": "BLOC 04"
+          }
+        },
+        {
+          "t": "La plupart des consultants IA vendent leur présence."
+        },
+        {
+          "t": "Appels, points, disponibilité.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Vendre sa présence",
+              "value": "Plafond",
+              "pct": 100
+            },
+            "after": {
+              "label": "Vendre sa réflexion",
+              "value": "Compose",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "Facturé à l'heure passée."
+        },
+        {
+          "t": "La livraison asynchrone inverse ça."
+        },
+        {
+          "t": "Tu deviens partenaire de réflexion du dirigeant.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Des livrables, pas des heures",
+              "Des boucles écrites et vidéo",
+              "Un rythme, pas un agenda"
+            ]
+          }
+        },
+        {
+          "t": "Des livrables, des boucles écrites, un rythme."
+        },
+        {
+          "t": "Tu n'es plus payé pour être là.",
+          "v": {
+            "type": "big",
+            "text": "Payé pour ce que tu produis.\nPas pour ta présence."
+          }
+        },
+        {
+          "t": "Tu es payé pour ce que tu produis."
+        }
+      ],
+      "cta": "Enregistre : c'est le bloc qui change ta vie, pas ton CA.",
+      "date": "2026-10-05",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S26",
+      "day": 26,
+      "title": "Tes rendez-vous arrivent par vagues",
+      "angle": "Le problème de la régularité.",
+      "principle": "Sympathie + Autorité",
+      "hookType": "soi + douleur",
+      "lines": [
+        {
+          "t": "Un mois excellent. Un mois inquiétant.",
+          "v": {
+            "type": "chip",
+            "text": "LES VAGUES"
+          }
+        },
+        {
+          "t": "Tu connais la sensation."
+        },
+        {
+          "t": "Ce n'est pas de la malchance. C'est mécanique.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "Les RDV arrivent par vagues",
+              "Certains mois inquiétants",
+              "Des prospects disparaissent"
+            ]
+          }
+        },
+        {
+          "t": "Quand tu livres, tu ne prospectes plus."
+        },
+        {
+          "t": "Six semaines plus tard, le vide arrive.",
+          "v": {
+            "type": "big",
+            "text": "Tu ne prospectes pas\nquand tu livres.\nD'où les vagues."
+          }
+        },
+        {
+          "t": "Le remède n'est pas de travailler plus."
+        },
+        {
+          "t": "C'est de sortir les rendez-vous de ton agenda.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Un flux qui tourne sans toi",
+              "Une seule séquence",
+              "Chaque semaine, sans exception"
+            ]
+          }
+        },
+        {
+          "t": "Un flux qui tourne même quand tu livres."
+        }
+      ],
+      "cta": "Ton dernier mois creux, c'était quand ? Réponds honnêtement.",
+      "date": "2026-10-06",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S27",
+      "day": 27,
+      "title": "Ton contenu fait le travail avant l'appel",
+      "angle": "Le contenu comme infrastructure de pré-suasion.",
+      "principle": "Autorité + Preuve sociale",
+      "hookType": "nouveauté",
+      "lines": [
+        {
+          "t": "Ton contenu ne sert pas à être vu.",
+          "v": {
+            "type": "chip",
+            "text": "CONTENU"
+          }
+        },
+        {
+          "t": "Il sert à être lu par une seule personne :"
+        },
+        {
+          "t": "ton prospect, la veille de l'appel.",
+          "v": {
+            "type": "compare",
+            "before": {
+              "label": "Contenu pour la portée",
+              "value": "Des vues",
+              "pct": 100
+            },
+            "after": {
+              "label": "Contenu pour le RDV",
+              "value": "Des oui",
+              "pct": 100
+            }
+          }
+        },
+        {
+          "t": "La différence est énorme."
+        },
+        {
+          "t": "Un contenu de portée cherche des vues."
+        },
+        {
+          "t": "Un contenu pré-suasif installe une croyance.",
+          "v": {
+            "type": "big",
+            "text": "Un contenu = une croyance\nà installer avant l'appel."
+          }
+        },
+        {
+          "t": "Précise. Avant l'appel."
+        },
+        {
+          "t": "Une publication, une croyance.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Une croyance par publication",
+              "Alignée sur ton offre",
+              "Diffusée avant le RDV"
+            ]
+          }
+        },
+        {
+          "t": "Alignée sur ce que tu vends. Sinon ça ne sert à rien."
+        }
+      ],
+      "cta": "Quelle croyance tu dois installer ? Écris-la en commentaire.",
+      "date": "2026-10-07",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S28",
+      "day": 28,
+      "title": "La première ligne de ton message froid",
+      "angle": "Cold DM : ouverture pré-suasive.",
+      "principle": "Unité + Sympathie",
+      "hookType": "utile immédiat",
+      "lines": [
+        {
+          "t": "Ta première ligne décide de tout le reste.",
+          "v": {
+            "type": "chip",
+            "text": "COLD DM"
+          }
+        },
+        {
+          "t": "Pas ton offre. Pas ton CTA. Ta première ligne."
+        },
+        {
+          "t": "Règle une : elle ne parle pas de toi.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "« Je me permets de vous contacter »",
+              "« Nous accompagnons les… »",
+              "« Auriez-vous 15 minutes ? »"
+            ]
+          }
+        },
+        {
+          "t": "Règle deux : un point commun réel."
+        },
+        {
+          "t": "Jamais fabriqué.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Un point commun RÉEL",
+              "Un détail observé chez lui",
+              "Une question de conseil"
+            ]
+          }
+        },
+        {
+          "t": "Même secteur, même ville, un détail vu chez lui."
+        },
+        {
+          "t": "Règle trois : demande un conseil, pas un créneau.",
+          "v": {
+            "type": "big",
+            "text": "Une fausse proximité coûte\nplus cher qu'un silence."
+          }
+        },
+        {
+          "t": "Et si tu es tenté d'inventer la proximité :"
+        },
+        {
+          "t": "ne le fais pas. Le faux se paie toujours."
+        }
+      ],
+      "cta": "Colle ta première ligne en commentaire, j'en corrige dix.",
+      "date": "2026-10-08",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S29",
+      "day": 29,
+      "title": "Tu n'as pas besoin d'être le meilleur",
+      "angle": "Le vrai levier : aider à décider.",
+      "principle": "Autorité bienveillante",
+      "hookType": "soulagement",
+      "lines": [
+        {
+          "t": "Tu n'as pas besoin d'être le meilleur.",
+          "v": {
+            "type": "chip",
+            "text": "LE VRAI LEVIER"
+          }
+        },
+        {
+          "t": "C'est même une mauvaise stratégie."
+        },
+        {
+          "t": "Ton prospect ne cherche pas le meilleur.",
+          "v": {
+            "type": "list",
+            "mark": "x",
+            "items": [
+              "Pas sûr que ça marche chez lui",
+              "Peur de refaire une erreur",
+              "Aucun système clair en tête"
+            ]
+          }
+        },
+        {
+          "t": "Il cherche à ne pas se tromper."
+        },
+        {
+          "t": "Ce qui le bloque, ce n'est pas ton niveau."
+        },
+        {
+          "t": "Il n'a pas encore vu un système simple.",
+          "v": {
+            "type": "big",
+            "text": "Deviens celui\nqui aide à décider."
+          }
+        },
+        {
+          "t": "Cohérent. Exécutable. Le tien."
+        },
+        {
+          "t": "Deviens celui qui propose une opportunité"
+        },
+        {
+          "t": "et qui aide à prendre la décision. C'est tout."
+        }
+      ],
+      "cta": "Abonne-toi si tu veux le système, pas la motivation.",
+      "date": "2026-10-09",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    },
+    {
+      "id": "S30",
+      "day": 30,
+      "title": "Cinq places, et la vraie question",
+      "angle": "Clôture du mois : rareté réelle + engagement actif.",
+      "principle": "Rareté + Cohérence",
+      "hookType": "question directe",
+      "lines": [
+        {
+          "t": "Une seule question compte, à la fin.",
+          "v": {
+            "type": "chip",
+            "text": "LA QUESTION"
+          }
+        },
+        {
+          "t": "Continuer à courir après tes prospects,",
+          "v": {
+            "type": "big",
+            "text": "Courir après eux ?\nOu qu'ils arrivent convaincus ?"
+          }
+        },
+        {
+          "t": "ou faire en sorte qu'ils arrivent déjà convaincus ?"
+        },
+        {
+          "t": "Je n'accompagne que cinq consultants par mois.",
+          "v": {
+            "type": "stat",
+            "value": "5",
+            "label": "places par mois"
+          }
+        },
+        {
+          "t": "Ce n'est pas du marketing."
+        },
+        {
+          "t": "C'est du mentorat un à un, chaque semaine.",
+          "v": {
+            "type": "list",
+            "mark": "check",
+            "items": [
+              "Mentorat 1-1 sur 90 jours",
+              "Appels de groupe 4× / semaine",
+              "Garantie : 2× votre investissement"
+            ]
+          }
+        },
+        {
+          "t": "Et on prend le risque avec toi."
+        },
+        {
+          "t": "Si tu n'as pas généré deux fois ton investissement,"
+        },
+        {
+          "t": "on continue sans frais jusqu'au résultat."
+        }
+      ],
+      "cta": "Réserve ta roadmap offerte. Lien en bio.",
+      "date": "2026-10-12",
+      "status": "draft",
+      "avatar": null,
+      "audioSeconds": null
+    }
+  ]
+}

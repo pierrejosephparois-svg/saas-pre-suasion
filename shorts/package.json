@@ -1,0 +1,22 @@
+{
+  "name": "presuasion-shorts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Machine a shorts Pre-suasion : script -> avatar HeyGen -> montage Remotion -> design HyperFrame-like",
+  "scripts": {
+    "studio": "remotion studio src/index.jsx",
+    "render": "node scripts/render.mjs",
+    "render:all": "node scripts/render.mjs --all",
+    "avatar": "node scripts/heygen.mjs",
+    "make": "node scripts/make-short.mjs",
+    "calendar": "node scripts/calendar.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.518",
+    "@remotion/media-utils": "4.0.518",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.518"
+  }
+}
