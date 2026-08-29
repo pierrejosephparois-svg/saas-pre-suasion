@@ -15,6 +15,11 @@ npm install
 cp .env.example .env
 ```
 
+**ffmpeg** est necessaire pour la coupe des blancs (macOS : `brew install ffmpeg`,
+Linux : `apt install ffmpeg`). Sans lui, cette etape est simplement sautee avec
+un message clair : le reste de la chaine fonctionne. Un ffmpeg est bien livre
+avec Remotion, mais c'est un build allege qui ne suffit pas pour le montage.
+
 ## Configurer HeyGen (une seule fois)
 
 1. **Cloner l'avatar.** HeyGen > *Avatars* > *New avatar* > *Clone a real
@@ -103,4 +108,6 @@ d'ecriture et les types d'elements de design sont dans `AGENTS.md`.
   de `index.html`.
 - Machine sans acces au telechargement de Chromium : renseigne
   `REMOTION_BROWSER_EXECUTABLE` dans `.env`.
+- ffmpeg est choisi automatiquement : celui du systeme s'il gere h264/aac,
+  sinon celui de Remotion (lecture seule). `FFMPEG_PATH` force le choix.
 - Un rendu prend environ 1 min 30 par short.

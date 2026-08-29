@@ -186,9 +186,10 @@
       ],
       "cta": "Enregistre ce short, tu en auras besoin lundi.",
       "date": "2026-09-03",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-03-S03.mp4"
     },
     {
       "id": "S04",
@@ -248,9 +249,10 @@
       ],
       "cta": "Lequel te manque : volume ou confiance ? Réponds en un mot.",
       "date": "2026-09-04",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-04-S04.mp4"
     },
     {
       "id": "S05",
@@ -308,9 +310,10 @@
       ],
       "cta": "Commente CALCUL, je t'envoie la feuille avec tes chiffres.",
       "date": "2026-09-07",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-07-S05.mp4"
     },
     {
       "id": "S06",
@@ -371,9 +374,10 @@
       ],
       "cta": "Quel problème coûteux tu résous ? Écris-le en commentaire.",
       "date": "2026-09-08",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-08-S06.mp4"
     },
     {
       "id": "S07",
@@ -439,9 +443,10 @@
       ],
       "cta": "Enregistre : tu réécriras ton offre avec ces 3 lignes.",
       "date": "2026-09-09",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-09-S07.mp4"
     },
     {
       "id": "S08",
@@ -498,9 +503,10 @@
       ],
       "cta": "Combien de prospects fantômes ce mois-ci ? Un chiffre en commentaire.",
       "date": "2026-09-10",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-10-S08.mp4"
     },
     {
       "id": "S09",
@@ -557,9 +563,10 @@
       ],
       "cta": "Teste-le cette semaine et dis-moi ce que ça donne.",
       "date": "2026-09-11",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-11-S09.mp4"
     },
     {
       "id": "S10",
@@ -617,9 +624,10 @@
       ],
       "cta": "Quel conseil tu me donnerais pour ce format ? Je lis tout.",
       "date": "2026-09-14",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-14-S10.mp4"
     },
     {
       "id": "S11",
@@ -677,9 +685,10 @@
       ],
       "cta": "Tu te considères comme quelqu'un qui teste ? Alors teste et raconte.",
       "date": "2026-09-15",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-15-S11.mp4"
     },
     {
       "id": "S12",
@@ -733,9 +742,10 @@
       ],
       "cta": "Commente MOMENT si tu veux la séquence exacte.",
       "date": "2026-09-16",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-16-S12.mp4"
     },
     {
       "id": "S13",
@@ -793,9 +803,10 @@
       ],
       "cta": "Combien de conversations tu as démarrées cette semaine ?",
       "date": "2026-09-17",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-17-S13.mp4"
     },
     {
       "id": "S14",
@@ -861,9 +872,10 @@
       ],
       "cta": "Traduis ton offre en euros perdus. Colle-la en commentaire.",
       "date": "2026-09-18",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-18-S14.mp4"
     },
     {
       "id": "S15",
@@ -913,9 +925,10 @@
       ],
       "cta": "Enregistre ce short avant ton prochain point client.",
       "date": "2026-09-21",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-21-S15.mp4"
     },
     {
       "id": "S16",
@@ -983,9 +996,10 @@
       ],
       "cta": "Tu démarres ? Commente DÉBUT, je t'envoie l'ordre exact.",
       "date": "2026-09-22",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-22-S16.mp4"
     },
     {
       "id": "S17",
@@ -1050,9 +1064,10 @@
       ],
       "cta": "Commente RECO si tu veux le script des messages.",
       "date": "2026-09-23",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-23-S17.mp4"
     },
     {
       "id": "S18",
@@ -1114,9 +1129,10 @@
       ],
       "cta": "Abonne-toi, je détaille la mécanique cette semaine.",
       "date": "2026-09-24",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-24-S18.mp4"
     },
     {
       "id": "S19",
@@ -1183,9 +1199,10 @@
       ],
       "cta": "Regarde ta page : quel témoignage tu changes ?",
       "date": "2026-09-25",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-25-S19.mp4"
     },
     {
       "id": "S20",
@@ -1242,9 +1259,10 @@
       ],
       "cta": "Réserve ta roadmap offerte. Lien en bio.",
       "date": "2026-09-28",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-28-S20.mp4"
     },
     {
       "id": "S21",
@@ -1301,9 +1319,10 @@
       ],
       "cta": "Commente LOOM, je t'envoie ma trame de 4 minutes.",
       "date": "2026-09-29",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-09-29-S21.mp4"
     },
     {
       "id": "S22",

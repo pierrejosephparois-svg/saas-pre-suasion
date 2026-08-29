@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const CALENDAR = path.join(ROOT, 'content', 'calendar.json');
@@ -29,28 +29,74 @@ export function requireEnv(name, hint) {
   return v;
 }
 
-// ffmpeg : binaire du systeme, ou celui fourni par Playwright dans ce conteneur.
-export function ffmpegPath() {
-  if (process.env.FFMPEG_PATH) return process.env.FFMPEG_PATH;
-  const candidates = ['/opt/pw-browsers/ffmpeg-1011/ffmpeg-linux', '/usr/bin/ffmpeg', '/usr/local/bin/ffmpeg'];
-  for (const c of candidates) if (fs.existsSync(c)) return c;
-  return 'ffmpeg';
+// ffmpeg. Attention : certains binaires presents sur une machine sont des
+// builds reduits (celui de Playwright, par exemple, ne sait pas lire un mp4).
+// On verifie donc que le binaire gere h264 + aac avant de s'en servir, sinon
+// on prend celui fourni avec Remotion, qui est complet.
+let _ffmpeg = null;
+
+function handlesMp4(bin, pre = []) {
+  try {
+    const out = execFileSync(bin, [...pre, '-hide_banner', '-codecs'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+    return /h264/.test(out) && /aac/.test(out);
+  } catch {
+    return false;
+  }
+}
+
+export function ffmpegCommand() {
+  if (_ffmpeg) return _ffmpeg;
+  const candidates = [];
+  if (process.env.FFMPEG_PATH) candidates.push({ bin: process.env.FFMPEG_PATH, pre: [] });
+  candidates.push({ bin: 'ffmpeg', pre: [] });
+  for (const c of candidates) {
+    if (handlesMp4(c.bin, c.pre)) {
+      _ffmpeg = c;
+      return c;
+    }
+  }
+  // Repli : le ffmpeg embarque par Remotion (complet, toujours present ici).
+  _ffmpeg = { bin: 'npx', pre: ['remotion', 'ffmpeg'] };
+  return _ffmpeg;
+}
+
+// Le repli Remotion suffit pour lire une duree, mais c'est un build allege :
+// il lui manque des filtres (setpts) necessaires au montage. On le verifie
+// avant la coupe des blancs, pour donner un message clair plutot qu'une
+// erreur ffmpeg incomprehensible.
+const NEEDED_FILTERS = ['trim', 'setpts', 'atrim', 'asetpts', 'concat', 'silencedetect'];
+
+export function missingFilters() {
+  const listed = new Set(
+    ffmpeg(['-hide_banner', '-filters'])
+      .split('\n')
+      .map((l) => l.trim().split(/\s+/)[1])
+      .filter(Boolean)
+  );
+  return NEEDED_FILTERS.filter((f) => !listed.has(f));
+}
+
+// Lance ffmpeg et renvoie sa sortie complete. ffmpeg ecrit ses informations
+// (duree, silencedetect, progression) sur stderr, y compris quand il reussit :
+// on concatene donc les deux flux.
+export function ffmpeg(args, { inherit = false } = {}) {
+  const { bin, pre } = ffmpegCommand();
+  const r = spawnSync(bin, [...pre, ...args], {
+    encoding: 'utf8',
+    stdio: inherit ? 'inherit' : ['ignore', 'pipe', 'pipe'],
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  if (inherit) {
+    if (r.status !== 0) throw new Error(`ffmpeg a echoue (code ${r.status})`);
+    return '';
+  }
+  return `${r.stdout || ''}${r.stderr || ''}`;
 }
 
 // Duree d'un media, lue via ffmpeg (pas besoin de ffprobe).
 export function mediaDuration(file) {
-  try {
-    const out = execFileSync(ffmpegPath(), ['-i', file], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
-    return parseDuration(out);
-  } catch (e) {
-    return parseDuration(String(e.stderr || ''));
-  }
-}
-
-function parseDuration(text) {
-  const m = text.match(/Duration:\s*(\d+):(\d+):(\d+\.\d+)/);
-  if (!m) return null;
-  return Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3]);
+  const m = ffmpeg(['-i', file]).match(/Duration:\s*(\d+):(\d+):(\d+\.\d+)/);
+  return m ? Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3]) : null;
 }
 
 // Le short du jour (date du calendrier), sinon le premier encore en draft.
