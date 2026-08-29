@@ -33,20 +33,37 @@ async function generate(short) {
   const avatarId = requireEnv('HEYGEN_AVATAR_ID', 'ID de ton avatar clone (node scripts/heygen.mjs --avatars).');
   const voiceId = requireEnv('HEYGEN_VOICE_ID', 'ID de ta voix clonee (node scripts/heygen.mjs --avatars).');
 
+  // Fond : par defaut le violet profond de la marque, pour que l'avatar
+  // s'integre a la DA au lieu de trainer le decor du tournage. Remplacer par
+  // "none" dans .env pour garder le decor filme, ou par une URL d'image.
+  const bg = (process.env.HEYGEN_BACKGROUND ?? '#131222').trim();
+  const background =
+    bg === 'none' || bg === ''
+      ? undefined
+      : /^https?:\/\//.test(bg)
+        ? { type: 'image', url: bg }
+        : { type: 'color', value: bg };
+
+  const input = {
+    character: { type: 'avatar', avatar_id: avatarId, avatar_style: 'normal' },
+    voice: { type: 'text', input_text: spokenText(short), voice_id: voiceId, speed: Number(process.env.HEYGEN_VOICE_SPEED || 1.0) },
+  };
+  if (background) input.background = background;
+
   const body = {
-    video_inputs: [
-      {
-        character: { type: 'avatar', avatar_id: avatarId, avatar_style: 'normal' },
-        voice: { type: 'text', input_text: spokenText(short), voice_id: voiceId, speed: Number(process.env.HEYGEN_VOICE_SPEED || 1.0) },
-      },
-    ],
+    video_inputs: [input],
     dimension: { width: 1080, height: 1920 },
     caption: false,
   };
 
   const r = await fetch(`${API}/v2/video/generate`, { method: 'POST', headers: H, body: JSON.stringify(body) });
   const j = await r.json();
-  if (!r.ok || !j.data?.video_id) throw new Error(`Generation refusee : ${JSON.stringify(j)}`);
+  if (!r.ok || !j.data?.video_id) {
+    // Le remplacement de fond n'est possible que si l'avatar a ete cree avec
+    // un detourage exploitable (mur uni ou fond vert au tournage).
+    if (background) console.error(`\n  Si l'erreur concerne le fond, mets HEYGEN_BACKGROUND=none dans .env :\n  ton avatar garde alors le decor filme.\n`);
+    throw new Error(`Generation refusee : ${JSON.stringify(j)}`);
+  }
   const videoId = j.data.video_id;
   console.log(`  video_id=${videoId} — rendu HeyGen en cours…`);
 
