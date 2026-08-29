@@ -1664,9 +1664,10 @@
       ],
       "cta": "Ton dernier mois creux, c'était quand ? Réponds honnêtement.",
       "date": "2026-10-06",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-06-S26.mp4"
     },
     {
       "id": "S27",
@@ -1736,9 +1737,10 @@
       ],
       "cta": "Quelle croyance tu dois installer ? Écris-la en commentaire.",
       "date": "2026-10-07",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-07-S27.mp4"
     },
     {
       "id": "S28",
@@ -1804,9 +1806,10 @@
       ],
       "cta": "Colle ta première ligne en commentaire, j'en corrige dix.",
       "date": "2026-10-08",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-08-S28.mp4"
     },
     {
       "id": "S29",
@@ -1863,9 +1866,10 @@
       ],
       "cta": "Abonne-toi si tu veux le système, pas la motivation.",
       "date": "2026-10-09",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-09-S29.mp4"
     },
     {
       "id": "S30",
@@ -1927,9 +1931,10 @@
       ],
       "cta": "Réserve ta roadmap offerte. Lien en bio.",
       "date": "2026-10-12",
-      "status": "draft",
+      "status": "preview",
       "avatar": null,
-      "audioSeconds": null
+      "audioSeconds": null,
+      "output": "out/2026-10-12-S30.mp4"
     }
   ]
 }
