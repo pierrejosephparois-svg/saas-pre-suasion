@@ -77,6 +77,7 @@ npm run calendar                  # etat du mois
 node scripts/heygen.mjs --avatars # lister avatars et voix
 npm run make                      # short du jour, chaine complete
 node scripts/make-short.mjs S07   # un short precis
+node scripts/make-short.mjs --all # tout le mois, en serie
 npm run render -- S07             # remonter sans regenerer l'avatar
 npm run studio                    # previsualiser dans Remotion Studio
 ```

@@ -55,6 +55,15 @@ Pour un short precis :
 node scripts/make-short.mjs S07
 ```
 
+Pour tout le mois d'un coup (en serie, environ 5 minutes par short) :
+
+```bash
+node scripts/make-short.mjs --all
+```
+
+Les shorts deja generes sont sautes ; `--force` les refait. Un echec sur un
+short n'arrete pas les autres : la liste des ratages s'affiche a la fin.
+
 ## Les autres commandes
 
 | Commande | Effet |
