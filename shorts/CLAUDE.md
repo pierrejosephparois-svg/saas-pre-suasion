@@ -64,6 +64,7 @@ scripts/make-short.mjs     la chaine complete pour un short
 scripts/link-avatars.mjs   rattache des mp4 HeyGen deposes a la main
 scripts/check-env.mjs      verifie .env sans afficher la cle
 scripts/set-look.mjs       affecte un look (decor/tenue) a un short
+scripts/make-background.mjs recadre une image de decor en 1080x1920
 scripts/calendar.mjs       etat du mois
 public/fonts/              General Sans (400/500/600/700), copie du site
 public/avatar/             videos HeyGen (ignorees par git)

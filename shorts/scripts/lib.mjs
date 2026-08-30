@@ -70,14 +70,14 @@ export function ffmpegCommand() {
 // erreur ffmpeg incomprehensible.
 const NEEDED_FILTERS = ['trim', 'setpts', 'atrim', 'asetpts', 'concat', 'silencedetect'];
 
-export function missingFilters() {
+export function missingFilters(needed = NEEDED_FILTERS) {
   const listed = new Set(
     ffmpeg(['-hide_banner', '-filters'])
       .split('\n')
       .map((l) => l.trim().split(/\s+/)[1])
       .filter(Boolean)
   );
-  return NEEDED_FILTERS.filter((f) => !listed.has(f));
+  return needed.filter((f) => !listed.has(f));
 }
 
 // Lance ffmpeg et renvoie sa sortie complete. ffmpeg ecrit ses informations

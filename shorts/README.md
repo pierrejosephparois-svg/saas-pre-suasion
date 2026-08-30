@@ -78,6 +78,32 @@ short n'arrete pas les autres : la liste des ratages s'affiche a la fin.
 | `node scripts/set-look.mjs --rotate <id> <id> …` | alterner des looks sur les 30 |
 | `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |
 | `node scripts/check-env.mjs` | verifier .env sans afficher la cle |
+| `node scripts/make-background.mjs <image>` | recadrer un decor en 1080x1920 |
+
+## Mettre ton propre decor derriere l'avatar
+
+Une photo de decor est presque toujours en paysage : la passer telle quelle
+en 9:16 coupe ce qui compte. Le script la recadre au bon format et la depose
+dans `images/` du site, d'ou elle sera servie publiquement une fois poussee.
+
+```bash
+node scripts/make-background.mjs ~/Desktop/mon-decor.png --focus 0.8
+open ../images/mon-decor-9x16.png          # verifier le cadrage
+git add ../images/mon-decor-9x16.png && git commit -m "decor shorts" && git push
+```
+
+`--focus` va de 0 (bord gauche) a 1 (bord droit), `--top` de 0 (haut) a 1
+(bas) : de quoi garder un logo ou un mur precis dans le cadre.
+
+Puis dans `.env` :
+
+```
+HEYGEN_BACKGROUND=https://www.pre-suasion.fr/images/mon-decor-9x16.png
+```
+
+Le remplacement de fond suppose que HeyGen sait te detourer (avatar filme
+sur un mur uni ou un fond vert). Avec un look qui a deja son propre decor,
+mets `HEYGEN_BACKGROUND=none`.
 
 ## Changer de decor d'un short a l'autre
 
