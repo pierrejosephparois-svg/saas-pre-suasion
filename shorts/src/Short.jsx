@@ -10,14 +10,14 @@ import { Captions } from './components/Captions.jsx';
 import { Chrome } from './components/Chrome.jsx';
 import { EndCard } from './components/EndCard.jsx';
 
-export const Short = ({ short, avatarSrc = null, audioSeconds = null }) => {
+export const Short = ({ short, avatarSrc = null, audioSeconds = null, layout = 'full' }) => {
   const timeline = buildTimeline(short.lines, audioSeconds);
 
   return (
     <AbsoluteFill style={{ background: theme.bgDeep, fontFamily: theme.display }}>
       <Fonts />
-      <Background dimmed={Boolean(avatarSrc)} />
-      <AvatarLayer avatarSrc={avatarSrc} />
+      <Background dimmed={Boolean(avatarSrc) && layout === 'full'} />
+      <AvatarLayer avatarSrc={avatarSrc} layout={layout} />
       <Visual timeline={timeline} />
       <Captions timeline={timeline} />
       <Chrome />

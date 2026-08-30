@@ -80,6 +80,22 @@ short n'arrete pas les autres : la liste des ratages s'affiche a la fin.
 | `node scripts/check-env.mjs` | verifier .env sans afficher la cle |
 | `node scripts/make-background.mjs <image>` | recadrer un decor en 1080x1920 |
 
+## Deux mises en page pour l'avatar
+
+`layout` vaut `full` (defaut) ou `frame`, dans `content/calendar.json` :
+au niveau d'un short, ou dans `meta` pour tout le mois.
+
+- **`full`** : la video occupe tout l'ecran. A reserver aux avatars filmes
+  sur fond uni, ou detoures par HeyGen — sinon le decor du tournage prend
+  tout le cadre.
+- **`frame`** : la video est posee dans un cadre arrondi sur le fond de
+  marque anime. Aucun detourage necessaire ; le decor du tournage reste
+  visible mais confine, et c'est le bleu nuit du site qui domine l'image.
+
+```json
+"meta": { "layout": "frame" }
+```
+
 ## Mettre ton propre decor derriere l'avatar
 
 Une photo de decor est presque toujours en paysage : la passer telle quelle

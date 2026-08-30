@@ -2,17 +2,20 @@ import React from 'react';
 import { AbsoluteFill, OffthreadVideo, Img, staticFile, useCurrentFrame, useVideoConfig, interpolate } from 'remotion';
 import { theme } from '../lib/theme.js';
 
-// Deux modes :
-//  - avatarSrc fourni (mp4 HeyGen) -> plein cadre, comme un reel filme.
-//  - sinon -> emplacement portrait de marque (photo fixe) pour que la video
-//    soit deja publiable en preview ; la bascule est automatique des que la
-//    cle HEYGEN_API_KEY produit un mp4.
-export const AvatarLayer = ({ avatarSrc }) => {
+// Trois modes :
+//  - layout "full" : la video HeyGen occupe tout le cadre (a reserver aux
+//    avatars filmes sur fond uni, ou detoures par HeyGen).
+//  - layout "frame" : la video est posee dans un cadre arrondi sur le fond
+//    de marque. Aucun detourage necessaire : le decor du tournage reste
+//    visible mais confine, et le fond de la video est celui du site.
+//  - pas de video : emplacement portrait avec la photo, meme cadre que
+//    "frame", pour que le montage soit deja lisible avant HeyGen.
+export const AvatarLayer = ({ avatarSrc, layout = 'full' }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const zoom = interpolate(frame, [0, durationInFrames], [1, 1.06]);
 
-  if (avatarSrc) {
+  if (avatarSrc && layout === 'full') {
     return (
       <AbsoluteFill>
         <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
@@ -29,6 +32,15 @@ export const AvatarLayer = ({ avatarSrc }) => {
   }
 
   const enter = interpolate(frame, [6, 26], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+
+  const media = avatarSrc ? (
+    <OffthreadVideo src={avatarSrc} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})` }} />
+  ) : (
+    <Img
+      src={staticFile('avatar/placeholder.png')}
+      style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`, filter: 'saturate(.82) contrast(1.04) brightness(.86)' }}
+    />
+  );
 
   return (
     <div
@@ -47,10 +59,7 @@ export const AvatarLayer = ({ avatarSrc }) => {
         transform: `translateY(${(1 - enter) * 26}px)`,
       }}
     >
-      <Img
-        src={staticFile('avatar/placeholder.png')}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`, filter: 'saturate(.82) contrast(1.04) brightness(.86)' }}
-      />
+      {media}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(19,18,34,.30) 0%, rgba(19,18,34,0) 34%, rgba(19,18,34,.78) 100%)' }} />
       <div
         style={{

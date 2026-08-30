@@ -47,6 +47,9 @@ out/2026-09-01-S01.mp4  1080x1920, pret a publier
 - **Un short peut imposer son look** via `avatarId` dans le calendrier
   (decor et tenue differents d'un jour a l'autre). Sans ce champ, c'est
   `HEYGEN_AVATAR_ID` de `.env` qui sert.
+- **`layout`** (short ou `meta`) : `full` = video plein cadre (avatar
+  detoure ou filme sur fond uni), `frame` = video dans un cadre sur le fond
+  de marque, sans detourage.
 - **Une idee par short.** Si un script porte deux idees, en faire deux.
 
 ## Structure
