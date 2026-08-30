@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, readCalendar, writeCalendar, requireEnv, pickShort, spokenText, mediaDuration, sleep } from './lib.mjs';
+import { estimateLine } from '../src/lib/timing.js';
 
 const API = 'https://api.heygen.com';
 const key = requireEnv('HEYGEN_API_KEY', 'Cle API HeyGen : espace developpeur > API key.');
@@ -185,6 +186,47 @@ async function generate(short) {
   throw new Error('Delai depasse (25 min) cote HeyGen.');
 }
 
+// Recupere une video deja generee chez HeyGen, a partir de son identifiant.
+// Ne consomme aucun credit : c'est un telechargement, pas une generation.
+// Evite le detour par le navigateur, ou l'on se trompe vite de fichier.
+async function fetchExisting(shortId, videoId) {
+  const cal2 = readCalendar();
+  const short = pickShort(cal2, shortId);
+
+  console.log(`\n${short.id} · ${short.title}`);
+  console.log(`  video_id=${videoId}`);
+
+  const s = await get(`${API}/v1/video_status.get?video_id=${videoId}`);
+  const st = s.data?.status;
+  if (st !== 'completed') {
+    throw new Error(`Cette video n'est pas prete (statut : ${st ?? 'inconnu'}).`);
+  }
+
+  const rel = `avatar/${short.id}.mp4`;
+  const dest = path.join(ROOT, 'public', rel);
+  await download(s.data.video_url, dest);
+
+  const dur = mediaDuration(dest);
+  short.avatar = rel;
+  short.audioSeconds = dur;
+  short.status = 'avatar';
+  delete short.speech; // l'ancien calage ne vaut plus pour cette video
+  writeCalendar(cal2);
+
+  console.log(`  OK -> public/${rel}${dur ? ` (${dur.toFixed(1)} s)` : ''}`);
+
+  // Meme controle que link-avatars : une duree qui ne colle pas au script
+  // signale presque toujours qu'on s'est trompe de video.
+  const expected = short.lines.reduce((a, l) => a + estimateLine(l.t), 0);
+  if (dur && (dur / expected < 0.6 || dur / expected > 1.6)) {
+    console.log(`\n  ATTENTION : ~${expected.toFixed(0)} s attendues pour ce script, ${dur.toFixed(1)} s mesurees.`);
+    console.log(`  Verifie que c'est bien la video de ${short.id} avant de monter.`);
+  }
+
+  console.log(`\n  Etape suivante :`);
+  console.log(`    node scripts/align.mjs ${short.id} && node scripts/render.mjs ${short.id}\n`);
+}
+
 async function download(url, dest) {
   const r = await fetch(url);
   if (!r.ok) throw new Error(`Telechargement ${r.status}`);
@@ -205,6 +247,15 @@ if (arg === '--avatars') {
 }
 if (arg === '--looks') {
   await listLooks(process.argv[3]).catch(fail);
+  process.exit(0);
+}
+if (arg === '--fetch') {
+  const [, , , shortId, videoId] = process.argv;
+  if (!shortId || !videoId) {
+    console.error(`\n  Usage : node scripts/heygen.mjs --fetch S01 <video_id>\n`);
+    process.exit(1);
+  }
+  await fetchExisting(shortId, videoId).catch(fail);
   process.exit(0);
 }
 

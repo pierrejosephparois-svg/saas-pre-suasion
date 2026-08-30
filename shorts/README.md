@@ -74,6 +74,7 @@ short n'arrete pas les autres : la liste des ratages s'affiche a la fin.
 | `npm run render:all` | remonter les 30 |
 | `node scripts/heygen.mjs --avatars` | lister avatars et voix |
 | `node scripts/heygen.mjs --looks` | lister tes looks (decor / tenue) |
+| `node scripts/heygen.mjs --fetch S01 <video_id>` | recuperer une video deja generee, sans credit |
 | `node scripts/set-look.mjs S02 <id>` | donner un look precis a un short |
 | `node scripts/set-look.mjs --rotate <id> <id> …` | alterner des looks sur les 30 |
 | `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |

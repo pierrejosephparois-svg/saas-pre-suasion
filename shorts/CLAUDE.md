@@ -60,7 +60,7 @@ src/lib/theme.js           tokens de marque + zones sures
 src/lib/timing.js          moteur de timing (estime, puis recale sur l'audio)
 src/components/            Captions, Visual, AvatarLayer, Background, EndCard
 src/Root.jsx               une composition Remotion par short (S01…S30)
-scripts/heygen.mjs         generation avatar + voix
+scripts/heygen.mjs         generation avatar + voix, --fetch pour recuperer
 scripts/trim-silence.mjs   coupe des blancs (ffmpeg)
 scripts/align.mjs          cale les sous-titres sur la voix reelle
 scripts/render.mjs         montage final
