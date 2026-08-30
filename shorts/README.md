@@ -64,8 +64,23 @@ node scripts/make-short.mjs S07
 | `npm run render -- S07` | remonter un short sans regenerer l'avatar |
 | `npm run render:all` | remonter les 30 |
 | `node scripts/heygen.mjs --avatars` | lister avatars et voix |
+| `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |
 
-## Sans cle HeyGen
+## Route sans cle API
+
+Si tu preferes ne pas utiliser l'API : genere les videos a la main dans
+l'application HeyGen, telecharge-les, et depose-les dans `public/avatar/`
+en les nommant `S01.mp4`, `S02.mp4`, … Puis :
+
+```bash
+node scripts/link-avatars.mjs   # rattache les videos au calendrier
+node scripts/render.mjs --all   # monte tout
+```
+
+Aucune cle nulle part. La duree reelle de chaque video est mesuree et les
+sous-titres se recalent dessus, exactement comme par l'API.
+
+## Sans video avatar du tout
 
 Tout se rend quand meme : l'avatar est remplace par un emplacement portrait
 de marque, et le reste du montage (sous-titres mot a mot, elements de

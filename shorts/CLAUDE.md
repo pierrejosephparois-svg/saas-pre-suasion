@@ -58,6 +58,7 @@ scripts/heygen.mjs         generation avatar + voix
 scripts/trim-silence.mjs   coupe des blancs (ffmpeg)
 scripts/render.mjs         montage final
 scripts/make-short.mjs     la chaine complete pour un short
+scripts/link-avatars.mjs   rattache des mp4 HeyGen deposes a la main
 scripts/calendar.mjs       etat du mois
 public/fonts/              General Sans (400/500/600/700), copie du site
 public/avatar/             videos HeyGen (ignorees par git)
