@@ -78,7 +78,24 @@ short n'arrete pas les autres : la liste des ratages s'affiche a la fin.
 | `node scripts/set-look.mjs --rotate <id> <id> …` | alterner des looks sur les 30 |
 | `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |
 | `node scripts/check-env.mjs` | verifier .env sans afficher la cle |
+| `node scripts/align.mjs S01` | caler les sous-titres sur la voix |
 | `node scripts/make-background.mjs <image>` | recadrer un decor en 1080x1920 |
+
+## Caler les sous-titres sur la voix
+
+Sans calage, le minutage des mots est estime depuis le texte puis mis a
+l'echelle de la duree totale : le total tombe juste, mais les mots derivent
+des que le debit varie. `make-short.mjs` lance le calage automatiquement ;
+sur une video rattachee a la main, fais-le toi-meme :
+
+```bash
+node scripts/align.mjs S01     # ou --all
+node scripts/render.mjs S01
+```
+
+Le calage mesure les vrais intervalles de parole dans l'audio et enregistre
+`speech` dans le calendrier. Le montage repartit alors les mots dans la
+parole uniquement : pendant une pause, le sous-titre reste en place.
 
 ## Deux mises en page pour l'avatar
 

@@ -11,7 +11,7 @@ import { Chrome } from './components/Chrome.jsx';
 import { EndCard } from './components/EndCard.jsx';
 
 export const Short = ({ short, avatarSrc = null, audioSeconds = null, layout = 'full' }) => {
-  const timeline = buildTimeline(short.lines, audioSeconds);
+  const timeline = buildTimeline(short.lines, audioSeconds, short.speech);
 
   return (
     <AbsoluteFill style={{ background: theme.bgDeep, fontFamily: theme.display }}>

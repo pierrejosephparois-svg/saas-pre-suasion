@@ -21,6 +21,7 @@ const makeOne = (short) => {
   // par-dessus une video absente, on passe au suivant.
   if (!run('heygen.mjs', short.id)) return false;
   run('trim-silence.mjs', short.id); // etape optionnelle : un echec n'arrete rien
+  run('align.mjs', short.id); // cale les sous-titres sur la voix
   return run('render.mjs', short.id);
 };
 

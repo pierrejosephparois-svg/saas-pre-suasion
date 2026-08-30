@@ -62,6 +62,7 @@ src/components/            Captions, Visual, AvatarLayer, Background, EndCard
 src/Root.jsx               une composition Remotion par short (S01…S30)
 scripts/heygen.mjs         generation avatar + voix
 scripts/trim-silence.mjs   coupe des blancs (ffmpeg)
+scripts/align.mjs          cale les sous-titres sur la voix reelle
 scripts/render.mjs         montage final
 scripts/make-short.mjs     la chaine complete pour un short
 scripts/link-avatars.mjs   rattache des mp4 HeyGen deposes a la main

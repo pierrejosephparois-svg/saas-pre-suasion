@@ -18,7 +18,7 @@ export const RemotionRoot = () => (
         width={WIDTH}
         height={HEIGHT}
         fps={FPS}
-        durationInFrames={secToFrames(buildTimeline(short.lines).total, FPS)}
+        durationInFrames={secToFrames(buildTimeline(short.lines, short.audioSeconds, short.speech).total, FPS)}
         defaultProps={{ short, avatarSrc: null, audioSeconds: null, layout: short.layout ?? calendar.meta.layout ?? 'full' }}
         calculateMetadata={async ({ props }) => {
           const s = props.short;
@@ -29,7 +29,7 @@ export const RemotionRoot = () => (
           if (!avatarSrc && s.avatar) avatarSrc = staticFile(s.avatar);
           if (!audioSeconds && s.audioSeconds) audioSeconds = s.audioSeconds;
 
-          const t = buildTimeline(s.lines, audioSeconds);
+          const t = buildTimeline(s.lines, audioSeconds, s.speech);
           return {
             durationInFrames: secToFrames(t.total, FPS),
             props: { ...props, avatarSrc, audioSeconds, layout: s.layout ?? calendar.meta.layout ?? props.layout },
