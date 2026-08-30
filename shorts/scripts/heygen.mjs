@@ -13,20 +13,70 @@ const API = 'https://api.heygen.com';
 const key = requireEnv('HEYGEN_API_KEY', 'Cle API HeyGen : espace developpeur > API key.');
 const H = { 'X-Api-Key': key, 'Content-Type': 'application/json' };
 
+const TIMEOUT = 30000;
+
 async function get(url) {
-  const r = await fetch(url, { headers: H });
-  if (!r.ok) throw new Error(`HeyGen ${r.status} ${url} : ${await r.text()}`);
+  let r;
+  try {
+    r = await fetch(url, { headers: H, signal: AbortSignal.timeout(TIMEOUT) });
+  } catch (e) {
+    if (e.name === 'TimeoutError') throw new Error(`HeyGen n'a pas repondu en ${TIMEOUT / 1000} s. Verifie ta connexion, puis relance.`);
+    throw new Error(`Impossible de joindre HeyGen : ${e.message}`);
+  }
+  if (r.status === 401 || r.status === 403) {
+    // Le corps de la reponse dit la vraie cause : cle invalide, offre sans API,
+    // ou proxy reseau qui bloque le domaine. On l'affiche tel quel.
+    throw new Error(
+      `Acces refuse (${r.status}). Reponse du serveur :\n  ${(await r.text()).slice(0, 300)}\n\n` +
+        `  Si c'est la cle : dans .env, "HEYGEN_API_KEY=" une seule fois, puis la cle, sans espace ni guillemets.\n` +
+        `  Verifie aussi que ton offre HeyGen donne acces a l'API.`
+    );
+  }
+  if (!r.ok) throw new Error(`HeyGen ${r.status} sur ${url} : ${(await r.text()).slice(0, 300)}`);
   return r.json();
 }
 
-async function listAvatars() {
+async function listAvatars(filter) {
+  const norm = (x) => String(x ?? '').toLowerCase();
+  const keep = (name) => !filter || norm(name).includes(norm(filter));
+
+  console.log('\nInterrogation de HeyGen…');
   const a = await get(`${API}/v2/avatars`);
-  console.log('\nAvatars :');
-  for (const av of a.data?.avatars ?? []) console.log(`  ${av.avatar_id}  ${av.avatar_name ?? ''}`);
-  for (const av of a.data?.talking_photos ?? []) console.log(`  ${av.talking_photo_id}  ${av.talking_photo_name ?? ''} (talking photo)`);
+  console.log('Recuperation des voix…');
   const v = await get(`${API}/v2/voices`);
-  console.log('\nVoix (les tiennes en premier) :');
-  for (const vo of (v.data?.voices ?? []).slice(0, 40)) console.log(`  ${vo.voice_id}  ${vo.name ?? ''}  ${vo.language ?? ''}`);
+
+  const avatars = [
+    ...(a.data?.avatars ?? []).map((x) => ({ id: x.avatar_id, name: x.avatar_name, kind: 'avatar' })),
+    ...(a.data?.talking_photos ?? []).map((x) => ({ id: x.talking_photo_id, name: x.talking_photo_name, kind: 'photo' })),
+  ];
+  const voices = (v.data?.voices ?? []).map((x) => ({ id: x.voice_id, name: x.name, lang: x.language }));
+
+  // La liste complete part dans un fichier : la bibliotheque HeyGen fait des
+  // centaines d'entrees et noie les tiennes dans le terminal.
+  const dump = path.join(ROOT, 'heygen-liste.txt');
+  fs.writeFileSync(
+    dump,
+    ['AVATARS', ...avatars.map((x) => `${x.id}\t${x.name ?? ''}\t${x.kind}`), '', 'VOIX', ...voices.map((x) => `${x.id}\t${x.name ?? ''}\t${x.lang ?? ''}`)].join('\n'),
+    'utf8'
+  );
+
+  const myAvatars = avatars.filter((x) => keep(x.name));
+  const myVoices = voices.filter((x) => keep(x.name));
+
+  const show = (title, rows, empty) => {
+    console.log(`\n${title}`);
+    if (!rows.length) return console.log(`  ${empty}`);
+    for (const r of rows.slice(0, 30)) console.log(`  ${r.id}  ${r.name ?? ''}${r.lang ? `  (${r.lang})` : ''}${r.kind === 'photo' ? '  [talking photo]' : ''}`);
+    if (rows.length > 30) console.log(`  … ${rows.length - 30} autres, voir heygen-liste.txt`);
+  };
+
+  show(`AVATARS${filter ? ` contenant « ${filter} »` : ''} — a mettre dans HEYGEN_AVATAR_ID`, myAvatars, 'aucun.');
+  show(`VOIX${filter ? ` contenant « ${filter} »` : ''} — a mettre dans HEYGEN_VOICE_ID`, myVoices, 'aucune.');
+
+  console.log(`\n  ${avatars.length} avatar(s) et ${voices.length} voix au total.`);
+  console.log(`  Liste complete ecrite dans heygen-liste.txt`);
+  if (!filter) console.log(`  Astuce : node scripts/heygen.mjs --avatars pierre   pour ne voir que les tiens.`);
+  console.log('');
 }
 
 async function generate(short) {
@@ -87,9 +137,15 @@ async function download(url, dest) {
   fs.writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
 }
 
+// Un message lisible plutot qu'une pile d'appels Node.
+const fail = (e) => {
+  console.error(`\n  ${e instanceof Error ? e.message : e}\n`);
+  process.exit(1);
+};
+
 const arg = process.argv[2];
 if (arg === '--avatars') {
-  await listAvatars();
+  await listAvatars(process.argv[3]).catch(fail);
   process.exit(0);
 }
 
@@ -98,10 +154,10 @@ const short = pickShort(cal, arg);
 console.log(`\n${short.id} · ${short.title}`);
 console.log(`  ${spokenText(short).split(/\s+/).length} mots a faire dire a ton avatar.`);
 
-const url = await generate(short);
+const url = await generate(short).catch(fail);
 const rel = `avatar/${short.id}.mp4`;
 const dest = path.join(ROOT, 'public', rel);
-await download(url, dest);
+await download(url, dest).catch(fail);
 
 const dur = mediaDuration(dest);
 short.avatar = rel;
