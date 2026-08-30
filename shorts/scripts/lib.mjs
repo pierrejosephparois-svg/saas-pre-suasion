@@ -15,7 +15,11 @@ export function loadEnv() {
   if (!fs.existsSync(f)) return;
   for (const line of fs.readFileSync(f, 'utf8').split('\n')) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+    if (!m) continue;
+    // Une valeur vide (la ligne laissee telle quelle dans .env.example) ne doit
+    // pas masquer la vraie valeur plus bas dans le fichier.
+    const value = m[2].replace(/^["']|["']$/g, '').trim();
+    if (value && !process.env[m[1]]) process.env[m[1]] = value;
   }
 }
 
