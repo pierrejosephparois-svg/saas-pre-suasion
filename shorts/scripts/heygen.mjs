@@ -45,11 +45,15 @@ async function listAvatars(filter) {
   console.log('Recuperation des voix…');
   const v = await get(`${API}/v2/voices`);
 
-  const avatars = [
+  // HeyGen renvoie parfois la meme entree dans plusieurs listes : on dedoublonne
+  // sur l'identifiant, sinon chaque avatar s'affiche deux fois.
+  const dedupe = (rows) => [...new Map(rows.filter((r) => r.id).map((r) => [r.id, r])).values()];
+
+  const avatars = dedupe([
     ...(a.data?.avatars ?? []).map((x) => ({ id: x.avatar_id, name: x.avatar_name, kind: 'avatar' })),
     ...(a.data?.talking_photos ?? []).map((x) => ({ id: x.talking_photo_id, name: x.talking_photo_name, kind: 'photo' })),
-  ];
-  const voices = (v.data?.voices ?? []).map((x) => ({ id: x.voice_id, name: x.name, lang: x.language }));
+  ]);
+  const voices = dedupe((v.data?.voices ?? []).map((x) => ({ id: x.voice_id, name: x.name, lang: x.language })));
 
   // La liste complete part dans un fichier : la bibliotheque HeyGen fait des
   // centaines d'entrees et noie les tiennes dans le terminal.
