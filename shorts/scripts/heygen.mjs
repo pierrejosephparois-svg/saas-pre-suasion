@@ -127,7 +127,9 @@ async function generate(short) {
     await sleep(15000);
     const s = await get(`${API}/v1/video_status.get?video_id=${videoId}`);
     const st = s.data?.status;
-    process.stdout.write(`  statut : ${st}\r`);
+    // padEnd : sans ca, "completed" s'ecrit par-dessus "processing" et laisse
+    // trainer le "g" de la ligne precedente.
+    process.stdout.write(`  statut : ${st}`.padEnd(40) + '\r');
     if (st === 'completed') return s.data.video_url;
     if (st === 'failed') throw new Error(`HeyGen a echoue : ${JSON.stringify(s.data?.error ?? s.data)}`);
   }
