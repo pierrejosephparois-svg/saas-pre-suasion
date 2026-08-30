@@ -47,6 +47,8 @@ Les regles communes (DA, preuves, zones sures) sont dans `CLAUDE.md`.
 - `scripts/heygen.mjs` fait l'appel, attend le rendu, telecharge et mesure.
 - La duree reelle **remplace** l'estimation : sous-titres et elements de
   design se recalent seuls (`src/lib/timing.js`).
+- Un short peut imposer son look (`avatarId` dans le calendrier) : alterner
+  les decors evite l'effet « meme video repostee 30 fois ».
 - Si la diction sonne mecanique : reentrainer la voix avec plus d'audio
   plutot que de bricoler `HEYGEN_VOICE_SPEED`.
 

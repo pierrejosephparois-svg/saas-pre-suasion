@@ -64,8 +64,27 @@ node scripts/make-short.mjs S07
 | `npm run render -- S07` | remonter un short sans regenerer l'avatar |
 | `npm run render:all` | remonter les 30 |
 | `node scripts/heygen.mjs --avatars` | lister avatars et voix |
+| `node scripts/heygen.mjs --looks` | lister tes looks (decor / tenue) |
+| `node scripts/set-look.mjs S02 <id>` | donner un look precis a un short |
+| `node scripts/set-look.mjs --rotate <id> <id> …` | alterner des looks sur les 30 |
 | `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |
 | `node scripts/check-env.mjs` | verifier .env sans afficher la cle |
+
+## Changer de decor d'un short a l'autre
+
+Un *look* HeyGen, c'est ton avatar dans une autre tenue et un autre decor.
+Chacun a son identifiant, et un short peut imposer le sien :
+
+```bash
+node scripts/heygen.mjs --looks                    # les lister
+node scripts/set-look.mjs S02 <identifiant>        # un short, un look
+node scripts/set-look.mjs --rotate <id1> <id2>     # alterner sur les 30
+node scripts/set-look.mjs --list                   # qui a quel look
+node scripts/set-look.mjs --clear                  # tout remettre par defaut
+```
+
+Le look enregistre dans `content/calendar.json` (`avatarId`) prime sur
+`HEYGEN_AVATAR_ID` de `.env`, qui reste le look par defaut.
 
 ## Route sans cle API
 

@@ -44,6 +44,9 @@ out/2026-09-01-S01.mp4  1080x1920, pret a publier
 - **Zones sures** : rien d'important au-dessus de 210 px ni en dessous de
   520 px (interface Instagram / TikTok). Constante `SAFE`.
 - **Duree cible : 30 a 45 s.** Au-dela, couper une idee, pas accelerer.
+- **Un short peut imposer son look** via `avatarId` dans le calendrier
+  (decor et tenue differents d'un jour a l'autre). Sans ce champ, c'est
+  `HEYGEN_AVATAR_ID` de `.env` qui sert.
 - **Une idee par short.** Si un script porte deux idees, en faire deux.
 
 ## Structure
@@ -60,6 +63,7 @@ scripts/render.mjs         montage final
 scripts/make-short.mjs     la chaine complete pour un short
 scripts/link-avatars.mjs   rattache des mp4 HeyGen deposes a la main
 scripts/check-env.mjs      verifie .env sans afficher la cle
+scripts/set-look.mjs       affecte un look (decor/tenue) a un short
 scripts/calendar.mjs       etat du mois
 public/fonts/              General Sans (400/500/600/700), copie du site
 public/avatar/             videos HeyGen (ignorees par git)

@@ -83,9 +83,58 @@ async function listAvatars(filter) {
   console.log('');
 }
 
+// Les "looks" (autre tenue, autre decor) sont des variantes rangees dans des
+// avatar groups. Ils n'apparaissent pas tous dans /v2/avatars, d'ou ce listing
+// dedie.
+async function listLooks(filter) {
+  const norm = (x) => String(x ?? '').toLowerCase();
+  const keep = (name) => !filter || norm(name).includes(norm(filter));
+
+  console.log('\nRecuperation de tes looks…');
+  let groups;
+  try {
+    groups = await get(`${API}/v2/avatar_group.list`);
+  } catch (e) {
+    console.error(`\n  Impossible de lister les groupes d'avatars : ${e.message}`);
+    console.error(`  Tu peux recuperer l'identifiant d'un look depuis l'application HeyGen.\n`);
+    return;
+  }
+
+  const list = groups.data?.avatar_group_list ?? groups.data?.avatar_groups ?? groups.data?.groups ?? [];
+  if (!list.length) return console.log('  Aucun groupe d\'avatars.\n');
+
+  const rows = [];
+  for (const g of list) {
+    const gid = g.id ?? g.group_id ?? g.avatar_group_id;
+    const gname = g.name ?? g.group_name ?? '';
+    if (!gid) continue;
+    let looks;
+    try {
+      looks = await get(`${API}/v2/avatar_group/${gid}/avatars`);
+    } catch {
+      continue; // un groupe illisible ne doit pas arreter les autres
+    }
+    for (const a of looks.data?.avatar_list ?? looks.data?.avatars ?? []) {
+      const id = a.avatar_id ?? a.id;
+      const name = a.name ?? a.avatar_name ?? '';
+      if (id && keep(`${gname} ${name}`)) rows.push({ id, name, group: gname });
+    }
+  }
+
+  if (!rows.length) return console.log(`  Aucun look${filter ? ` contenant « ${filter} »` : ''}.\n`);
+
+  console.log(`\nLOOKS — a mettre dans "avatarId" d'un short, ou dans HEYGEN_AVATAR_ID`);
+  for (const r of rows) console.log(`  ${r.id}  ${r.name}${r.group ? `   [${r.group}]` : ''}`);
+  console.log(`\n  Pour affecter un look a un short :`);
+  console.log(`    node scripts/set-look.mjs S02 <identifiant>\n`);
+}
+
 async function generate(short) {
-  const avatarId = requireEnv('HEYGEN_AVATAR_ID', 'ID de ton avatar clone (node scripts/heygen.mjs --avatars).');
-  const voiceId = requireEnv('HEYGEN_VOICE_ID', 'ID de ta voix clonee (node scripts/heygen.mjs --avatars).');
+  // Un short peut imposer son propre look (et sa propre voix) ; sinon on prend
+  // celui de .env. C'est ce qui permet d'alterner les decors d'un jour a l'autre.
+  const avatarId = short.avatarId || requireEnv('HEYGEN_AVATAR_ID', 'ID de ton avatar clone (node scripts/heygen.mjs --avatars).');
+  const voiceId = short.voiceId || requireEnv('HEYGEN_VOICE_ID', 'ID de ta voix clonee (node scripts/heygen.mjs --avatars).');
+  if (short.avatarId) console.log(`  look impose par le short : ${short.avatarId}`);
 
   // Fond : par defaut le violet profond de la marque, pour que l'avatar
   // s'integre a la DA au lieu de trainer le decor du tournage. Remplacer par
@@ -152,6 +201,10 @@ const fail = (e) => {
 const arg = process.argv[2];
 if (arg === '--avatars') {
   await listAvatars(process.argv[3]).catch(fail);
+  process.exit(0);
+}
+if (arg === '--looks') {
+  await listLooks(process.argv[3]).catch(fail);
   process.exit(0);
 }
 
