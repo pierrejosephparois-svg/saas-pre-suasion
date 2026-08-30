@@ -65,6 +65,7 @@ node scripts/make-short.mjs S07
 | `npm run render:all` | remonter les 30 |
 | `node scripts/heygen.mjs --avatars` | lister avatars et voix |
 | `node scripts/link-avatars.mjs` | rattacher des mp4 deposes a la main |
+| `node scripts/check-env.mjs` | verifier .env sans afficher la cle |
 
 ## Route sans cle API
 
